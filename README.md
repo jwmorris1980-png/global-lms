@@ -21,20 +21,11 @@ Before publishing this repository publicly, confirm that no private credentials,
 
 The server reads prebuilt JSON packages from `warehouse/packages` first. Each package contains one full curriculum plus all lessons for that country, grade, and course. Missing packages are not silently generated unless `WAREHOUSE_PREBUILT_ONLY=false` is explicitly set.
 
-## Materialize The Warehouse
+## Generated Warehouse Data
 
-The generated warehouse output is not committed to the public source repository because it contains a very large number of generated JSON files. Regenerate it locally when needed.
+The generated warehouse output is not committed to the public source repository because it contains a very large number of generated JSON files. The live deployment uses generated data under `warehouse/packages`, `warehouse/curriculums`, and `warehouse/lessons`, but those folders are ignored in Git.
 
-The full warehouse is materialized when `warehouse/packages` contains `39,552` JSON packages.
-
-```bash
-node scratch/materialize_global_warehouse.cjs
-```
-
-The script skips packages that already exist. It writes:
-
-- `warehouse/packages/*.json`: full course packages with units and lessons
-- `warehouse/curriculums/*.json`: standalone curriculum records for quick lookup
+Public contributors can work on the application, API, video matching, deployment config, and content QA tools without committing generated warehouse output. A public regeneration workflow should be added before expecting outside contributors to rebuild the full warehouse locally.
 
 ## Run Locally
 
