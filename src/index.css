@@ -270,6 +270,13 @@ body {
   font-weight: 800;
 }
 
+.form-help {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 .user-avatar {
   width: 34px;
   height: 34px;

@@ -868,7 +868,6 @@ const HelpBot = ({ onNavigate }) => {
   );
 };
 
-const OWNER_EMAILS = ['jwmorris1980@gmail.com', SUPPORT_EMAIL];
 const normalizeLoginEmail = (value = '') => (
   String(value || '')
     .trim()
@@ -877,7 +876,13 @@ const normalizeLoginEmail = (value = '') => (
     .replace(/\s*\.\s*/g, '.')
     .toLowerCase()
 );
-const isOwnerAdmin = (user) => OWNER_EMAILS.includes(normalizeLoginEmail(user?.email));
+const OWNER_EMAILS = ['jwmorris1980@gmail.com', SUPPORT_EMAIL].map(normalizeLoginEmail);
+const isOwnerAdminEmail = (email = '') => OWNER_EMAILS.includes(normalizeLoginEmail(email));
+const publicAccountRole = (role = 'Student') => (role === 'Teacher' ? 'Teacher' : 'Student');
+const roleForEmail = (email = '', requestedRole = 'Student') => (
+  isOwnerAdminEmail(email) ? 'Admin' : publicAccountRole(requestedRole)
+);
+const isOwnerAdmin = (user) => isOwnerAdminEmail(user?.email);
 
 const Navbar = ({ onNavigate, user, onOpenContact, onSignOut }) => {
   const ownerAdmin = isOwnerAdmin(user);
@@ -1765,6 +1770,8 @@ const AuthView = ({ onSignIn }) => {
     workspaceName: ''
   });
   const [error, setError] = useState('');
+  const ownerEmail = isOwnerAdminEmail(authData.email);
+  const visibleRole = roleForEmail(authData.email, authData.role);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -1774,10 +1781,9 @@ const AuthView = ({ onSignIn }) => {
       return;
     }
     setError('');
-    const ownerEmail = OWNER_EMAILS.includes(normalizedEmail);
     onSignIn({
       email: normalizedEmail,
-      role: ownerEmail ? 'Admin' : authData.role,
+      role: roleForEmail(normalizedEmail, authData.role),
       name: authData.name.trim().slice(0, 80) || 'Global Learner',
       workspaceType: authData.workspaceType,
       workspaceName: authData.workspaceName.trim().slice(0, 100),
@@ -1821,8 +1827,7 @@ const AuthView = ({ onSignIn }) => {
               value={authData.email}
               onChange={(e) => {
                 const nextEmail = e.target.value;
-                const ownerEmail = OWNER_EMAILS.includes(normalizeLoginEmail(nextEmail));
-                setAuthData({ ...authData, email: nextEmail, role: ownerEmail ? 'Admin' : authData.role });
+                setAuthData({ ...authData, email: nextEmail, role: roleForEmail(nextEmail, authData.role) });
               }}
             />
           </div>
@@ -1832,13 +1837,17 @@ const AuthView = ({ onSignIn }) => {
             <select
               id="auth-role"
               className="form-control"
-              value={authData.role}
-              onChange={(e) => setAuthData({ ...authData, role: e.target.value })}
+              value={visibleRole}
+              disabled={ownerEmail}
+              onChange={(e) => setAuthData({ ...authData, role: publicAccountRole(e.target.value) })}
             >
               <option>Student</option>
               <option>Teacher</option>
-              <option>Admin</option>
+              {ownerEmail && <option>Admin</option>}
             </select>
+            <small className="form-help">
+              {ownerEmail ? 'Owner email verified. Admin access is unlocked.' : 'Admin access is restricted to the two approved owner emails.'}
+            </small>
           </div>
           <div className="form-group">
             <label htmlFor="auth-workspace">Workspace type</label>
@@ -5546,7 +5555,7 @@ export default function App() {
     let normalizedUser = {
       ...nextUser,
       email: normalizeLoginEmail(nextUser.email),
-      role: OWNER_EMAILS.includes(normalizeLoginEmail(nextUser.email)) ? 'Admin' : nextUser.role,
+      role: roleForEmail(nextUser.email, nextUser.role),
       workspaceType: nextUser.workspaceType || 'Individual teacher',
       workspaceName: nextUser.workspaceName || '',
       freeLessonLimit: nextUser.freeLessonLimit ?? FREE_LESSON_LIMIT,

@@ -98,7 +98,7 @@ https://lms-all-languages.vercel.app/
 Post 3:
 Looking for feedback from teachers, homeschool parents, and school leaders.
 
-Global LMS is in beta. The goal is simple: make K-12 lessons, units, and full courses easier to find, edit, and use anywhere in the world.
+Global LMS is live. The goal is simple: make K-12 lessons, units, and full courses easier to find, edit, and use anywhere in the world.
 
 If you try it, I would love to know whether it saves planning time.
 
@@ -106,7 +106,7 @@ https://lms-all-languages.vercel.app/
 
 ## Short DM
 
-Hi, I am building Global LMS, an already-loaded standards-aligned K-12 curriculum warehouse for lessons, units, and full courses by country, grade, subject, and build type. I am looking for teacher and school-leader feedback during beta. Here is the site: https://lms-all-languages.vercel.app/
+Hi, I am building Global LMS, an already-loaded standards-aligned K-12 curriculum warehouse for lessons, units, and full courses by country, grade, subject, and build type. I am looking for teacher and school-leader feedback now that the platform is live. Here is the site: https://lms-all-languages.vercel.app/
 
 ## Founder Note
 

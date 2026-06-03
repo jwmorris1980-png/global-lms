@@ -134,9 +134,19 @@ const readWorkspaceTree = (dirPath = WORKSPACE_ROOT) => {
         });
 };
 const cleanEmail = (value = '') => {
-    const email = cleanString(value, 254).toLowerCase();
+    const email = cleanString(value, 254)
+        .replace(/\s*@\s*/g, '@')
+        .replace(/@gmail\s+com$/i, '@gmail.com')
+        .replace(/\s*\.\s*/g, '.')
+        .toLowerCase();
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : '';
 };
+const OWNER_EMAILS = new Set(['jwmorris1980@gmail.com', 'support@global-lms.org'].map(cleanEmail));
+const isOwnerAdminEmail = (email = '') => OWNER_EMAILS.has(cleanEmail(email));
+const publicAccountRole = (role = 'Student') => cleanString(role, 40) === 'Teacher' ? 'Teacher' : 'Student';
+const roleForEmail = (email = '', requestedRole = 'Student') => (
+    isOwnerAdminEmail(email) ? 'Admin' : publicAccountRole(requestedRole)
+);
 const amountCentsFromPrice = (value, fallbackCents = 500) => {
     const normalized = String(value || '').replace(/[^0-9.]/g, '');
     const parsed = Number.parseFloat(normalized);
@@ -1770,7 +1780,7 @@ Every draft must say it needs teacher review before classroom use.`;
             type: 'ai_builder_generate',
             email: safeEmail,
             visitorId,
-            role: req.body.role,
+            role: roleForEmail(safeEmail, req.body.role),
             name: req.body.name,
             plan: payload,
             topic: idea,
@@ -1841,7 +1851,7 @@ async function recordUsageEvent({ type, email = '', visitorId = '', role = '', n
         await ref.set({
             email: safeEmail,
             name: cleanString(name, 100) || safeEmail.split('@')[0],
-            role: cleanString(role, 40) || 'User',
+            role: roleForEmail(safeEmail, role),
             visitorId: safeVisitorId,
             lastSeenAt: new Date(),
             updatedAt: new Date(),
@@ -1854,11 +1864,12 @@ app.post('/api/users/signin', async (req, res) => {
     try {
         const safeEmail = cleanEmail(req.body.email);
         if (!safeEmail) return res.status(400).json({ error: 'A valid email is required to save an account.' });
+        const safeRole = roleForEmail(safeEmail, req.body.role);
         await recordUsageEvent({
             type: 'sign_in',
             email: safeEmail,
             visitorId: req.body.visitorId,
-            role: req.body.role,
+            role: safeRole,
             name: req.body.name,
             workspaceType: req.body.workspaceType,
             workspaceName: req.body.workspaceName,
@@ -1889,10 +1900,11 @@ app.post('/api/users/save-plan', async (req, res) => {
             savedAt: new Date()
         };
         const ref = studentsCol.doc(userIdForEmail(safeEmail));
+        const safeRole = roleForEmail(safeEmail, req.body.role);
         await ref.set({
             email: safeEmail,
             name: cleanString(req.body.name, 100) || safeEmail.split('@')[0],
-            role: cleanString(req.body.role, 40) || 'User',
+            role: safeRole,
             workspaceType: cleanString(req.body.workspaceType, 80) || 'Individual teacher',
             workspaceName: cleanString(req.body.workspaceName, 120) || '',
             visitorId: cleanString(req.body.visitorId, 80),
@@ -1907,7 +1919,7 @@ app.post('/api/users/save-plan', async (req, res) => {
             type: 'save_plan',
             email: safeEmail,
             visitorId: req.body.visitorId,
-            role: req.body.role,
+            role: safeRole,
             name: req.body.name,
             workspaceType: req.body.workspaceType,
             workspaceName: req.body.workspaceName,
@@ -1928,11 +1940,12 @@ app.post('/api/usage/event', async (req, res) => {
     try {
         const type = cleanString(req.body.type, 80);
         if (!type) return res.status(400).json({ error: 'Event type is required.' });
+        const safeEmail = cleanEmail(req.body.email);
         await recordUsageEvent({
             type,
-            email: req.body.email,
+            email: safeEmail,
             visitorId: req.body.visitorId,
-            role: req.body.role,
+            role: roleForEmail(safeEmail, req.body.role),
             name: req.body.name,
             plan: req.body.plan || null,
             topic: req.body.topic,
@@ -2185,7 +2198,7 @@ function cleanAIJSON(text) {
 }
 
 // --- 🏭 LMS FACTORY (ADMIN ONLY) ---
-app.post('/api/admin/pregen', async (req, res) => {
+app.post('/api/admin/pregen', requireAdmin, async (req, res) => {
     if (process.env.ALLOW_ADMIN_PREGEN !== 'true') {
         return res.status(403).json({ error: 'Pre-generation factory is disabled in production.' });
     }
