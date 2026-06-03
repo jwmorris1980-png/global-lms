@@ -1,0 +1,13 @@
+{
+  "name": "zoho",
+  "title": "Zoho Connector",
+  "description": "Zoho integration surfaces for Global LMS workflows.",
+  "actions": [
+    "crm.create_lead",
+    "crm.add_note",
+    "books.create_contact",
+    "books.create_invoice",
+    "desk.create_ticket",
+    "mail.send_email"
+  ]
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Global LMS Avatar</title>
+  <desc id="desc">A globe and open book mark for Global LMS.</desc>
+  <defs>
+    <linearGradient id="bg" x1="70" y1="48" x2="440" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b2b63"/>
+      <stop offset="0.54" stop-color="#123d7a"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="142" y1="110" x2="364" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bfdbfe"/>
+      <stop offset="0.48" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="222" r="118" fill="none" stroke="url(#accent)" stroke-width="22"/>
+  <path d="M151 222h210M256 105c-36 39-54 78-54 117s18 78 54 117M256 105c36 39 54 78 54 117s-18 78-54 117" fill="none" stroke="#e0f2fe" stroke-width="16" stroke-linecap="round"/>
+  <path d="M112 342c46-20 91-18 135 8v54c-44-26-89-28-135-8v-54Z" fill="#ffffff"/>
+  <path d="M400 342c-46-20-91-18-135 8v54c44-26 89-28 135-8v-54Z" fill="#dbeafe"/>
+  <path d="M256 351v58" stroke="#67e8f9" stroke-width="16" stroke-linecap="round"/>
+</svg>

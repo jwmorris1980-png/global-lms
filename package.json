@@ -1,0 +1,60 @@
+{
+  "name": "lms-all-languages",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Global LMS is an open-source K-12 curriculum warehouse for standards-aligned lessons, units, and courses by country, grade, subject, and learning need.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwmorris1980-png/global-lms.git"
+  },
+  "homepage": "https://www.global-lms.org/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server.cjs",
+    "post-agent": "node scripts/posting-agent.cjs",
+    "neural-agent": "node scripts/posting-agent.cjs",
+    "market": "node scripts/smart-marketing-agent.cjs",
+    "market:dry": "node scripts/smart-marketing-agent.cjs --dry-run",
+    "market:api": "node scripts/smart-marketing-agent.cjs --only=devto,hashnode",
+    "market:social": "node scripts/smart-marketing-agent.cjs --only=social",
+    "market:fresh": "node scripts/smart-marketing-agent.cjs --fresh",
+    "directories": "node scripts/directory-submitter.cjs",
+    "directories:list": "node scripts/directory-submitter.cjs --list",
+    "directories:edtech": "node scripts/directory-submitter.cjs --category=edtech",
+    "directories:software": "node scripts/directory-submitter.cjs --category=software",
+    "directories:schools": "node scripts/directory-submitter.cjs --category=schools",
+    "directories:startup": "node scripts/directory-submitter.cjs --category=startup",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^8.5.0",
+    "@google/generative-ai": "^0.24.1",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@stripe/stripe-js": "^9.4.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.14.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-markdown": "^10.1.0",
+    "stripe": "^22.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "playwright": "^1.59.1",
+    "vite": "^8.0.10"
+  }
+}

@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Knight of Camelot</title>
+  <style>
+    :root {
+      --bg: #06111f;
+      --panel: rgba(9, 18, 32, 0.9);
+      --panel-2: rgba(13, 24, 40, 0.92);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e7efff;
+      --muted: #a9bad6;
+      --gold: #e7c46a;
+      --blue: #67b7ff;
+      --green: #56d39b;
+      --red: #ff6b7a;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(103, 183, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 15%, rgba(86, 211, 155, 0.12), transparent 25%),
+        linear-gradient(180deg, #06111f 0%, #071829 46%, #0b1020 100%);
+      overflow: hidden;
+    }
+    #app {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      isolation: isolate;
+    }
+    canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(231, 196, 106, 0.05), transparent 30%),
+        linear-gradient(180deg, rgba(6, 14, 26, 0.65), rgba(3, 8, 16, 0.8));
+    }
+    .hud {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .topbar {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .panel {
+      pointer-events: auto;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.3rem, 2vw, 2rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .brand p, .panel p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(231, 196, 106, 0.22);
+      background: rgba(231, 196, 106, 0.08);
+      color: #f5dfab;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .stat {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+    }
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .stat strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 1.02rem;
+    }
+    .bars {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr) 44px;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      width: 50%;
+    }
+    .bar.hp > i { background: linear-gradient(90deg, #ef4444, #fb7185); }
+    .bar.mp > i { background: linear-gradient(90deg, #3b82f6, #67b7ff); }
+    .bar.xp > i { background: linear-gradient(90deg, #e7c46a, #ffd98c); }
+    .objective {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      width: min(380px, calc(100vw - 36px));
+      pointer-events: auto;
+    }
+    .objective h2 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+    .objective p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .toast {
+      position: absolute;
+      left: 50%;
+      top: 18px;
+      transform: translateX(-50%);
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(79, 209, 197, 0.24);
+      background: rgba(11, 24, 36, 0.92);
+      box-shadow: var(--shadow);
+      color: #e8fffb;
+      font-size: 0.92rem;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+    }
+    .toast.is-show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dialogue {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: min(720px, calc(100vw - 36px));
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(7, 16, 27, 0.94);
+      box-shadow: var(--shadow);
+      display: none;
+      pointer-events: auto;
+    }
+    .dialogue.is-show { display: block; }
+    .dialogue .name {
+      color: #f5dfab;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      margin-bottom: 8px;
+    }
+    .dialogue p {
+      margin: 0;
+      line-height: 1.7;
+      color: #e7efff;
+    }
+    .dialogue .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      min-height: 40px;
+      padding: 0 14px;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+    .btn.primary {
+      color: #07111f;
+      border-color: transparent;
+      background: linear-gradient(135deg, #e7c46a, #ffd98c);
+    }
+    .start {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      background: rgba(2, 6, 12, 0.45);
+      backdrop-filter: blur(6px);
+      pointer-events: auto;
+    }
+    .start .card {
+      width: min(760px, calc(100vw - 36px));
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(8, 15, 26, 0.96);
+      box-shadow: var(--shadow);
+    }
+    .start h2 {
+      margin: 12px 0 8px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+    .start p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .legend .box {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .legend .box strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .gameover {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(2, 6, 12, 0.55);
+      backdrop-filter: blur(6px);
+      pointer-events: auto;
+    }
+    .gameover.is-show { display: grid; }
+    .gameover .card {
+      width: min(660px, calc(100vw - 36px));
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(8, 15, 26, 0.96);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .gameover h2 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.05em;
+    }
+    .gameover p { color: var(--muted); line-height: 1.7; }
+    .controls {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: min(320px, calc(100vw - 36px));
+      pointer-events: auto;
+    }
+    .mapnote {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: min(260px, calc(100vw - 36px));
+      pointer-events: auto;
+    }
+    .hintline {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+    .mapnote p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    @media (max-width: 960px) {
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .objective, .controls, .mapnote {
+        width: calc(100vw - 36px);
+      }
+      .controls {
+        top: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" width="1600" height="900"></canvas>
+
+    <div class="hud">
+      <div class="topbar">
+        <div class="panel">
+          <div class="brand">
+            <div>
+              <span class="badge">Camelot RPG</span>
+              <h1>Knight of Camelot</h1>
+              <p>Action RPG: explore, fight, and complete the quest.</p>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><span>Level</span><strong id="level">1</strong></div>
+            <div class="stat"><span>Gold</span><strong id="gold">0</strong></div>
+            <div class="stat"><span>Shards</span><strong id="shards">0 / 3</strong></div>
+            <div class="stat"><span>Relics</span><strong id="relics">0</strong></div>
+          </div>
+          <div class="bars">
+            <div class="bar-row"><span>HP</span><div class="bar hp"><i id="hpBar"></i></div><span id="hpText">100</span></div>
+            <div class="bar-row"><span>MP</span><div class="bar mp"><i id="mpBar"></i></div><span id="mpText">40</span></div>
+            <div class="bar-row"><span>XP</span><div class="bar xp"><i id="xpBar"></i></div><span id="xpText">0%</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="badge">Quest</div>
+          <h2 id="questTitle" style="margin:12px 0 6px">Speak to Merlin</h2>
+          <p id="questText">Find Merlin in Camelot and begin your quest.</p>
+          <div class="hintline">Move with WASD or arrow keys. `E` speaks, `Space` attacks, `Shift` dashes.</div>
+        </div>
+      </div>
+
+      <div class="objective panel">
+        <h2 id="statusTitle">Enter the kingdom</h2>
+        <p id="statusText">Explore the map, find Merlin, collect relic shards, and defeat the shadow lord.</p>
+      </div>
+
+      <div class="toast" id="toast"></div>
+      <div class="dialogue panel" id="dialogue">
+        <div class="name" id="dialogueName">Merlin</div>
+        <p id="dialogueText"></p>
+        <div class="actions" id="dialogueActions"></div>
+      </div>
+
+      <div class="start" id="start">
+        <div class="card">
+          <span class="badge">Enter Camelot</span>
+          <h2>The realm is waiting.</h2>
+          <p>Use the controls to begin the quest, or load a saved run.</p>
+          <div class="legend">
+            <div class="box"><strong>Goal</strong><div class="small">Find Merlin, gather relic shards, and defeat Mordred’s Shade.</div></div>
+            <div class="box"><strong>Play</strong><div class="small">This is a real browser action RPG with movement, combat, NPCs, and save/load.</div></div>
+          </div>
+          <div class="actions" style="margin-top:18px">
+            <button class="btn primary" id="startBtn">Start Quest</button>
+            <button class="btn" id="resumeBtn">Resume Save</button>
+            <button class="btn" id="resetBtn">New Game</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gameover" id="gameover">
+        <div class="card">
+          <span class="badge">Victory</span>
+          <h2>The realm is restored.</h2>
+          <p>You returned the relic shards, broke the curse, and brought honor back to Camelot.</p>
+          <div class="actions" style="justify-content:center">
+            <button class="btn primary" id="playAgainBtn">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('game');
+      const ctx = canvas.getContext('2d');
+      const ui = {
+        level: document.getElementById('level'),
+        gold: document.getElementById('gold'),
+        shards: document.getElementById('shards'),
+        relics: document.getElementById('relics'),
+        hpBar: document.getElementById('hpBar'),
+        mpBar: document.getElementById('mpBar'),
+        xpBar: document.getElementById('xpBar'),
+        hpText: document.getElementById('hpText'),
+        mpText: document.getElementById('mpText'),
+        xpText: document.getElementById('xpText'),
+        questTitle: document.getElementById('questTitle'),
+        questText: document.getElementById('questText'),
+        statusTitle: document.getElementById('statusTitle'),
+        statusText: document.getElementById('statusText'),
+        start: document.getElementById('start'),
+        startBtn: document.getElementById('startBtn'),
+        resumeBtn: document.getElementById('resumeBtn'),
+        resetBtn: document.getElementById('resetBtn'),
+        playAgainBtn: document.getElementById('playAgainBtn'),
+        dialogue: document.getElementById('dialogue'),
+        dialogueName: document.getElementById('dialogueName'),
+        dialogueText: document.getElementById('dialogueText'),
+        dialogueActions: document.getElementById('dialogueActions'),
+        toast: document.getElementById('toast'),
+        gameover: document.getElementById('gameover'),
+      };
+
+      const W = canvas.width;
+      const H = canvas.height;
+      const WORLD = { w: 2200, h: 1600 };
+      const TILE = 64;
+      const keys = new Set();
+      let running = false;
+      let last = performance.now();
+      let toastTimer = 0;
+      let dialogueState = null;
+      let saveKey = 'camelot-rpg-save-v1';
+
+      const state = {
+        player: { x: 320, y: 340, vx: 0, vy: 0, dir: 'down', hp: 100, maxHp: 100, mp: 40, maxMp: 40, xp: 0, level: 1, gold: 0, relics: 0, invuln: 0, attackCd: 0, dashCd: 0, dash: 0 },
+        quest: 0,
+        shards: 0,
+        loreFound: 0,
+        message: '',
+        won: false,
+        time: 0,
+        enemies: [],
+        projectiles: [],
+        pickups: [],
+        relics: [],
+        npcs: [],
+        obstacles: [],
+        facts: [],
+        bossSpawned: false,
+        introShown: false,
+      };
+      const facts = [
+        'Camelot is the legendary castle and court of King Arthur.',
+        'The Round Table symbolized equality among Arthur’s knights.',
+        'Merlin is the famous wizard and advisor in Arthurian legend.',
+        'Excalibur is Arthur’s legendary sword, often tied to rightful rule.',
+        'The Grail quest became one of the best-known Arthurian stories.',
+        'Many Camelot stories blend medieval legend with later romance literature.',
+      ];
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+      function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+      function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+      function save() {
+        const data = {
+          player: state.player,
+          quest: state.quest,
+          shards: state.shards,
+          loreFound: state.loreFound,
+          won: state.won,
+          enemies: state.enemies.map(e => ({ ...e })),
+          relics: state.relics.map(r => ({ ...r })),
+          pickups: state.pickups.map(p => ({ ...p })),
+          bossSpawned: state.bossSpawned,
+          factsSeen: state.facts,
+        };
+        localStorage.setItem(saveKey, JSON.stringify(data));
+        showToast('Game saved');
+      }
+      function load() {
+        const raw = localStorage.getItem(saveKey);
+        if (!raw) return false;
+        try {
+          const data = JSON.parse(raw);
+          Object.assign(state.player, data.player || {});
+          state.quest = data.quest ?? 0;
+          state.shards = data.shards ?? 0;
+          state.loreFound = data.loreFound ?? 0;
+          state.won = Boolean(data.won);
+          state.enemies = Array.isArray(data.enemies) ? data.enemies : [];
+          state.relics = Array.isArray(data.relics) ? data.relics : [];
+          state.pickups = Array.isArray(data.pickups) ? data.pickups : [];
+          state.bossSpawned = Boolean(data.bossSpawned);
+          state.facts = Array.isArray(data.factsSeen) ? data.factsSeen : [];
+          if (state.quest >= 1 && !state.enemies.length) spawnInitialEnemies();
+          setQuestText();
+          showToast('Save loaded');
+          return true;
+        } catch {
+          return false;
+        }
+      }
+      function resetGame(keepSave = false) {
+        state.player = { x: 286, y: 285, vx: 0, vy: 0, dir: 'down', hp: 100, maxHp: 100, mp: 40, maxMp: 40, xp: 0, level: 1, gold: 0, relics: 0, invuln: 0, attackCd: 0, dashCd: 0, dash: 0 };
+        state.quest = 0;
+        state.shards = 0;
+        state.loreFound = 0;
+        state.won = false;
+        state.time = 0;
+        state.enemies = [];
+        state.projectiles = [];
+        state.pickups = [];
+        state.relics = [];
+        state.npcs = [];
+        state.obstacles = [];
+        state.facts = [];
+        state.bossSpawned = false;
+        state.introShown = false;
+        buildWorld();
+        setQuestText();
+        state.message = 'Find Merlin to begin your oath.';
+        if (!keepSave) localStorage.removeItem(saveKey);
+        ui.gameover.classList.remove('is-show');
+      }
+      function buildWorld() {
+        state.obstacles = [
+          // Camelot keep
+          { x: 110, y: 110, w: 420, h: 220 },
+          { x: 160, y: 150, w: 320, h: 140 },
+          // Forest wall / stones
+          { x: 1280, y: 120, w: 240, h: 160 },
+          { x: 1180, y: 240, w: 180, h: 140 },
+          // Ruined keep
+          { x: 1450, y: 1080, w: 430, h: 280 },
+          { x: 1530, y: 1140, w: 260, h: 160 },
+          // Lake rocks
+          { x: 260, y: 1140, w: 240, h: 120 },
+          { x: 520, y: 1230, w: 180, h: 130 },
+          // Gates / narrow paths
+          { x: 720, y: 520, w: 120, h: 70 },
+          { x: 1070, y: 860, w: 90, h: 100 },
+        ];
+        state.npcs = [
+          { id: 'merlin', name: 'Merlin', x: 300, y: 220, r: 22, color: '#67b7ff' },
+          { id: 'arthur', name: 'Arthur', x: 420, y: 260, r: 22, color: '#e7c46a' },
+          { id: 'guinevere', name: 'Guinevere', x: 520, y: 200, r: 18, color: '#c6a7ff' },
+        ];
+        state.relics = [
+          { x: 1360, y: 240, taken: false, label: 'Relic Shard' },
+          { x: 1480, y: 430, taken: false, label: 'Relic Shard' },
+          { x: 1740, y: 310, taken: false, label: 'Relic Shard' },
+        ];
+        state.pickups = [
+          { x: 880, y: 240, type: 'lore', taken: false },
+          { x: 1920, y: 980, type: 'lore', taken: false },
+          { x: 520, y: 1280, type: 'potion', taken: false },
+          { x: 1720, y: 1240, type: 'potion', taken: false },
+        ];
+        state.enemies = [];
+      }
+      function spawnInitialEnemies() {
+        const positions = [
+          [1280, 260], [1400, 480], [1560, 260], [1900, 440], [1830, 760], [1480, 760], [640, 760], [520, 1040]
+        ];
+        state.enemies = positions.map(([x, y], i) => ({
+          id: `foe-${i}`,
+          x, y,
+          vx: 0, vy: 0,
+          hp: i === 7 ? 90 : 34,
+          maxHp: i === 7 ? 90 : 34,
+          kind: i === 7 ? 'boss' : 'knight',
+          state: 'wander',
+          dir: 'down',
+          hit: 0,
+          attackCd: rand(0.2, 1.0),
+          dropShard: i < 3,
+        }));
+      }
+      function showToast(text, seconds = 1.8) {
+        ui.toast.textContent = text;
+        ui.toast.classList.add('is-show');
+        toastTimer = seconds;
+      }
+      function setQuestText() {
+        const q = state.quest;
+        const texts = [
+          ['Speak to Merlin', 'Find Merlin in the Camelot keep and begin your oath.'],
+          ['Collect relic shards', 'Defeat corrupted knights in the forest and gather 3 relic shards.'],
+          ['Defeat the shadow lord', 'The ruined keep now hides Mordred’s Shade. Defeat the boss.'],
+          ['Return to Arthur', 'Bring the relic shards back to Arthur in Camelot to restore the realm.'],
+          ['Camelot restored', 'The kingdom is safe. You completed the quest.']
+        ];
+        ui.questTitle.textContent = texts[q][0];
+        ui.questText.textContent = texts[q][1];
+      }
+      function updateHud() {
+        const p = state.player;
+        ui.level.textContent = p.level;
+        ui.gold.textContent = p.gold;
+        ui.shards.textContent = `${state.shards} / 3`;
+        ui.relics.textContent = state.loreFound;
+        ui.hpText.textContent = `${Math.ceil(p.hp)} / ${p.maxHp}`;
+        ui.mpText.textContent = `${Math.ceil(p.mp)} / ${p.maxMp}`;
+        ui.xpText.textContent = `${Math.floor((p.xp / xpToNext()) * 100)}%`;
+        ui.hpBar.style.width = `${clamp((p.hp / p.maxHp) * 100, 0, 100)}%`;
+        ui.mpBar.style.width = `${clamp((p.mp / p.maxMp) * 100, 0, 100)}%`;
+        ui.xpBar.style.width = `${clamp((p.xp / xpToNext()) * 100, 0, 100)}%`;
+        ui.statusTitle.textContent = state.won ? 'Victory' : ['Enter the kingdom', 'The quest begins', 'Relics recovered', 'Boss fight', 'Return to Arthur'][state.quest] || 'Quest';
+        ui.statusText.textContent = state.won
+          ? 'The kingdom is safe. Press Play Again to start a new run.'
+          : state.message || 'Explore, fight, and discover lore.';
+      }
+      function xpToNext() { return 70 + (state.player.level - 1) * 35; }
+      function addXp(amount) {
+        const p = state.player;
+        p.xp += amount;
+        while (p.xp >= xpToNext()) {
+          p.xp -= xpToNext();
+          p.level += 1;
+          p.maxHp += 12;
+          p.maxMp += 6;
+          p.hp = p.maxHp;
+          p.mp = p.maxMp;
+          showToast(`Level up! You are now level ${p.level}.`);
+        }
+      }
+      function damagePlayer(amount) {
+        const p = state.player;
+        if (p.invuln > 0 || state.won) return;
+        p.hp -= amount;
+        p.invuln = 0.45;
+        state.message = `You took ${amount} damage.`;
+        if (p.hp <= 0) {
+          p.hp = 0;
+          gameOver();
+        }
+      }
+      function gameOver() {
+        running = false;
+        ui.gameover.classList.add('is-show');
+      }
+      function winGame() {
+        state.won = true;
+        running = false;
+        ui.gameover.querySelector('h2').textContent = 'The realm is restored.';
+        ui.gameover.querySelector('p').textContent = 'You returned the relic shards, broke the curse, and brought honor back to Camelot.';
+        ui.gameover.classList.add('is-show');
+      }
+      function closeDialogue() {
+        dialogueState = null;
+        ui.dialogue.classList.remove('is-show');
+        ui.dialogueActions.innerHTML = '';
+      }
+      function openDialogue(name, text, actions = []) {
+        dialogueState = { name, text, actions };
+        ui.dialogueName.textContent = name;
+        ui.dialogueText.textContent = text;
+        ui.dialogueActions.innerHTML = '';
+        actions.forEach((action) => {
+          const btn = document.createElement('button');
+          btn.className = 'btn' + (action.primary ? ' primary' : '');
+          btn.textContent = action.label;
+          btn.onclick = () => {
+            action.onClick?.();
+            if (!action.keepOpen) closeDialogue();
+          };
+          ui.dialogueActions.appendChild(btn);
+        });
+        ui.dialogue.classList.add('is-show');
+      }
+      function within(a, b, radius) {
+        return Math.hypot(a.x - b.x, a.y - b.y) <= radius;
+      }
+      function interact() {
+        const p = state.player;
+        const nearestNpc = state.npcs.find(n => within(p, n, 70));
+        if (nearestNpc) {
+          if (nearestNpc.id === 'merlin') {
+            if (state.quest === 0) {
+              openDialogue('Merlin', 'The kingdom needs a knight with courage and curiosity. Recover the relic shards from the corrupted knights in the forest, then face Mordred’s Shade. Camelot is more than a castle; it is the idea of rightful rule, fellowship, and tested honor.', [
+                { label: 'Begin quest', primary: true, onClick: () => { state.quest = 1; setQuestText(); state.message = 'Quest started: collect relic shards.'; showToast('Quest started'); spawnInitialEnemies(); } },
+              ]);
+            } else {
+              openDialogue('Merlin', facts[(state.loreFound) % facts.length], [
+                { label: 'Close' },
+              ]);
+            }
+            return;
+          }
+          if (nearestNpc.id === 'arthur') {
+            if (state.quest >= 3 && state.shards >= 3) {
+              openDialogue('Arthur', 'You returned with the relic shards and faced the shadow. Camelot stands because you chose honor over fear. The Round Table reminds us that every knight has a place in the circle of service.', [
+                { label: 'Restore Camelot', primary: true, onClick: () => { state.quest = 4; setQuestText(); winGame(); } },
+              ]);
+            } else {
+              openDialogue('Arthur', 'Bring me the relic shards and prove the realm can still be defended. A true knight is not only strong, but steadfast.', [
+                { label: 'Close' },
+              ]);
+            }
+            return;
+          }
+          if (nearestNpc.id === 'guinevere') {
+            openDialogue('Guinevere', 'Camelot’s stories often balance courage, loyalty, and difficult choices. In many legends, Guinevere stands at the center of those tensions, making the court more human and more dramatic.', [
+              { label: 'Close' },
+            ]);
+            return;
+          }
+        }
+      }
+      function attack() {
+        const p = state.player;
+        if (p.attackCd > 0 || state.won) return;
+        p.attackCd = 0.32;
+        const range = 78;
+        const arcRadius = 54;
+        const damage = 18 + (p.level - 1) * 2;
+        showToast('Slash!');
+        state.enemies.forEach((e) => {
+          const dx = e.x - p.x;
+          const dy = e.y - p.y;
+          const d = Math.hypot(dx, dy);
+          const inFront =
+            (p.dir === 'up' && dy < 0) ||
+            (p.dir === 'down' && dy > 0) ||
+            (p.dir === 'left' && dx < 0) ||
+            (p.dir === 'right' && dx > 0);
+          if (d < range && inFront) {
+            e.hp -= damage;
+            e.hit = 0.12;
+            state.projectiles.push({ x: e.x, y: e.y, life: 0.12, color: '#ffd98c' });
+            if (e.hp <= 0) {
+              killEnemy(e);
+            }
+          }
+        });
+        state.projectiles.push({ x: p.x, y: p.y, life: 0.12, color: '#ffd98c', arcRadius });
+      }
+      function castLight() {
+        const p = state.player;
+        if (p.mp < 15 || state.won) return;
+        p.mp -= 15;
+        p.hp = clamp(p.hp + 24, 0, p.maxHp);
+        addXp(4);
+        showToast('Healing light!');
+        state.enemies.forEach((e) => {
+          if (Math.hypot(e.x - p.x, e.y - p.y) < 120) {
+            e.hp -= 12;
+            e.hit = 0.12;
+            if (e.hp <= 0) killEnemy(e);
+          }
+        });
+      }
+      function killEnemy(enemy) {
+        const idx = state.enemies.indexOf(enemy);
+        if (idx >= 0) state.enemies.splice(idx, 1);
+        addXp(enemy.kind === 'boss' ? 60 : 14);
+        state.player.gold += enemy.kind === 'boss' ? 20 : 4;
+        if (enemy.dropShard && state.shards < 3) {
+          state.relics.push({ x: enemy.x, y: enemy.y, taken: false, label: 'Relic Shard' });
+        }
+        if (enemy.kind === 'boss') {
+          state.quest = 3;
+          setQuestText();
+          state.message = 'The shadow lord has fallen. Return to Arthur.';
+          showToast('Boss defeated');
+        }
+      }
+      function dash() {
+        const p = state.player;
+        if (p.dashCd > 0 || state.won) return;
+        p.dash = 0.18;
+        p.dashCd = 0.9;
+        p.invuln = 0.2;
+        showToast('Dash!');
+      }
+      function spawnBoss() {
+        if (state.bossSpawned) return;
+        state.bossSpawned = true;
+        state.enemies.push({
+          id: 'mordred-shade',
+          x: 1840, y: 1260, vx: 0, vy: 0, hp: 180, maxHp: 180,
+          kind: 'boss', state: 'idle', dir: 'up', hit: 0, attackCd: 0.4, dropShard: false,
+        });
+        showToast('Mordred’s Shade emerges');
+      }
+      function handlePickups() {
+        const p = state.player;
+        state.pickups.forEach((item, idx) => {
+          if (item.taken) return;
+          if (Math.hypot(item.x - p.x, item.y - p.y) < 30) {
+            item.taken = true;
+            if (item.type === 'lore') {
+              state.loreFound += 1;
+              const fact = facts[state.loreFound % facts.length];
+              state.facts.push(fact);
+              showToast('Lore discovered');
+              addXp(10);
+              openDialogue('Lore of Camelot', fact, [{ label: 'Close' }]);
+            } else if (item.type === 'potion') {
+              p.hp = clamp(p.hp + 30, 0, p.maxHp);
+              p.mp = clamp(p.mp + 12, 0, p.maxMp);
+              showToast('Found a potion');
+              addXp(6);
+            }
+          }
+        });
+        state.relics.forEach((item) => {
+          if (item.taken) return;
+          if (Math.hypot(item.x - p.x, item.y - p.y) < 32) {
+            item.taken = true;
+            state.shards += 1;
+            state.player.relics += 1;
+            state.player.gold += 10;
+            addXp(18);
+            showToast(`Relic shard found (${state.shards}/3)`);
+            if (state.shards >= 3) {
+              state.quest = 2;
+              setQuestText();
+              spawnBoss();
+            }
+          }
+        });
+      }
+      function resolveWall(nx, ny, r = 18) {
+        const p = state.player;
+        let x = nx;
+        let y = ny;
+        for (const o of state.obstacles) {
+          const closestX = clamp(x, o.x, o.x + o.w);
+          const closestY = clamp(y, o.y, o.y + o.h);
+          const d = Math.hypot(x - closestX, y - closestY);
+          if (d < r) {
+            const pushX = x - closestX;
+            const pushY = y - closestY;
+            if (Math.abs(pushX) > Math.abs(pushY)) {
+              x = closestX + Math.sign(pushX || 1) * r;
+            } else {
+              y = closestY + Math.sign(pushY || 1) * r;
+            }
+          }
+        }
+        p.x = clamp(x, 40, WORLD.w - 40);
+        p.y = clamp(y, 40, WORLD.h - 40);
+      }
+      function update(dt) {
+        if (!running || state.won) return;
+        state.time += dt;
+        const p = state.player;
+        p.attackCd = Math.max(0, p.attackCd - dt);
+        p.dashCd = Math.max(0, p.dashCd - dt);
+        p.invuln = Math.max(0, p.invuln - dt);
+        p.dash = Math.max(0, p.dash - dt);
+
+        let ax = 0, ay = 0;
+        if (keys.has('w') || keys.has('arrowup')) ay -= 1;
+        if (keys.has('s') || keys.has('arrowdown')) ay += 1;
+        if (keys.has('a') || keys.has('arrowleft')) ax -= 1;
+        if (keys.has('d') || keys.has('arrowright')) ax += 1;
+        const moving = ax || ay;
+        const speed = p.dash > 0 ? 400 : 215;
+        if (moving) {
+          const mag = Math.hypot(ax, ay) || 1;
+          ax /= mag; ay /= mag;
+          p.vx = ax * speed;
+          p.vy = ay * speed;
+          if (Math.abs(ax) > Math.abs(ay)) p.dir = ax > 0 ? 'right' : 'left';
+          else p.dir = ay > 0 ? 'down' : 'up';
+        } else {
+          p.vx *= 0.82;
+          p.vy *= 0.82;
+        }
+        const nx = p.x + p.vx * dt;
+        const ny = p.y + p.vy * dt;
+        resolveWall(nx, ny);
+
+        if (state.quest === 1 && !state.bossSpawned && state.shards >= 3) {
+          state.quest = 2;
+          setQuestText();
+          spawnBoss();
+        }
+        if (state.quest === 3 && Math.hypot(p.x - 420, p.y - 260) < 90 && state.shards >= 3) {
+          state.message = 'Talk to Arthur to complete the quest.';
+        }
+
+        handlePickups();
+        updateEnemies(dt);
+        updateProjectiles(dt);
+        handleBossTriggers();
+        if (toastTimer > 0) {
+          toastTimer -= dt;
+          if (toastTimer <= 0) ui.toast.classList.remove('is-show');
+        }
+        if (state.quest === 2 && !state.enemies.some(e => e.kind === 'boss')) {
+          state.quest = 3;
+          setQuestText();
+        }
+        updateHud();
+      }
+      function handleBossTriggers() {
+        if (state.quest >= 2 && !state.bossSpawned && state.shards >= 3) spawnBoss();
+      }
+      function updateProjectiles(dt) {
+        state.projectiles = state.projectiles.filter((p) => {
+          p.life -= dt;
+          return p.life > 0;
+        });
+      }
+      function updateEnemies(dt) {
+        const p = state.player;
+        for (const e of state.enemies) {
+          e.attackCd = Math.max(0, e.attackCd - dt);
+          e.hit = Math.max(0, e.hit - dt);
+          const d = Math.hypot(e.x - p.x, e.y - p.y);
+          const aggro = e.kind === 'boss' ? 520 : 300;
+          const speed = e.kind === 'boss' ? 86 : 120;
+          if (d < aggro) {
+            const dx = p.x - e.x;
+            const dy = p.y - e.y;
+            const mag = Math.hypot(dx, dy) || 1;
+            e.vx = dx / mag * speed;
+            e.vy = dy / mag * speed;
+            if (Math.abs(dx) > Math.abs(dy)) e.dir = dx > 0 ? 'right' : 'left';
+            else e.dir = dy > 0 ? 'down' : 'up';
+          } else {
+            e.vx *= 0.92;
+            e.vy *= 0.92;
+            if (Math.random() < 0.01) {
+              const angle = Math.random() * Math.PI * 2;
+              e.vx += Math.cos(angle) * 20;
+              e.vy += Math.sin(angle) * 20;
+            }
+          }
+          const nx = e.x + e.vx * dt;
+          const ny = e.y + e.vy * dt;
+          e.x = clamp(nx, 32, WORLD.w - 32);
+          e.y = clamp(ny, 32, WORLD.h - 32);
+          for (const o of state.obstacles) {
+            if (rectCircleOverlap(o, e.x, e.y, 18)) {
+              e.x -= e.vx * dt * 1.2;
+              e.y -= e.vy * dt * 1.2;
+            }
+          }
+          if (d < (e.kind === 'boss' ? 48 : 28) && e.attackCd <= 0) {
+            e.attackCd = e.kind === 'boss' ? 0.9 : 1.1;
+            damagePlayer(e.kind === 'boss' ? 18 : 10);
+            if (e.kind === 'boss') showToast('The boss strikes hard!');
+          }
+        }
+      }
+      function rectCircleOverlap(rect, cx, cy, r) {
+        const closestX = clamp(cx, rect.x, rect.x + rect.w);
+        const closestY = clamp(cy, rect.y, rect.y + rect.h);
+        const dx = cx - closestX;
+        const dy = cy - closestY;
+        return dx * dx + dy * dy < r * r;
+      }
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        const camX = clamp(state.player.x - W / 2, 0, WORLD.w - W);
+        const camY = clamp(state.player.y - H / 2, 0, WORLD.h - H);
+        ctx.save();
+        ctx.translate(-camX, -camY);
+        drawWorld();
+        drawEntities();
+        ctx.restore();
+        drawOverlay();
+      }
+      function drawWorld() {
+        // Base ground
+        ctx.fillStyle = '#0a1627';
+        ctx.fillRect(0, 0, WORLD.w, WORLD.h);
+        // Tile grid
+        for (let y = 0; y < WORLD.h; y += TILE) {
+          for (let x = 0; x < WORLD.w; x += TILE) {
+            const forest = x > 1180 && y < 760;
+            const lake = x < 760 && y > 1040;
+            const ruin = x > 1420 && y > 960;
+            const castle = x < 640 && y < 520;
+            ctx.fillStyle =
+              ruin ? 'rgba(120, 98, 80, 0.18)' :
+              forest ? 'rgba(52, 122, 80, 0.16)' :
+              lake ? 'rgba(44, 98, 158, 0.17)' :
+              castle ? 'rgba(231, 196, 106, 0.12)' :
+              (Math.floor(x / TILE + y / TILE) % 2 ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.03)');
+            ctx.fillRect(x, y, TILE, TILE);
+          }
+        }
+        // Region labels
+        labelRegion('Camelot Keep', 170, 70, '#f5dfab');
+        labelRegion('Forest of Broceliande', 1320, 72, '#b6ffd9');
+        labelRegion('Lake of Avalon', 160, 1360, '#8fc8ff');
+        labelRegion('Ruined Keep', 1500, 1290, '#ffac9e');
+        // Obstacles
+        for (const o of state.obstacles) {
+          ctx.fillStyle = 'rgba(23, 32, 48, 0.95)';
+          ctx.fillRect(o.x, o.y, o.w, o.h);
+          ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+          ctx.strokeRect(o.x + 0.5, o.y + 0.5, o.w - 1, o.h - 1);
+        }
+        // Npcs
+        for (const n of state.npcs) drawNpc(n);
+        // Pickups
+        for (const p of state.pickups) if (!p.taken) drawPickup(p);
+        for (const r of state.relics) if (!r.taken) drawRelic(r);
+      }
+      function labelRegion(text, x, y, color) {
+        ctx.fillStyle = 'rgba(6, 12, 22, 0.55)';
+        ctx.fillRect(x - 8, y - 30, text.length * 12, 28);
+        ctx.fillStyle = color;
+        ctx.font = '800 16px Inter, sans-serif';
+        ctx.fillText(text, x, y - 10);
+      }
+      function drawNpc(n) {
+        ctx.save();
+        ctx.translate(n.x, n.y);
+        if (n.id === 'merlin' && state.quest === 0) {
+          ctx.strokeStyle = 'rgba(231, 196, 106, 0.45)';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(0, 0, 34 + Math.sin(state.time * 4) * 2, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.fillStyle = n.color;
+        ctx.beginPath();
+        ctx.arc(0, 0, n.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#06111f';
+        ctx.font = '800 12px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(n.name, 0, -28);
+        if (n.id === 'merlin' && state.quest === 0) {
+          ctx.fillStyle = '#f5dfab';
+          ctx.font = '900 18px Inter, sans-serif';
+          ctx.fillText('!', 0, -42);
+        }
+        ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(0, 0, n.r + 4, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+      function drawPickup(p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.fillStyle = p.type === 'lore' ? '#ffd98c' : '#8fc8ff';
+        ctx.beginPath();
+        ctx.arc(0, 0, 10, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+        ctx.stroke();
+        ctx.restore();
+      }
+      function drawRelic(r) {
+        ctx.save();
+        ctx.translate(r.x, r.y);
+        ctx.fillStyle = '#e7c46a';
+        ctx.beginPath();
+        ctx.moveTo(0, -12);
+        ctx.lineTo(12, 0);
+        ctx.lineTo(0, 12);
+        ctx.lineTo(-12, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+        ctx.stroke();
+        ctx.restore();
+      }
+      function drawEntities() {
+        for (const e of state.enemies) drawEnemy(e);
+        for (const p of state.projectiles) drawEffect(p);
+        drawPlayer();
+      }
+      function drawEnemy(e) {
+        ctx.save();
+        ctx.translate(e.x, e.y);
+        if (e.hit > 0) ctx.globalAlpha = 0.9 + Math.sin(state.time * 30) * 0.1;
+        ctx.fillStyle = e.kind === 'boss' ? '#8c3b44' : '#5d6d7c';
+        ctx.beginPath();
+        ctx.roundRect(-18, -18, 36, 36, 8);
+        ctx.fill();
+        ctx.fillStyle = e.kind === 'boss' ? '#ffd5d8' : '#d8e6f3';
+        ctx.fillRect(-6, -24, 12, 12);
+        ctx.fillStyle = '#06111f';
+        ctx.font = '700 11px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(e.kind === 'boss' ? 'Shade' : 'Knight', 0, -30);
+        const barW = e.kind === 'boss' ? 42 : 30;
+        const hpPct = clamp(e.hp / e.maxHp, 0, 1);
+        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.fillRect(-barW / 2, 26, barW, 5);
+        ctx.fillStyle = e.kind === 'boss' ? '#ff8b95' : '#9ee6a3';
+        ctx.fillRect(-barW / 2, 26, barW * hpPct, 5);
+        ctx.restore();
+      }
+      function drawEffect(p) {
+        ctx.save();
+        ctx.globalAlpha = clamp(p.life * 8, 0, 1);
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.arcRadius || 34, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+      function drawPlayer() {
+        const p = state.player;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        if (p.invuln > 0) ctx.globalAlpha = 0.65 + Math.sin(state.time * 40) * 0.15;
+        const facing = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }[p.dir];
+        const shieldColor = '#cfd8e6';
+        const armorColor = '#9fb3d1';
+        const capeColor = '#4f7db8';
+        // cape
+        ctx.fillStyle = capeColor;
+        ctx.beginPath();
+        ctx.moveTo(-12, 8);
+        ctx.lineTo(0, 26);
+        ctx.lineTo(12, 8);
+        ctx.closePath();
+        ctx.fill();
+        // body
+        ctx.fillStyle = armorColor;
+        ctx.beginPath();
+        ctx.roundRect(-14, -16, 28, 30, 8);
+        ctx.fill();
+        // shield
+        ctx.fillStyle = shieldColor;
+        ctx.beginPath();
+        ctx.roundRect(-25, -8, 10, 18, 4);
+        ctx.fill();
+        // sword
+        ctx.strokeStyle = '#e7c46a';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(facing[0] * 24, facing[1] * 24);
+        ctx.stroke();
+        // helm
+        ctx.fillStyle = '#dce6f4';
+        ctx.beginPath();
+        ctx.arc(0, -22, 10, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#0b1220';
+        ctx.fillRect(-4, -23, 8, 4);
+        ctx.restore();
+      }
+      function drawOverlay() {
+        // Interaction prompt
+        const p = state.player;
+        const nearest = state.npcs.find(n => within(p, n, 72));
+        if (nearest) {
+          drawPrompt(`Press E to speak with ${nearest.name}`);
+        } else {
+          const lore = state.pickups.find(it => it.type === 'lore' && !it.taken && Math.hypot(it.x - p.x, it.y - p.y) < 60);
+          if (lore) drawPrompt('Press E to read the lore scroll');
+        }
+      }
+      function drawPrompt(text) {
+        ctx.save();
+        ctx.font = '700 16px Inter, sans-serif';
+        const padX = 14;
+        const padY = 10;
+        const m = ctx.measureText(text);
+        const boxW = m.width + padX * 2;
+        const boxH = 36;
+        const x = W / 2 - boxW / 2;
+        const y = H - 88;
+        ctx.fillStyle = 'rgba(6, 14, 26, 0.84)';
+        ctx.strokeStyle = 'rgba(231, 196, 106, 0.28)';
+        ctx.lineWidth = 1;
+        roundRect(ctx, x, y, boxW, boxH, 16);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#f5dfab';
+        ctx.textAlign = 'center';
+        ctx.fillText(text, W / 2, y + 23);
+        ctx.restore();
+      }
+      function roundRect(ctx, x, y, w, h, r) {
+        if (ctx.roundRect) {
+          ctx.beginPath();
+          ctx.roundRect(x, y, w, h, r);
+        } else {
+          ctx.beginPath();
+          ctx.moveTo(x + r, y);
+          ctx.arcTo(x + w, y, x + w, y + h, r);
+          ctx.arcTo(x + w, y + h, x, y + h, r);
+          ctx.arcTo(x, y + h, x, y, r);
+          ctx.arcTo(x, y, x + w, y, r);
+          ctx.closePath();
+        }
+      }
+      function gameLoop(now) {
+        const dt = Math.min(0.033, (now - last) / 1000);
+        last = now;
+        update(dt);
+        draw();
+        requestAnimationFrame(gameLoop);
+      }
+      function startGame(fromSave = false) {
+        if (!fromSave) resetGame(false);
+        running = true;
+        ui.start.style.display = 'none';
+        ui.gameover.classList.remove('is-show');
+        ui.dialogue.classList.remove('is-show');
+        state.message = fromSave ? 'Save loaded. Continue your quest.' : 'The adventure begins in Camelot.';
+        showToast(fromSave ? 'Welcome back, knight' : 'Welcome to Camelot');
+        if (fromSave && !state.enemies.length) spawnInitialEnemies();
+        if (state.quest >= 1 && !state.enemies.length) spawnInitialEnemies();
+        if (state.quest === 0 && !state.introShown) {
+          state.introShown = true;
+          openDialogue('Merlin', 'The kingdom needs a knight with courage and curiosity. Recover the relic shards from the corrupted knights in the forest, then face Mordredâ€™s Shade. Camelot is more than a castle; it is the idea of rightful rule, fellowship, and tested honor.', [
+            { label: 'Begin quest', primary: true, onClick: () => { state.quest = 1; setQuestText(); state.message = 'Quest started: collect relic shards.'; showToast('Quest started'); spawnInitialEnemies(); } },
+            { label: 'Not yet', keepOpen: false },
+          ]);
+        }
+        setQuestText();
+      }
+
+      window.addEventListener('keydown', (e) => {
+        const key = e.key.toLowerCase();
+        if (['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright','shift',' '].includes(key)) e.preventDefault();
+        keys.add(key);
+        if (key === ' '){ attack(); }
+        if (key === 'shift'){ dash(); }
+        if (key === 'r'){ castLight(); }
+        if (key === 'f'){ save(); }
+        if (key === 'e') {
+          if (ui.dialogue.classList.contains('is-show')) return;
+          if (dialogueState) return;
+          const p = state.player;
+          const lore = state.pickups.find(it => it.type === 'lore' && !it.taken && Math.hypot(it.x - p.x, it.y - p.y) < 60);
+          if (lore) {
+            lore.taken = true;
+            state.loreFound += 1;
+            const fact = facts[state.loreFound % facts.length];
+            state.facts.push(fact);
+            addXp(10);
+            openDialogue('Lore of Camelot', fact, [{ label: 'Close' }]);
+          } else {
+            interact();
+          }
+        }
+      });
+      window.addEventListener('keyup', (e) => {
+        keys.delete(e.key.toLowerCase());
+      });
+      ui.startBtn.addEventListener('click', () => startGame(false));
+      ui.resumeBtn.addEventListener('click', () => {
+        if (load()) startGame(true);
+        else {
+          showToast('No save found. Starting new game.');
+          startGame(false);
+        }
+      });
+      ui.resetBtn.addEventListener('click', () => { resetGame(false); showToast('New game ready'); });
+      ui.playAgainBtn.addEventListener('click', () => { resetGame(false); startGame(false); });
+      ui.dialogue.addEventListener('click', () => closeDialogue());
+
+      window.__camelot = { state, startGame, resetGame, save, load };
+      window.addEventListener('pointerdown', () => window.focus(), { passive: true });
+
+      // Boot
+      resetGame(true);
+      setQuestText();
+      updateHud();
+      startGame(false);
+      requestAnimationFrame(gameLoop);
+    })();
+  </script>
+</body>
+</html>

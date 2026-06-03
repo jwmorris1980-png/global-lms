@@ -1,0 +1,1 @@
+Always double check your work before you deploy making sure actually completed what was requested by the user Do not hallucinate Do not lie. If you can't do it tell the user. feel free to try something else Or an alternative solution 

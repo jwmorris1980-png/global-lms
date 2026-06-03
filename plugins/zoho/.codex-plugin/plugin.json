@@ -1,0 +1,47 @@
+{
+  "name": "zoho",
+  "version": "1.0.0",
+  "description": "Zoho connector for Global LMS CRM, Mail, Books, and Desk workflows.",
+  "author": {
+    "name": "Global LMS",
+    "email": "support@global-lms.org",
+    "url": "https://www.global-lms.org/"
+  },
+  "homepage": "https://www.global-lms.org/",
+  "repository": "https://github.com/jwmorris1980-png/global-lms",
+  "license": "MIT",
+  "keywords": [
+    "zoho",
+    "crm",
+    "mail",
+    "books",
+    "desk"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks.json",
+  "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
+  "interface": {
+    "displayName": "Zoho Connector",
+    "shortDescription": "Connect Global LMS to Zoho apps.",
+    "longDescription": "A config-driven Zoho connector for Global LMS that can create CRM leads, send Zoho Mail, create Books contacts and invoices, and open Desk tickets using Zoho OAuth refresh tokens.",
+    "developerName": "Global LMS",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://www.global-lms.org/",
+    "privacyPolicyURL": "https://www.global-lms.org/privacy-policy.html",
+    "termsOfServiceURL": "https://www.global-lms.org/",
+    "defaultPrompt": [
+      "Create a CRM lead from an LMS contact.",
+      "Send a Zoho Mail update to subscribers.",
+      "Open a Zoho Desk ticket from support requests."
+    ],
+    "brandColor": "#0f766e",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.svg",
+    "screenshots": []
+  }
+}

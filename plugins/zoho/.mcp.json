@@ -1,0 +1,12 @@
+{
+  "servers": [
+    {
+      "name": "zoho",
+      "transport": "stdio",
+      "command": "node",
+      "args": [
+        "./scripts/zoho-mcp-server.cjs"
+      ]
+    }
+  ]
+}

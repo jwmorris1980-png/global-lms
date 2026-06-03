@@ -1,0 +1,148 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Global LMS Quick Drafts",
+    "description": "Create substitute-ready lessons, quizzes, units, or courses for teachers, tutors, and parents who need fast results. Country and state are the starting defaults; grade and subject are the main fields the user enters.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://www.global-lms.org",
+      "description": "Global LMS backend"
+    }
+  ],
+  "paths": {
+    "/api/chatgpt/quick-draft": {
+      "post": {
+        "operationId": "createQuickDraft",
+        "summary": "Create a quick lesson, quiz, unit, or course",
+        "description": "Use this when a teacher, tutor, or parent needs a fast draft. Start from the default country and state, then ask for grade and subject. Allow the user to change the country or state if needed. Courses are supported too.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["grade", "subject"],
+                "properties": {
+                  "country": {
+                    "type": "string",
+                    "description": "Starting country default for the draft.",
+                    "default": "USA",
+                    "examples": ["USA"]
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "Starting state, province, or region for the draft.",
+                    "default": "California",
+                    "examples": ["California"]
+                  },
+                  "grade": {
+                    "type": "string",
+                    "description": "Grade level entered by the user.",
+                    "default": "Grade 5",
+                    "examples": ["Grade 3", "Grade 5", "Grade 8"]
+                  },
+                  "subject": {
+                    "type": "string",
+                    "description": "Subject or course entered by the user.",
+                    "default": "General Education",
+                    "examples": ["Science", "Math", "Reading"]
+                  },
+                "kind": {
+                    "type": "string",
+                    "enum": ["lesson", "quiz", "unit", "course"],
+                    "description": "What to generate.",
+                    "default": "lesson"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Quick draft created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "grade": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "summary": {
+                      "type": "string"
+                    },
+                    "quizText": {
+                      "type": "string"
+                    },
+                    "lessonText": {
+                      "type": "string"
+                    },
+                    "unitText": {
+                      "type": "string"
+                    },
+                    "courseText": {
+                      "type": "string"
+                    },
+                    "copyReadyText": {
+                      "type": "string"
+                    },
+                    "lesson": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "unit": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "course": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "quiz": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "answerKey": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "readyForChatGPT": {
+                      "type": "boolean"
+                    },
+                    "generatedAt": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

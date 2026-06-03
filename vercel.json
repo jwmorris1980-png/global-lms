@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "crons": [
+    {
+      "path": "/api/health",
+      "schedule": "0 12 * * *"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://lms-global-682818593798.us-central1.run.app/api/$1"
+    },
+    {
+      "src": "/mcp",
+      "dest": "/api/mcp"
+    },
+    {
+      "src": "/sse",
+      "dest": "/api/mcp"
+    },
+    {
+      "src": "/chatgpt(?:-app)?(?:\\.html)?",
+      "dest": "/chatgpt-app.html"
+    },
+    {
+      "src": "/assets/index-(.*)\\.css",
+      "dest": "/assets/index.css",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0",
+        "Content-Type": "text/css; charset=utf-8",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      }
+    },
+    {
+      "src": "/assets/index-(.*)\\.js",
+      "dest": "/assets/index.js",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      }
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "Content-Security-Policy": "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: https:; media-src 'self' https:; script-src 'self' https://js.stripe.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://lms-global-682818593798.us-central1.run.app https://api.stripe.com; frame-src https://js.stripe.com https://hooks.stripe.com https://www.youtube-nocookie.com;"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.git/
+.vercel/
+scratch/
+.env
+warehouse/curriculums/
+warehouse/lessons/
+warehouse/packages/*.json
+
+.gitignore

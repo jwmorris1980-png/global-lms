@@ -1,0 +1,21 @@
+[
+  {
+    "name": "delete-deployments-older-than-7-days",
+    "action": {
+      "type": "Delete"
+    },
+    "condition": {
+      "tagState": "any",
+      "olderThan": "7d"
+    }
+  },
+  {
+    "name": "keep-latest-10-deployments",
+    "action": {
+      "type": "Keep"
+    },
+    "mostRecentVersions": {
+      "keepCount": 10
+    }
+  }
+]

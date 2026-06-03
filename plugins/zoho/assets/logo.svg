@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96">
+  <rect width="320" height="96" rx="20" fill="#0f172a"/>
+  <circle cx="48" cy="48" r="24" fill="#0f766e"/>
+  <path d="M36 40h24v8H46v4h10v8H36V52h10v-4H36z" fill="#fff"/>
+  <text x="92" y="42" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">Zoho Connector</text>
+  <text x="92" y="66" fill="#94a3b8" font-family="Arial, sans-serif" font-size="14">Global LMS integration bridge</text>
+</svg>

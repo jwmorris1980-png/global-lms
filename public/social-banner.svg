@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" role="img" aria-labelledby="title desc">
+  <title id="title">Global LMS Social Banner</title>
+  <desc id="desc">A blue education banner for Global LMS.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1500" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071a3a"/>
+      <stop offset="0.48" stop-color="#0b2b63"/>
+      <stop offset="1" stop-color="#123d7a"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="translate(1120 120) rotate(135) scale(520 300)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67e8f9" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#67e8f9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1500" height="500" fill="url(#blue)"/>
+  <rect width="1500" height="500" fill="url(#light)"/>
+  <circle cx="186" cy="180" r="78" fill="none" stroke="#bfdbfe" stroke-width="16"/>
+  <path d="M108 180h156M186 102c-24 26-36 52-36 78s12 52 36 78M186 102c24 26 36 52 36 78s-12 52-36 78" fill="none" stroke="#e0f2fe" stroke-width="10" stroke-linecap="round"/>
+  <path d="M82 302c67-24 132-20 195 13v72c-63-33-128-37-195-13v-72Z" fill="#ffffff"/>
+  <path d="M382 302c-67-24-132-20-195 13v72c63-33 128-37 195-13v-72Z" fill="#dbeafe"/>
+  <text x="460" y="190" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="900">Global LMS</text>
+  <text x="464" y="258" fill="#93c5fd" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800">Already-loaded standards-aligned K-12 curriculum</text>
+  <text x="464" y="324" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Pick a country, grade, subject, and build type. Move it into any LMS.</text>
+  <text x="464" y="382" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">global-lms.org</text>
+</svg>
