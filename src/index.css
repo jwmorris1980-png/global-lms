@@ -6676,3 +6676,163 @@ select:focus {
     bottom: 12px;
   }
 }
+
+.guest-lesson-banner,
+.pricing-note,
+.marketplace-empty {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 16px;
+  background: #f8fbff;
+}
+
+.guest-lesson-banner strong,
+.marketplace-empty h3 {
+  display: block;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.guest-lesson-banner span,
+.marketplace-empty p,
+.pricing-note span {
+  display: block;
+  margin-top: 4px;
+  color: #52627a;
+  line-height: 1.45;
+}
+
+.guest-lesson-banner button,
+.pricing-card button,
+.auth-guest-lesson {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #0f766e;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.pricing-shell {
+  width: min(100% - 32px, 980px);
+  margin: 0 auto;
+  padding: 56px 0 80px;
+}
+
+.pricing-shell h1 {
+  margin: 8px 0 12px;
+  color: #0f172a;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.pricing-shell > p {
+  max-width: 68ch;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pricing-card {
+  padding: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+}
+
+.pricing-card h2,
+.pricing-amount {
+  margin: 0;
+  color: #0f172a;
+}
+
+.pricing-amount {
+  margin: 8px 0;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.pricing-card p {
+  color: #52627a;
+  line-height: 1.45;
+}
+
+.pricing-card button {
+  margin-top: 12px;
+}
+
+.pricing-note {
+  margin-top: 18px;
+}
+
+.marketplace-empty {
+  display: block;
+}
+
+.access-offer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.46);
+}
+
+.access-offer-card {
+  width: min(100%, 520px);
+  padding: 24px;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
+}
+
+.access-offer-card h2 {
+  margin: 6px 0;
+  color: #0f172a;
+}
+
+.access-offer-card ul {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.access-offer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.auth-guest-lesson {
+  width: 100%;
+  margin-top: 10px;
+  background: #ffffff;
+  color: #0f766e;
+  border: 1px solid rgba(15, 118, 110, 0.35);
+}
+
+@media (max-width: 800px) {
+  .pricing-grid,
+  .guest-lesson-banner {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+}

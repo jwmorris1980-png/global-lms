@@ -12,7 +12,54 @@ const AI_CREDIT_PACKS = [
   { id: 'builder', label: '$10', credits: 45 }
 ];
 const FREE_LESSON_LIMIT = 6;
-const GUEST_FREE_LESSON_LIMIT = 1;
+const PUBLIC_GUEST_LESSON_ID = '08a19779a9a2e88f77e5d89dcc2f7fe0';
+const PUBLIC_GUEST_LESSON_TOPIC = 'fractions: operations and problem solving';
+const isPublicGuestSampleTopic = (topic = '', plan = {}) => {
+  const id = String(plan?.approvedLessonId || plan?.id || '').trim();
+  if (id === PUBLIC_GUEST_LESSON_ID) return true;
+  const normalized = String(topic || '').trim().toLowerCase();
+  const grade = String(plan?.grade || '').trim().toLowerCase();
+  return normalized === PUBLIC_GUEST_LESSON_TOPIC && (!grade || grade === 'grade 5');
+};
+const isCatalogLesson = (lesson) => Boolean(
+  lesson?.publicGuestSample
+  || lesson?.export_metadata?.commercial_standard_version
+  || (lesson?.studentLesson?.sections || []).length >= 2
+);
+const isJunkMarketplaceTitle = (title = '') => {
+  const cleaned = String(title || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!cleaned || cleaned.length < 3) return true;
+  if (['test', 'testing', 'untitled', 'untitled lesson', 'untitled unit', 'untitled course'].includes(cleaned)) return true;
+  return cleaned.startsWith('untitled');
+};
+const isPublicMarketplaceListing = (item = {}) => !isJunkMarketplaceTitle(item.title);
+const OFFER_INCLUDES = {
+  '$5': [
+    'One standards-aligned lesson',
+    'Student reading, class activities, quiz, and answer key',
+    'Teacher plan plus offline TXT, HTML, and JSON',
+    '30-day money-back guarantee'
+  ],
+  '$10': [
+    'A full unit sequence for the selected grade and subject',
+    'Lesson plans, practice, quizzes, and answer keys',
+    'Offline outline and portable JSON',
+    '30-day money-back guarantee'
+  ],
+  '$100': [
+    'The full course path for the selected grade and subject',
+    'Units, lessons, teacher plans, and knowledge checks',
+    'LMS copy/export and offline downloads',
+    '30-day money-back guarantee'
+  ]
+};
+const includesForPrice = (price = '$5') => OFFER_INCLUDES[String(price)] || OFFER_INCLUDES['$5'];
+const readRouteView = () => {
+  const hash = String(window.location.hash || '').replace(/^#/, '').replace(/^\//, '').split('?')[0];
+  const path = String(window.location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (hash === 'pricing' || path === '/pricing') return 'pricing';
+  return '';
+};
 
 // --- Components ---
 
@@ -228,6 +275,8 @@ const readSharedPlanFromUrl = () => {
 };
 
 const buildShareUrl = (studentData = {}, curriculum = {}, topic = '') => {
+  studentData = studentData || {};
+  curriculum = curriculum || {};
   const url = new URL(window.location.origin + window.location.pathname);
   const values = {
     country: studentData.country || curriculum.country || 'USA',
@@ -266,6 +315,15 @@ const normalizeLessonItem = (lesson, sequence = 1, fallback = '') => ({
 });
 
 const buildTeacherScriptSections = (lesson, topic) => {
+  const packagedSections = lesson?.teacherPlan?.sections;
+  if (Array.isArray(packagedSections) && packagedSections.some((section) => section?.title && (section.items || []).length)) {
+    return packagedSections
+      .filter((section) => section?.title && (section.items || []).length)
+      .map((section) => ({
+        title: section.title,
+        items: section.items.map((item) => String(item))
+      }));
+  }
   const lessonTitle = lesson?.title || topic || 'Today\'s lesson';
   const grade = lesson?.grade || 'the selected grade';
   const region = lesson?.export_metadata?.region || lesson?.state || lesson?.country || 'your classroom context';
@@ -902,6 +960,7 @@ const Navbar = ({ onNavigate, user, onOpenContact, onSignOut }) => {
     <div className="nav-links">
       <button type="button" className="nav-link" onClick={() => onNavigate('onboarding')}>Home</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('path')}>Courses</button>
+      <button type="button" className="nav-link" onClick={() => onNavigate('pricing')}>Pricing</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('marketplace')}>Marketplace</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('marketing')}>Marketing</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('sis')}>Student Info</button>
@@ -1160,7 +1219,7 @@ const LmsCompatibilityView = ({ onBack }) => {
   );
 };
 
-const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCredits, onPurchase, aiBuildStatus, user, onTrack }) => {
+const OnboardingView = ({ onComplete, onOpenGuestLesson, onOpenLmsGuide, onBuildAiDraft, onBuyAiCredits, onPurchase, aiBuildStatus, user, onTrack }) => {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [aiIdea, setAiIdea] = useState('');
@@ -1171,7 +1230,7 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
     grade: 'Grade 5', 
     course: 'General Education', 
     email: '',
-    role: 'Student',
+    role: 'Teacher',
     need: 'Lesson',
     workspaceType: 'Individual teacher',
     workspaceName: ''
@@ -1321,6 +1380,9 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
         <div className="instant-demo-panel" aria-label="Instant curriculum demos">
           <span className="instant-demo-label">Try a ready-built example</span>
           <div className="instant-demo-row">
+            <button type="button" onClick={() => onOpenGuestLesson?.()}>
+              Open free fractions lesson
+            </button>
             <button type="button" onClick={() => launchDemo('Lesson', 'Reading Literature', 'Grade 5', 'Analyzing Story Elements: Characters, Setting, Plot Structure & Figurative Language')}>
               Open Reading Lesson
             </button>
@@ -1461,7 +1523,7 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
           <div className="paid-access-panel">
             <div>
               <strong>Buy ready-made Global LMS access</strong>
-              <span>Use Stripe Checkout for a lesson, unit, or full course license. Sign in first so the purchase can be tied to your email.</span>
+              <span>See what is included and the price first. An email is asked only when you continue to Stripe Checkout.</span>
             </div>
             <div className="paid-access-actions">
               <button type="button" onClick={() => onPurchase?.('Global LMS Lesson Access', '$5')}>Buy Lesson $5</button>
@@ -1761,10 +1823,10 @@ const SafetyView = () => (
   </div>
 );
 
-const AuthView = ({ onSignIn }) => {
+const AuthView = ({ onSignIn, onOpenGuestLesson }) => {
   const [authData, setAuthData] = useState({
     email: '',
-    role: 'Student',
+    role: 'Teacher',
     name: '',
     workspaceType: 'Individual teacher',
     workspaceName: ''
@@ -1841,13 +1903,11 @@ const AuthView = ({ onSignIn }) => {
               disabled={ownerEmail}
               onChange={(e) => setAuthData({ ...authData, role: publicAccountRole(e.target.value) })}
             >
-              <option>Student</option>
               <option>Teacher</option>
+              <option>Student</option>
               {ownerEmail && <option>Admin</option>}
             </select>
-            <small className="form-help">
-              {ownerEmail ? 'Owner email verified. Admin access is unlocked.' : 'Admin access is restricted to the two approved owner emails.'}
-            </small>
+            <small className="form-help">Teacher is the usual account for buying lessons and classroom use.</small>
           </div>
           <div className="form-group">
             <label htmlFor="auth-workspace">Workspace type</label>
@@ -1884,10 +1944,95 @@ const AuthView = ({ onSignIn }) => {
           <button className="initialize-btn" type="submit">
             Sign In <ArrowRight size={18} />
           </button>
+          <button type="button" className="lesson-nav-btn auth-guest-lesson" onClick={onOpenGuestLesson}>
+            Open the free lesson without an account
+          </button>
         </form>
       </div>
 
     </section>
+  );
+};
+
+const PricingView = ({ onPurchase, onOpenGuestLesson }) => (
+  <section className="pricing-shell">
+    <span className="onboarding-eyebrow">Pricing</span>
+    <h1>Lesson $5, unit $10, course $100</h1>
+    <p>Standard access for ready-made Global LMS curriculum. You see what is included before checkout. Stripe asks for an email only when you pay. The Grade 5 fractions lesson stays free with no account.</p>
+    <div className="pricing-grid">
+      {[
+        { name: 'Lesson', price: '$5', detail: 'One standards-aligned lesson with student reading, activities, quiz, answer key, and teacher plan.' },
+        { name: 'Unit', price: '$10', detail: 'A unit sequence with lessons, practice, checks, and offline planning files.' },
+        { name: 'Course', price: '$100', detail: 'The full course path for a grade and subject, including LMS export.' }
+      ].map((tier) => (
+        <article key={tier.name} className="pricing-card">
+          <h2>{tier.name}</h2>
+          <p className="pricing-amount">{tier.price}</p>
+          <p>{tier.detail}</p>
+          <button type="button" onClick={() => onPurchase?.(`Global LMS ${tier.name} Access`, tier.price)}>
+            Review {tier.name.toLowerCase()} access
+          </button>
+        </article>
+      ))}
+    </div>
+    <div className="pricing-note">
+      <Shield size={16} />
+      <span>30-day money-back guarantee. If it does not work for you, email support and the purchase can be refunded.</span>
+    </div>
+    <button type="button" className="lesson-nav-btn" onClick={onOpenGuestLesson}>
+      Open the free Grade 5 fractions lesson
+    </button>
+  </section>
+);
+
+const AccessOffer = ({ offer, onClose, onCheckout }) => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  if (!offer) return null;
+  const submit = async (event) => {
+    event.preventDefault();
+    if (!isRealEmail(email)) {
+      setError('Enter an email for the Stripe receipt. This does not create an account.');
+      return;
+    }
+    setBusy(true);
+    setError('');
+    try {
+      await onCheckout({ name: offer.name, price: offer.price, email });
+    } catch (err) {
+      setError(err.message || 'Checkout is unavailable right now.');
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="access-offer-backdrop" role="presentation" onClick={onClose}>
+      <form className="access-offer-card" role="dialog" aria-labelledby="access-offer-title" onClick={(event) => event.stopPropagation()} onSubmit={submit}>
+        <span className="onboarding-eyebrow">Order summary</span>
+        <h2 id="access-offer-title">{offer.name}</h2>
+        <p className="pricing-amount">{offer.price}</p>
+        <ul>
+          {(offer.includes || includesForPrice(offer.price)).map((item) => <li key={item}>{item}</li>)}
+        </ul>
+        <label htmlFor="checkout-email">Email for the Stripe receipt</label>
+        <input
+          id="checkout-email"
+          className="form-control"
+          type="email"
+          inputMode="email"
+          placeholder="teacher@school.org"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        {error && <p className="auth-error">{error}</p>}
+        <div className="access-offer-actions">
+          <button className="initialize-btn" type="submit" disabled={busy}>
+            {busy ? 'Opening checkout...' : 'Continue to checkout'}
+          </button>
+          <button type="button" className="lesson-nav-btn" onClick={onClose}>Not now</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
@@ -2426,7 +2571,7 @@ const OwnerMarketingGate = () => {
 
 const marketplacePriceFor = (type) => type === 'Course' ? 100 : type === 'Unit' ? 10 : 5;
 
-const CreatorMarketplaceView = ({ user }) => {
+const CreatorMarketplaceView = ({ user, onPurchase }) => {
   const [items, setItems] = useState([]);
   const [status, setStatus] = useState('Loading creator marketplace...');
   const [paymentConfig, setPaymentConfig] = useState({ configured: false, mode: 'checking' });
@@ -2451,8 +2596,9 @@ const CreatorMarketplaceView = ({ user }) => {
     try {
       const res = await fetch(`${API_BASE}/api/marketplace`);
       const data = await res.json();
-      setItems(data.items || []);
-      setStatus('Marketplace ready');
+      const visibleItems = (data.items || []).filter(isPublicMarketplaceListing);
+      setItems(visibleItems);
+      setStatus(visibleItems.length ? 'Marketplace ready' : 'No public creator listings yet.');
     } catch {
       setStatus('Marketplace is temporarily offline');
     }
@@ -2498,44 +2644,23 @@ const CreatorMarketplaceView = ({ user }) => {
     }
   };
 
-  const buyItem = async (item) => {
+  const buyItem = (item) => {
     if (item.price <= 0) return;
-    if (!isRealEmail(user?.email)) {
-      setStatus('Sign in with a real email before buying marketplace resources.');
-      return;
-    }
+    onPurchase?.(item.title, `$${item.price}`, {
+      marketplaceItemId: item.id,
+      creatorEmail: item.creatorEmail,
+      creatorShare: item.creatorShare,
+      platformFee: item.platformFee,
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800',
+      includes: [
+        item.summary || 'Creator lesson, unit, or course',
+        item.certificationStatus || 'Certification status shown before purchase',
+        'Email is collected only at Stripe Checkout',
+        '30-day money-back guarantee'
+      ]
+    });
     if (!paymentConfig.configured) {
-      setStatus('Stripe Checkout is not configured yet. Add Stripe keys on the server, then redeploy.');
-      return;
-    }
-    try {
-      const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: user.email,
-          items: [{
-            name: item.title,
-            price: `$${item.price}`,
-            image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800',
-            marketplaceItemId: item.id,
-            creatorEmail: item.creatorEmail,
-            creatorShare: item.creatorShare,
-            platformFee: item.platformFee
-          }]
-        })
-      });
-      const session = await res.json();
-      if (!res.ok) throw new Error(session.detail || session.error || 'Checkout unavailable');
-      if (session.url) {
-        window.location.href = session.url;
-        return;
-      }
-      const stripe = await stripePromise;
-      if (!stripe) throw new Error('Stripe publishable key is not configured.');
-      await stripe.redirectToCheckout({ sessionId: session.id });
-    } catch (err) {
-      setStatus(err.message || 'Payment system is not ready yet.');
+      setStatus('Order summary is ready. Stripe Checkout still needs server keys before payment can open.');
     }
   };
 
@@ -2662,6 +2787,12 @@ const CreatorMarketplaceView = ({ user }) => {
 
         <div className="marketplace-list">
           <h2>Paid creator resources</h2>
+          {items.length === 0 && (
+            <div className="marketplace-empty">
+              <h3>No public listings yet</h3>
+              <p>Draft titles such as “test” and “Untitled Lesson” stay off this page. A resource shows up after a creator publishes a real title and lesson.</p>
+            </div>
+          )}
           {items.map((item) => (
             <article className="marketplace-item" key={item.id}>
               <div>
@@ -2677,8 +2808,8 @@ const CreatorMarketplaceView = ({ user }) => {
               <div className="marketplace-buy-row">
                 <span>{item.price > 0 ? `$${item.price}` : 'Volunteer'}</span>
                 <em>{item.price > 0 ? `Creator earns $${item.creatorShare}` : 'Not paid'}</em>
-                <button type="button" disabled={item.price <= 0 || !paymentConfig.configured} onClick={() => buyItem(item)}>
-                  {item.price > 0 ? (paymentConfig.configured ? 'Buy' : 'Setup Needed') : 'Free Library Work'}
+                <button type="button" disabled={item.price <= 0} onClick={() => buyItem(item)}>
+                  {item.price > 0 ? 'Buy' : 'Free Library Work'}
                 </button>
               </div>
             </article>
@@ -2814,7 +2945,7 @@ const UnitOverviewView = ({ unit, unitIndex, curriculum, studentData, onSelectTo
   );
 };
 
-const PathView = ({ studentData, curriculum, onSelectTopic, onSelectUnit, planSaveStatus, user }) => {
+const PathView = ({ studentData, curriculum, onSelectTopic, onSelectUnit, onOpenGuestLesson, planSaveStatus, user }) => {
   const [shareStatus, setShareStatus] = useState('');
   if (!curriculum) return (
     <div className="container text-center py-32">
@@ -2865,7 +2996,7 @@ const PathView = ({ studentData, curriculum, onSelectTopic, onSelectUnit, planSa
     : starterLessonsRemaining > 0
       ? `${starterLessonsRemaining} free left`
       : !isRealEmail(user?.email)
-        ? `${GUEST_FREE_LESSON_LIMIT} free guest lesson`
+        ? 'Free fractions lesson'
       : `$${curriculum.pricing.lesson}`;
   const requestedPrice = requestedNeed === 'Course'
     ? curriculum.pricing.course
@@ -3009,7 +3140,7 @@ const PathView = ({ studentData, curriculum, onSelectTopic, onSelectUnit, planSa
     <div className="container learning-path">
       <div className="path-header">
         <span className="requested-result-chip">
-          Showing {requestedLabel} first {requestedNeed === 'Lesson' && starterLessonsRemaining > 0 ? `${starterLessonsRemaining} free lessons left` : requestedNeed === 'Lesson' && !isRealEmail(user?.email) && !curriculum.isFree ? '1 free guest lesson' : curriculum.isFree ? 'FREE' : `$${requestedPrice}`}
+          Showing {requestedLabel} first {requestedNeed === 'Lesson' && starterLessonsRemaining > 0 ? `${starterLessonsRemaining} free lessons left` : requestedNeed === 'Lesson' && !isRealEmail(user?.email) && !curriculum.isFree ? 'free fractions lesson' : curriculum.isFree ? 'FREE' : `$${requestedPrice}`}
         </span>
         <h1 className="section-title">{requestedLabel}</h1>
         <p className="text-dim">
@@ -3021,9 +3152,13 @@ const PathView = ({ studentData, curriculum, onSelectTopic, onSelectUnit, planSa
           </p>
         )}
         {!curriculum.isFree && !isRealEmail(user?.email) && (
-          <p className="free-lesson-status">
-            You can open 1 lesson for free as a guest. After that, sign in to get {FREE_LESSON_LIMIT} more free lessons.
-          </p>
+          <div className="guest-lesson-banner">
+            <div>
+              <strong>Free lesson, no sign-in</strong>
+              <span>Grade 5 fractions (CCSS 5.NF.A.1, 5.NF.A.2, and 5.NF.B.4) opens in full. Other lessons show what is included before any account or payment.</span>
+            </div>
+            <button type="button" onClick={onOpenGuestLesson}>Open free lesson</button>
+          </div>
         )}
         {planSaveStatus && <p className="save-status">{planSaveStatus}</p>}
         <div className="offline-download-row" aria-label="Offline course downloads">
@@ -4191,7 +4326,11 @@ const isWeakQuizQuestion = (item = {}) => {
 };
 
 const getHighValueKnowledgeCheck = (lesson, topic) => {
-  const existing = Array.isArray(lesson?.quiz) ? lesson.quiz.filter((item) => !isWeakQuizQuestion(item)) : [];
+  const packagedQuiz = Array.isArray(lesson?.quiz)
+    ? lesson.quiz.filter((item) => String(item?.question || '').trim() && (item.type !== 'choice' || (Array.isArray(item.options) && item.options.length >= 2)))
+    : [];
+  if (isCatalogLesson(lesson) && packagedQuiz.length >= 4) return packagedQuiz.slice(0, 10);
+  const existing = packagedQuiz.filter((item) => !isWeakQuizQuestion(item));
   const generated = buildDepthOfKnowledgeQuiz(lesson, topic);
   const merged = [...existing, ...generated].slice(0, 10);
   return merged.length >= 10 ? merged : generated;
@@ -4582,6 +4721,24 @@ const buildStudentReadingSections = (lesson, topic) => {
 };
 
 const buildStudentLessonArticle = (lesson, topic) => {
+  const packaged = lesson?.studentLesson;
+  const packagedSections = Array.isArray(packaged?.sections)
+    ? packaged.sections.filter((section) => section?.heading && String(section.body || '').trim().length > 40)
+    : [];
+  if (packagedSections.length >= 2) {
+    const vocabulary = Array.isArray(lesson?.keyVocabulary)
+      ? lesson.keyVocabulary.map((item) => item?.term).filter(Boolean)
+      : [];
+    return {
+      title: packaged.title || lesson?.title || topic || 'Today\'s Lesson',
+      goal: packaged.learningGoal || lesson?.essentialQuestion || `Understand ${(lesson?.title || topic || 'this lesson').toLowerCase()} and explain the reasoning.`,
+      concepts: (vocabulary.length ? vocabulary : packaged.objectives || []).slice(0, 4),
+      sections: packagedSections.slice(0, 8).map((section) => ({
+        heading: section.heading,
+        body: String(section.body).trim()
+      }))
+    };
+  }
   const content = String(lesson?.content || '');
   const lines = content.split('\n').map(stripLessonMarkdown).filter(Boolean);
   const title = lesson?.title || topic || 'Today\'s Lesson';
@@ -5227,7 +5384,7 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
           <div className="lesson-title-panel p-8">
             <div className="flex justify-between items-start mb-4">
               <span className="lesson-status-pill">
-                Warehouse Ready | Standards: {lesson.export_metadata?.region || 'Global'}
+                Warehouse Ready | {lesson.standards?.[0]?.code || lesson.standardsAlignment?.[0]?.code || lesson.export_metadata?.region || 'Global'}
               </span>
               <div className="flex gap-2">
                 <button 
@@ -5364,9 +5521,12 @@ export default function App() {
   const [user, setUser] = useState(getStoredUser);
   const [view, setView] = useState(() => {
     if (isOwnerMarketingSite) return 'marketing';
+    const route = readRouteView();
+    if (route) return route;
     const storedUser = getStoredUser();
     return storedUser && isOwnerAdmin(storedUser) ? 'usage' : 'onboarding';
   });
+  const [accessOffer, setAccessOffer] = useState(null);
   const [studentData, setStudentData] = useState(null);
   const [curriculum, setCurriculum] = useState(null);
   const [currentTopic, setCurrentTopic] = useState(null);
@@ -5416,6 +5576,35 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (isOwnerMarketingSite) return undefined;
+    const title = view === 'pricing'
+      ? 'Pricing | Global LMS — $5 lesson, $10 unit, $100 course'
+      : 'Global LMS | Personalized K-12 Learning Warehouse';
+    document.title = title;
+    const onPricing = readRouteView() === 'pricing';
+    if (view === 'pricing' && !onPricing) {
+      window.history.pushState({ view: 'pricing' }, '', '/pricing');
+    } else if (view !== 'pricing' && onPricing) {
+      window.history.pushState({ view }, '', '/');
+    }
+    return undefined;
+  }, [view, isOwnerMarketingSite]);
+
+  useEffect(() => {
+    if (isOwnerMarketingSite) return undefined;
+    const syncRoute = () => {
+      const route = readRouteView();
+      setView(route || 'onboarding');
+    };
+    window.addEventListener('popstate', syncRoute);
+    window.addEventListener('hashchange', syncRoute);
+    return () => {
+      window.removeEventListener('popstate', syncRoute);
+      window.removeEventListener('hashchange', syncRoute);
+    };
+  }, [isOwnerMarketingSite]);
+
+  useEffect(() => {
     const openMarketplace = () => setView('marketplace');
     window.addEventListener('global-lms-open-marketplace', openMarketplace);
     return () => window.removeEventListener('global-lms-open-marketplace', openMarketplace);
@@ -5448,9 +5637,9 @@ export default function App() {
     setCurriculum(null);
     setLesson(null);
     setCurrentTopic(null);
-    saveUser(identity);
     setPlanSaveStatus('');
     if (isRealEmail(identity.email)) {
+      saveUser(identity);
       try {
         await postJson('/api/users/save-plan', {
           visitorId,
@@ -5601,14 +5790,105 @@ export default function App() {
     setView('auth');
   };
 
+  const openGuestSample = async () => {
+    setAccessOffer(null);
+    setCurrentTopic({ name: 'Fractions: Operations and Problem Solving' });
+    setLesson(null);
+    setPlanSaveStatus('');
+    const plan = {
+      country: 'USA',
+      state: 'California',
+      language: 'English',
+      grade: 'Grade 5',
+      course: 'Grade 5 Mathematics',
+      need: 'Lesson',
+      role: user?.role || 'Teacher',
+      approvedLessonId: PUBLIC_GUEST_LESSON_ID
+    };
+    setStudentData(plan);
+    setCurriculum({
+      isFree: false,
+      pricing: { lesson: 5, unit: 10, course: 100 },
+      country: 'USA',
+      state: 'California',
+      grade: 'Grade 5',
+      course: 'Grade 5 Mathematics',
+      need: 'Lesson',
+      standardsBody: 'Common Core State Standards for Mathematics',
+      subjects: [{ name: 'Grade 5 Mathematics', topics: ['Fractions: Operations and Problem Solving'] }],
+      units: [{ title: 'Fraction Operations', sequence: 1, lessons: [{ title: 'Fractions: Operations and Problem Solving' }] }]
+    });
+    setView('lesson');
+    try {
+      const res = await fetch('/guest-sample-lesson.json', { cache: 'no-store' });
+      const lesson = await res.json();
+      if (!res.ok || !lesson?.studentLesson?.sections?.length) {
+        throw new Error('The free lesson could not be loaded.');
+      }
+      trackUsage('lesson_open', { topic: lesson.topic, guestSample: true, plan });
+      setLesson(lesson);
+    } catch (err) {
+      setCurrentTopic({ name: 'Fractions: Operations and Problem Solving', error: err.message || 'The free lesson could not be loaded.' });
+    }
+  };
+
+  const showAccessOffer = (name, price = '$5', extra = {}) => {
+    const normalizedPrice = String(price || '$5');
+    setAccessOffer({
+      name,
+      price: normalizedPrice,
+      includes: extra.includes || includesForPrice(normalizedPrice),
+      marketplaceItemId: extra.marketplaceItemId || '',
+      creatorEmail: extra.creatorEmail || '',
+      creatorShare: extra.creatorShare || '',
+      platformFee: extra.platformFee || '',
+      image: extra.image || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800'
+    });
+  };
+
+  const startCheckout = async ({ name, price, email }) => {
+    const receiptEmail = isRealEmail(email) ? email : (isRealEmail(user?.email) ? user.email : '');
+    if (!receiptEmail) throw new Error('Enter an email for the Stripe receipt. This does not create an account.');
+    trackUsage('checkout_started', { itemName: name, price });
+    const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: receiptEmail,
+        items: [{
+          name,
+          price,
+          image: accessOffer?.image || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800',
+          marketplaceItemId: accessOffer?.marketplaceItemId || '',
+          creatorEmail: accessOffer?.creatorEmail || '',
+          creatorShare: accessOffer?.creatorShare || '',
+          platformFee: accessOffer?.platformFee || ''
+        }]
+      })
+    });
+    const session = await res.json();
+    if (!res.ok) throw new Error(session.detail || session.error || 'Unable to start checkout');
+    if (session.url) {
+      window.location.href = session.url;
+      return;
+    }
+    const stripe = await stripePromise;
+    if (!stripe) throw new Error('Stripe publishable key is not configured.');
+    await stripe.redirectToCheckout({ sessionId: session.id });
+  };
+
   const handleSelectTopic = async (topic, isPremium = false, planOverride = studentData, curriculumOverride = curriculum) => {
+    if (isPublicGuestSampleTopic(topic, planOverride)) {
+      await openGuestSample();
+      return;
+    }
     if (isPremium && !curriculumOverride?.isFree) {
-      handlePurchase(topic);
+      showAccessOffer(topic, `$${curriculumOverride?.pricing?.lesson || 5}`);
       return;
     }
     setCurrentTopic({ name: topic });
     setLesson(null);
-    setView('lesson');
+    setPlanSaveStatus('Opening lesson...');
     try {
       const res = await fetch(`${API_BASE}/api/lesson`, {
         method: 'POST',
@@ -5635,13 +5915,19 @@ export default function App() {
       }
       trackUsage('lesson_open', { topic, email: user?.email, plan: planOverride });
       setLesson(result);
+      setPlanSaveStatus('');
+      setView('lesson');
     } catch (err) {
       console.error(err);
-      if (err.status === 401) {
-        setPlanSaveStatus(err.message || `Sign in to get ${FREE_LESSON_LIMIT} more free lessons. No credit card is needed to start.`);
-        setView('auth');
+      setPlanSaveStatus('');
+      if (err.status === 401 || err.status === 402) {
+        showAccessOffer(
+          topic,
+          curriculumOverride?.isFree ? 'FREE' : `$${curriculumOverride?.pricing?.lesson || 5}`
+        );
         return;
       }
+      setView('lesson');
       setCurrentTopic({ name: topic, error: err.message });
     }
   };
@@ -5662,33 +5948,8 @@ export default function App() {
     });
   }, []);
 
-  const handlePurchase = async (topicName, price = '$9.99') => {
-    try {
-      if (!user?.email || !isRealEmail(user.email)) {
-        alert('Please sign in with a real email before buying paid access.');
-        setView('auth');
-        return;
-      }
-      const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: user.email,
-          items: [{ name: topicName, price, image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800" }]
-        })
-      });
-      const session = await res.json();
-      if (!res.ok) throw new Error(session.error || 'Unable to start checkout');
-      if (session.url) {
-        window.location.href = session.url;
-        return;
-      }
-      const stripe = await stripePromise;
-      if (!stripe) throw new Error('Stripe publishable key is not configured.');
-      await stripe.redirectToCheckout({ sessionId: session.id });
-    } catch (err) {
-      alert(err.message || "Payment checkout is unavailable right now.");
-    }
+  const handlePurchase = (topicName, price = '$5', extra = {}) => {
+    showAccessOffer(topicName, price, extra);
   };
 
   return (
@@ -5696,12 +5957,14 @@ export default function App() {
       {!isOwnerMarketingSite && <Navbar onNavigate={setView} user={user} onOpenContact={() => setIsContactOpen(true)} onSignOut={handleSignOut} />}
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} userEmail={user?.email} />
       {!isOwnerMarketingSite && <HelpBot onNavigate={setView} />}
+      <AccessOffer offer={accessOffer} onClose={() => setAccessOffer(null)} onCheckout={startCheckout} />
       <main className={`app-main view-${isOwnerMarketingSite ? 'owner' : view}`}>
         <AnimatePresence mode="wait">
           {view === 'onboarding' && (
             <motion.div key="on" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <OnboardingView
                 onComplete={handleOnboarding}
+                onOpenGuestLesson={openGuestSample}
                 onOpenLmsGuide={() => setView('lms-guide')}
                 onBuildAiDraft={handleBuildAiDraft}
                 onBuyAiCredits={handleBuyAiCredits}
@@ -5727,9 +5990,14 @@ export default function App() {
               <WhiteboardView />
             </motion.div>
           )}
+          {view === 'pricing' && (
+            <motion.div key="pricing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <PricingView onPurchase={handlePurchase} onOpenGuestLesson={openGuestSample} />
+            </motion.div>
+          )}
           {view === 'path' && (
             <motion.div key="path" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <PathView studentData={studentData} curriculum={curriculum} onSelectTopic={handleSelectTopic} onSelectUnit={handleSelectUnit} planSaveStatus={planSaveStatus} user={user} />
+              <PathView studentData={studentData} curriculum={curriculum} onSelectTopic={handleSelectTopic} onSelectUnit={handleSelectUnit} onOpenGuestLesson={openGuestSample} planSaveStatus={planSaveStatus} user={user} />
             </motion.div>
           )}
           {view === 'unit' && selectedUnit && (
@@ -5746,7 +6014,7 @@ export default function App() {
           )}
           {view === 'marketplace' && (
             <motion.div key="marketplace" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <CreatorMarketplaceView user={user} />
+              <CreatorMarketplaceView user={user} onPurchase={handlePurchase} />
             </motion.div>
           )}
           {view === 'sis' && (
@@ -5776,7 +6044,7 @@ export default function App() {
           )}
           {view === 'auth' && (
             <motion.div key="auth" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <AuthView onSignIn={handleSignIn} />
+              <AuthView onSignIn={handleSignIn} onOpenGuestLesson={openGuestSample} />
             </motion.div>
           )}
           {view === 'lesson' && (
