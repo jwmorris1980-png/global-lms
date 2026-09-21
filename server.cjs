@@ -143,6 +143,36 @@ const cleanEmail = (value = '') => {
 };
 const OWNER_EMAILS = new Set(['jwmorris1980@gmail.com', 'support@global-lms.org'].map(cleanEmail));
 const isOwnerAdminEmail = (email = '') => OWNER_EMAILS.has(cleanEmail(email));
+const PUBLIC_GUEST_LESSON_ID = '08a19779a9a2e88f77e5d89dcc2f7fe0';
+const PUBLIC_GUEST_LESSON_TOPIC = 'fractions: operations and problem solving';
+const PUBLIC_GUEST_LESSON_FILE = path.join(__dirname, 'public', 'guest-sample-lesson.json');
+const isPublicGuestSample = (payload = {}) => {
+    const id = cleanString(payload.approvedLessonId || payload.id || payload.lessonId, 80);
+    if (id === PUBLIC_GUEST_LESSON_ID) return true;
+    const topic = cleanString(payload.topic, 180).toLowerCase();
+    const grade = cleanString(payload.grade, 40).toLowerCase();
+    return topic === PUBLIC_GUEST_LESSON_TOPIC && (!grade || grade === 'grade 5');
+};
+const loadPublicGuestSample = () => {
+    try {
+        if (!fs.existsSync(PUBLIC_GUEST_LESSON_FILE)) return null;
+        const lesson = JSON.parse(fs.readFileSync(PUBLIC_GUEST_LESSON_FILE, 'utf8'));
+        if (!lesson?.studentLesson?.sections?.length || !Array.isArray(lesson.quiz) || lesson.quiz.length < 4) return null;
+        return lesson;
+    } catch (err) {
+        console.error('[Guest Sample Error]:', err);
+        return null;
+    }
+};
+const isJunkMarketplaceTitle = (title = '') => {
+    const cleaned = cleanString(title, 160).toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!cleaned || cleaned.length < 3) return true;
+    if (['test', 'testing', 'untitled', 'untitled lesson', 'untitled unit', 'untitled course'].includes(cleaned)) return true;
+    return cleaned.startsWith('untitled');
+};
+const isPublicMarketplaceListing = (item = {}) => (
+    ['published', 'pending_review'].includes(item.status) && !isJunkMarketplaceTitle(item.title)
+);
 const publicAccountRole = (role = 'Student') => cleanString(role, 40) === 'Teacher' ? 'Teacher' : 'Student';
 const roleForEmail = (email = '', requestedRole = 'Student') => (
     isOwnerAdminEmail(email) ? 'Admin' : publicAccountRole(requestedRole)
@@ -2292,6 +2322,19 @@ app.post('/api/lesson', async (req, res) => {
     const lessonId = crypto.createHash('md5').update(`${country}_${state || ''}_${grade}_${topic}_${language}`).digest('hex');
 
     try {
+        if (isPublicGuestSample(req.body)) {
+            const sample = loadPublicGuestSample();
+            if (sample) {
+                return res.json({
+                    ...sample,
+                    access: {
+                        allowed: true,
+                        publicGuestSample: true,
+                        requiresSignIn: false
+                    }
+                });
+            }
+        }
         const exactRequest = { country, state, grade, topic, language, need, course: course || 'General Education' };
         const localLesson = loadOrCreateLocalLesson(exactRequest);
         const access = await reserveLessonAccess({
@@ -2411,7 +2454,6 @@ app.post('/api/lesson', async (req, res) => {
 // --- Creator Marketplace ---
 
 const MARKETPLACE_TYPES = ['Lesson', 'Unit', 'Course'];
-const MARKETPLACE_STATUS = ['published', 'pending_review'];
 const creatorShareFor = (price) => Number((price * 0.8).toFixed(2));
 const platformFeeFor = (price) => Number((price * 0.2).toFixed(2));
 const sanitizePrice = (value, fallback = 5) => {
@@ -2421,67 +2463,22 @@ const sanitizePrice = (value, fallback = 5) => {
 };
 const defaultPriceForType = (type) => type === 'Course' ? 100 : type === 'Unit' ? 10 : 5;
 
-const sampleMarketplaceItems = [
-    {
-        id: 'sample-phonics-fluency-lesson',
-        title: 'Phonics Fluency Mini-Lesson',
-        type: 'Lesson',
-        creatorName: 'Global LMS Studio',
-        creatorEmail: 'studio@global-lms.local',
-        price: 5,
-        creatorShare: 4,
-        platformFee: 1,
-        grade: 'Grade 2',
-        country: 'USA',
-        course: 'Reading Literature',
-        summary: 'A paid creator marketplace sample with teacher plan, worksheet, fluency check, and answer key.',
-        content: 'Students practice phonics fluency with a short explicit lesson, guided reading practice, and a quick mastery check.',
-        standards: 'Foundational reading standards aligned to grade-level decoding, fluency, and comprehension expectations.',
-        remixOf: '',
-        certificationStatus: 'Certified teacher for this subject/grade',
-        contributionMode: 'paid-marketplace',
-        license: 'Creator marketplace license. Buyers may use in class. Remix/resale requires meaningful improvement and attribution.',
-        status: 'published'
-    },
-    {
-        id: 'sample-ecosystems-unit',
-        title: 'Local Ecosystems Investigation Unit',
-        type: 'Unit',
-        creatorName: 'Global LMS Studio',
-        creatorEmail: 'studio@global-lms.local',
-        price: 10,
-        creatorShare: 8,
-        platformFee: 2,
-        grade: 'Grade 5',
-        country: 'USA',
-        course: 'Science',
-        summary: 'A five-lesson paid unit that helps students investigate ecosystems, food webs, and human impact.',
-        content: 'Includes five lessons, a field observation activity, vocabulary practice, quiz, answer key, and culminating task.',
-        standards: 'NGSS-style life science and ecosystem performance expectations.',
-        remixOf: '',
-        certificationStatus: 'Certified teacher for this subject/grade',
-        contributionMode: 'paid-marketplace',
-        license: 'Creator marketplace license. Buyers may use in class. Remix/resale requires meaningful improvement and attribution.',
-        status: 'published'
-    }
-];
-
 app.get('/api/marketplace', async (req, res) => {
     try {
         const snapshot = await marketplaceCol.limit(100).get();
         const items = snapshot.docs
             .map((doc) => ({ id: doc.id, ...doc.data() }))
-            .filter((item) => MARKETPLACE_STATUS.includes(item.status))
+            .filter(isPublicMarketplaceListing)
             .sort((a, b) => {
                 const left = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : 0;
                 const right = b.createdAt?.toDate ? b.createdAt.toDate().getTime() : 0;
                 return right - left;
             })
             .slice(0, 60);
-        res.json({ items: items.length ? items : sampleMarketplaceItems });
+        res.json({ items });
     } catch (err) {
         console.error('[Marketplace List Error]:', err);
-        res.json({ items: sampleMarketplaceItems });
+        res.json({ items: [] });
     }
 });
 
@@ -2505,11 +2502,15 @@ app.post('/api/marketplace', async (req, res) => {
         } = req.body;
 
         const cleanType = MARKETPLACE_TYPES.includes(type) ? type : 'Lesson';
+        const cleanTitle = cleanString(title, 160);
+        if (isJunkMarketplaceTitle(cleanTitle)) {
+            return res.status(400).json({ error: 'Add a real lesson, unit, or course title before publishing.' });
+        }
         const isVolunteer = contributionMode === 'free-country-expansion';
         const cleanPrice = isVolunteer ? 0 : sanitizePrice(price, defaultPriceForType(cleanType));
         const safeCreatorEmail = cleanEmail(creatorEmail);
         const item = {
-            title: cleanString(title, 160) || `Untitled ${cleanType}`,
+            title: cleanTitle,
             type: cleanType,
             creatorName: cleanString(creatorName, 100) || 'Creator',
             creatorEmail: safeCreatorEmail || 'unknown@global-lms.local',
