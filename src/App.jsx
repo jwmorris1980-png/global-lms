@@ -511,10 +511,10 @@ const CourseCard = ({ id, title, category, description, price, image, onAction, 
   <div className="course-card" id={`card-${id}`}>
     <div className="course-media">
       <img 
-        src={image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60"} 
+        src={image || buildTopicImageUrl(displayTitle, category, 0)} 
         alt={displayTitle} 
         className="course-image"
-        onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60" }}
+        onError={(e) => { e.target.src = buildTopicImageUrl(displayTitle, category, 0); }}
       />
     </div>
     <div className="course-content">
@@ -4893,13 +4893,28 @@ const ClassActivities = ({ lesson, topic, onOpenWhiteboard, onAwardPoints, onTra
   );
 };
 
+const diagramCaption = (src = '', title = '') => {
+  const file = String(src).toLowerCase();
+  if (file.includes('plot')) return 'Plot beats from the text';
+  if (file.includes('figurative')) return 'Figurative language in this story';
+  if (file.includes('reading')) return 'Character, setting, and lighthouse context';
+  if (file.includes('inquiry')) return 'Classroom cart inquiry setup';
+  if (file.includes('forces')) return 'Balanced vs unbalanced forces';
+  if (file.includes('physics')) return 'Motion evidence diagram';
+  if (file.includes('budget') || file.includes('needs') || file.includes('finance')) return 'Money decision diagram';
+  if (file.includes('robot')) return 'Sense–decide–move diagram';
+  if (file.includes('coding') || file.includes('loop') || file.includes('level')) return 'Game loop / level diagram';
+  return `Classroom diagram for ${title || 'this lesson'}`;
+};
+
 const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   const title = lesson?.title || topic || '';
   const grade = lesson?.grade || '';
   const course = lesson?.course || '';
   const country = lesson?.country || '';
   const language = lesson?.language || 'English';
-  const prebakedVideoId = lesson?.media?.videoId || extractYouTubeVideoId(lesson?.media?.video);
+  const isPublicSample = Boolean(lesson?.isPublicSample);
+  const prebakedVideoId = isPublicSample ? '' : (lesson?.media?.videoId || extractYouTubeVideoId(lesson?.media?.video));
   const studentSections = buildStudentReadingSections(lesson, topic);
   const segments = [
     {
@@ -4912,8 +4927,8 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
 
   // YouTube embed state
   const [videoId, setVideoId] = useState(null);
-  const [videoState, setVideoState] = useState('loading'); // 'loading' | 'ready' | 'error' | 'unavailable'
-  const [tab, setTab] = useState('watch'); // 'watch' | 'videos' | 'narrate'
+  const [videoState, setVideoState] = useState(isPublicSample ? 'unavailable' : 'loading');
+  const [tab, setTab] = useState(isPublicSample ? 'narrate' : 'watch');
 
   // TTS state
   const [playing, setPlaying] = useState(false);
@@ -4930,6 +4945,11 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   // ── Fetch YouTube video ──────────────────────────────────────
   useEffect(() => {
     if (!title) return;
+    if (isPublicSample) {
+      setVideoState('unavailable');
+      setTab('narrate');
+      return;
+    }
     if (prebakedVideoId) {
       setVideoId(prebakedVideoId);
       setVideoState('ready');
@@ -4968,7 +4988,7 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
         }
       })
       .catch(() => { setVideoState('unavailable'); setTab('narrate'); });
-  }, [title, grade, course, country, language, prebakedVideoId]);
+  }, [title, grade, course, country, language, prebakedVideoId, isPublicSample]);
 
   // ── TTS helpers ──────────────────────────────────────────────
   useEffect(() => {
@@ -5036,7 +5056,8 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   const cur = segments[segIdx] || segments[0];
   const imgSrc = (lessonImages && lessonImages.length > 0)
     ? lessonImages[segIdx % lessonImages.length]
-    : 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80';
+    : buildTopicImageUrl(title, course, segIdx);
+  const diagramMode = /\.svg(\?|$)/i.test(String(imgSrc || ''));
   const totalWords = segments.reduce((sum, s) => sum + s.body.split(/\s+/).length, 0);
   const totalSecs = Math.round(totalWords / 2.4);
   const durationLabel = `~${Math.floor(totalSecs / 60)}:${String(totalSecs % 60).padStart(2, '0')}`;
@@ -5075,7 +5096,11 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
           )}
           {videoState === 'unavailable' && (
             <div className="lvp-embed-placeholder">
-              <p>No pre-baked video is available yet. Use the <strong>Listen</strong> tab for the in-course narrated lesson.</p>
+              {lessonImages?.length ? (
+                <img src={lessonImages[0]} alt={diagramCaption(lessonImages[0], title)} style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#e8f1ff' }} />
+              ) : (
+                <p>Use the <strong>Listen</strong> tab for the in-course narrated lesson and classroom diagrams.</p>
+              )}
             </div>
           )}
         </div>
@@ -5084,9 +5109,9 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
       {/* ── Listen tab ── */}
       {tab === 'narrate' && (
         <>
-          <div className="lvp-screen">
-            <img src={imgSrc} alt="" className="lvp-bg-img"
-              onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80'; }} />
+          <div className={`lvp-screen${diagramMode ? ' is-diagram' : ''}`}>
+            <img src={imgSrc} alt={diagramCaption(imgSrc, title)} className="lvp-bg-img"
+              onError={(e) => { e.target.src = buildTopicImageUrl(title, course, 0); }} />
             <div className="lvp-dim" />
             <div className="lvp-captions">
               <span className="lvp-eyebrow">{cur.eyebrow} · {segIdx + 1} of {segments.length}</span>
@@ -5390,6 +5415,21 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
           </div>
 
           <StudentLessonArticle lesson={lesson} topic={topic} />
+
+          {showMedia && lessonImages.length > 0 && (
+            <div className="lesson-diagram-gallery">
+              <h2>Classroom diagrams</h2>
+              <p>Purpose-built visuals for this lesson — character, setting, plot, or lab setup — not stock filler.</p>
+              <div className="lesson-diagram-grid">
+                {lessonImages.map((src) => (
+                  <figure key={src}>
+                    <img src={src} alt={diagramCaption(src, lesson.title)} />
+                    <figcaption>{diagramCaption(src, lesson.title)}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
 
           <LessonVideoPlayer lesson={lesson} topic={topic} lessonImages={lessonImages} />
 

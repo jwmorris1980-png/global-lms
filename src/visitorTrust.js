@@ -320,9 +320,7 @@ export const READING_SAMPLE_LESSON = {
   ].join('\n'),
   quiz: readingQuiz,
   media: {
-    images: CURATED_TOPIC_IMAGES.reading,
-    video: 'https://www.youtube.com/results?search_query=grade+5+figurative+language+metaphor+simile+story+elements',
-    videoId: 'Z4eQSFdCqJ0'
+    images: CURATED_TOPIC_IMAGES.reading
   },
   standards: [
     { code: 'RL.5.3', description: 'Compare and contrast two or more characters, settings, or events in a story, drawing on specific details in the text.' },
@@ -422,9 +420,7 @@ export const PHYSICS_SAMPLE_LESSON = {
   ].join('\n'),
   quiz: physicsQuiz,
   media: {
-    images: CURATED_TOPIC_IMAGES.physics,
-    video: 'https://www.youtube.com/results?search_query=unbalanced+forces+newton+first+law+cart+inquiry+high+school',
-    videoId: 'CQYELiTtUs8'
+    images: CURATED_TOPIC_IMAGES.physics
   },
   standards: [
     { code: 'HS-PS2-1', description: 'Analyze data to support the claim that Newton’s second law of motion describes the mathematical relationship among the net force on a macroscopic object, its mass, and its acceleration.' },
