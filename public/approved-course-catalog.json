@@ -1,0 +1,5190 @@
+{
+  "contract": "commercial-v1",
+  "lessons": [
+    {
+      "id": "7d35acea51943fafc4e56987a3553db4",
+      "title": "A Century of Artistic Revolution: From Impressionism to Abstract Expressionism",
+      "topic": "Modern Art Movements: Impressionism to Abstract Expressionism",
+      "course": "Advanced Art History",
+      "subject": "Art History",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "117.3(b)(1)(A)",
+          "framework": "Texas Essential Knowledge and Skills for Art"
+        },
+        {
+          "code": "117.3(b)(1)(B)",
+          "framework": "Texas Essential Knowledge and Skills for Art"
+        },
+        {
+          "code": "117.3(b)(1)(C)",
+          "framework": "Texas Essential Knowledge and Skills for Art"
+        },
+        {
+          "code": "117.3(b)(3)(A)",
+          "framework": "Texas Essential Knowledge and Skills for Art"
+        },
+        {
+          "code": "117.3(b)(4)(B)",
+          "framework": "Texas Essential Knowledge and Skills for Art"
+        }
+      ]
+    },
+    {
+      "id": "7435e59b6e712ada92909a41c3da85bb",
+      "title": "Grade 12 Computer Science: Digital Superhighways and Guardians - Understanding Networks and Cybersecurity",
+      "topic": "Computer Networking & Cybersecurity Fundamentals (OSI/TCP-IP Models, Network Protocols, Threats, Safeguards)",
+      "course": "Advanced Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 12",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "3A-NI-04",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "3A-NI-05",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "3A-NI-06",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "20f6a3f7a87c00f0868fae305c9fe09e",
+      "title": "Stacks, Queues, and Linked Lists",
+      "topic": "Advanced Programming & Data Structures",
+      "course": "Advanced Programming",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3A"
+        },
+        {
+          "code": "CSTA.3B-AP-12",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3B"
+        },
+        {
+          "code": "CSTA.3B-AP-14",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3B"
+        }
+      ]
+    },
+    {
+      "id": "ce73ff8ce7eae360ad4c78d75870e960",
+      "title": "Mastering Scientific Inquiry: Scientific Modeling, Data Analysis, and Research Design",
+      "topic": "Scientific Modeling, Data Analysis, and Research Design",
+      "course": "Advanced Science Practices",
+      "subject": "Science",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.HS-ETS1-3",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.Science Practice 2",
+          "framework": "NGSS Science and Engineering Practices"
+        },
+        {
+          "code": "NGSS.Science Practice 4",
+          "framework": "NGSS Science and Engineering Practices"
+        },
+        {
+          "code": "NGSS.Science Practice 7",
+          "framework": "NGSS Science and Engineering Practices"
+        }
+      ]
+    },
+    {
+      "id": "55f613dddd3f42cae5694b54a5aa1900",
+      "title": "Exploring Exponential and Logarithmic Functions: Growth, Decay, and Their Inverses",
+      "topic": "Exponential and Logarithmic Functions",
+      "course": "Algebra 2 / Precalculus",
+      "subject": "Mathematics",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "MA.912.AR.5.1",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "MA.912.AR.5.2",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "MA.912.AR.5.3",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "MA.912.AR.5.4",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "MA.912.AR.5.5",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        }
+      ]
+    },
+    {
+      "id": "d3cd03921a3c44cabd9e11c7a83cbad2",
+      "title": "Quadratic Functions and Equations: Forms, Attributes, and Solutions",
+      "topic": "Quadratic Functions and Equations",
+      "course": "Algebra II",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS A2.4(B)",
+          "framework": "Texas Essential Knowledge and Skills for Mathematics"
+        },
+        {
+          "code": "TEKS A2.7(A)",
+          "framework": "Texas Essential Knowledge and Skills for Mathematics"
+        },
+        {
+          "code": "TEKS A2.7(D)",
+          "framework": "Texas Essential Knowledge and Skills for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "1d4dd05269d0d314bd98c9a7cffda089",
+      "title": "Unlocking Parabolas: Mastering Quadratic Functions and Equations",
+      "topic": "Quadratic Functions and Equations",
+      "course": "Algebra II",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.HSA-SSE.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSA-REI.B.4",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSF-IF.C.8",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "1bd279aa5704a2f6b66f13ae960967d6",
+      "title": "Art for a New World: Contemporary Art and Global Perspectives (Mid-20th Century to Present)",
+      "topic": "Contemporary Art & Global Perspectives: Mid-20th Century to Present (e.g., Abstract Expressionism, Pop Art, Minimalism, Conceptual Art, Global Contemporary)",
+      "course": "Art History and Contemporary Visual Culture",
+      "subject": "Visual Arts",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.IIIa",
+          "framework": "National Core Arts Standards"
+        },
+        {
+          "code": "VA:Re8.1.IIIa",
+          "framework": "National Core Arts Standards"
+        },
+        {
+          "code": "VA:Cn11.1.IIIa",
+          "framework": "National Core Arts Standards"
+        }
+      ]
+    },
+    {
+      "id": "d431d9e072b9ec954d8a8ea4e815f6af",
+      "title": "Ciberseguridad y conceptos fundamentales de redes",
+      "topic": "Cybersecurity Fundamentals and Network Concepts",
+      "course": "Bachillerato: Tecnologias de la Informacion y Comunicacion",
+      "subject": "Tecnologia y ciudadania digital",
+      "grade": "Grade 12",
+      "country": "Mexico",
+      "state": "",
+      "language": "Spanish",
+      "standards": [
+        {
+          "code": "Mexico EMS TIC 1",
+          "framework": "Mexico bachillerato digital competency objectives from source lesson"
+        },
+        {
+          "code": "Mexico EMS TIC 2",
+          "framework": "Mexico bachillerato digital competency objectives from source lesson"
+        },
+        {
+          "code": "Mexico EMS TIC 3",
+          "framework": "Mexico bachillerato digital competency objectives from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "2769321b7e0eee072fe9747b34fd8ea9",
+      "title": "Navigating the Digital Frontier: Networks, Internet, and Cybersecurity",
+      "topic": "Networks, Internet & Cybersecurity",
+      "course": "California Grade 10 Computer Science and Digital Literacy",
+      "subject": "Computer Science",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CA CS 9-12.NI.01",
+          "framework": "California Computer Science Standards"
+        },
+        {
+          "code": "CA CS 9-12.NI.02",
+          "framework": "California Computer Science Standards"
+        },
+        {
+          "code": "CA CS 9-12.CY.01",
+          "framework": "California Computer Science Standards"
+        },
+        {
+          "code": "CA CS 9-12.CY.03",
+          "framework": "California Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "faacd503887e470da2f40295198bdea6",
+      "title": "Art in a Changing World: From Baroque Grandeur to Romantic Emotion",
+      "topic": "Art in a Changing World: Baroque to Romanticism",
+      "course": "California Grade 9 Visual Arts and World History",
+      "subject": "Visual Arts",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Cn11.1.I",
+          "framework": "National Core Arts Standards / California Arts Alignment"
+        },
+        {
+          "code": "VA:Re7.2.I",
+          "framework": "National Core Arts Standards / California Arts Alignment"
+        },
+        {
+          "code": "VA:Re8.1.I",
+          "framework": "National Core Arts Standards / California Arts Alignment"
+        },
+        {
+          "code": "HSS-9.1",
+          "framework": "California History-Social Science Standards"
+        },
+        {
+          "code": "HSS-9.5",
+          "framework": "California History-Social Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "9b1bf8f8716e0a51b88b9a5820981389",
+      "title": "Medieval to Renaissance Art: Faith, Humanism, and Artistic Innovation in Europe",
+      "topic": "Medieval to Renaissance Art: Faith, Humanism, and Artistic Innovation",
+      "course": "Canadian Grade 10 Humanities and Art History",
+      "subject": "Art History",
+      "grade": "Grade 10",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CA-G10-AH-HTC-1",
+          "framework": "Canadian Grade 10 Humanities and Arts curriculum expectations adapted from source lesson"
+        },
+        {
+          "code": "CA-G10-AH-HTC-2",
+          "framework": "Canadian Grade 10 Humanities and Arts curriculum expectations adapted from source lesson"
+        },
+        {
+          "code": "CA-G10-AH-VA-1",
+          "framework": "Canadian Grade 10 Visual Arts analysis expectations adapted from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "3c0bc2a9a8e2cf1a5f5adbfd12f9999f",
+      "title": "Building Robust Software: Object-Oriented Programming Principles",
+      "topic": "Advanced Programming Concepts & Object-Oriented Programming (OOP)",
+      "course": "Canadian Grade 11 Software Development and Object-Oriented Programming",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ICS4U-C2.1",
+          "framework": "Ontario Computer Science expectations cited in source lesson"
+        },
+        {
+          "code": "ICS4U-D2.1",
+          "framework": "Ontario Computer Science expectations cited in source lesson"
+        },
+        {
+          "code": "ADST-11-12-CS-DEV",
+          "framework": "Canadian ADST computer science expectations adapted from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "5b4ce3d96b58773e6ee7504513700aa5",
+      "title": "Digital Guardians: Navigating Cybersecurity, Networks, and Your Data Privacy",
+      "topic": "Cybersecurity, Networks, and Data Privacy",
+      "course": "Computer Science and Digital Fluency",
+      "subject": "Computer Science",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CT.9-12.AP.6",
+          "framework": "New York State Computer Science and Digital Fluency Learning Standards"
+        },
+        {
+          "code": "CT.9-12.AP.7",
+          "framework": "New York State Computer Science and Digital Fluency Learning Standards"
+        },
+        {
+          "code": "DC.9-12.D.1",
+          "framework": "New York State Computer Science and Digital Fluency Learning Standards"
+        }
+      ]
+    },
+    {
+      "id": "71cfb47c5f1ff87dcdd277ad6a69518e",
+      "title": "Navigating the Digital Highway: Networking Fundamentals and Web Technologies",
+      "topic": "Networking Fundamentals and Web Technologies",
+      "course": "Computer Science and Information Technology",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CP.CS.11.1",
+          "framework": "Florida B.E.S.T. Standards Alignment adapted in source lesson"
+        },
+        {
+          "code": "CP.CS.11.2",
+          "framework": "Florida B.E.S.T. Standards Alignment adapted in source lesson"
+        },
+        {
+          "code": "CP.CS.11.3",
+          "framework": "Florida B.E.S.T. Standards Alignment adapted in source lesson"
+        },
+        {
+          "code": "CP.CS.11.4",
+          "framework": "Florida B.E.S.T. Standards Alignment adapted in source lesson"
+        }
+      ]
+    },
+    {
+      "id": "d8887a4c86348a564529f25870a16068",
+      "title": "Introduction to Data Structures and Algorithms",
+      "topic": "Data Structures and Algorithms",
+      "course": "Computer Science I",
+      "subject": "Computer Science",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS 113.43(c)(4)(A)",
+          "framework": "Texas Essential Knowledge and Skills, Computer Science I"
+        },
+        {
+          "code": "TEKS 113.43(c)(4)(B)",
+          "framework": "Texas Essential Knowledge and Skills, Computer Science I"
+        },
+        {
+          "code": "TEKS 113.43(c)(5)(A)",
+          "framework": "Texas Essential Knowledge and Skills, Computer Science I"
+        },
+        {
+          "code": "TEKS 113.43(c)(5)(B)",
+          "framework": "Texas Essential Knowledge and Skills, Computer Science I"
+        }
+      ]
+    },
+    {
+      "id": "ab42e1ac52d27031b6b4413d4bfaf1e1",
+      "title": "Polynomial Operations, Factoring, and Quadratic Equations",
+      "topic": "Polynomial Operations, Factoring, and Quadratic Equations by Factoring",
+      "course": "Florida Algebra 1",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "MA.912.AR.1.1",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "MA.912.AR.1.2",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "MA.912.AR.3.5",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        }
+      ]
+    },
+    {
+      "id": "fddc824273c4d384f0bf49b57ee14115",
+      "title": "Ecosystem Dynamics: Energy, Interactions, and Human Impact",
+      "topic": "Ecology and Interdependence of Life",
+      "course": "Florida Biology",
+      "subject": "Biology",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SC.912.L.17.1",
+          "framework": "Florida B.E.S.T. Science Standards"
+        },
+        {
+          "code": "SC.912.L.17.4",
+          "framework": "Florida B.E.S.T. Science Standards"
+        },
+        {
+          "code": "SC.912.L.17.5",
+          "framework": "Florida B.E.S.T. Science Standards"
+        },
+        {
+          "code": "SC.912.L.17.9",
+          "framework": "Florida B.E.S.T. Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "b39491972259b8d6fe79949071be9395",
+      "title": "Exploring Data Science and the Societal Impacts of Artificial Intelligence",
+      "topic": "Data Science Introduction and Societal Impacts of AI",
+      "course": "Florida Grade 11 Data Science, AI, and Society",
+      "subject": "Interdisciplinary Technology",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SS.912.A.7.8",
+          "framework": "Florida B.E.S.T. Standards"
+        },
+        {
+          "code": "MA.912.DP.2.1",
+          "framework": "Florida B.E.S.T. Standards"
+        },
+        {
+          "code": "ELA.11.C.3.1",
+          "framework": "Florida B.E.S.T. Standards"
+        },
+        {
+          "code": "ELA.11.C.1.3",
+          "framework": "Florida B.E.S.T. Standards"
+        }
+      ]
+    },
+    {
+      "id": "410824c58cbd4b353ae909e34c7c3544",
+      "title": "Whole Numbers: Place Value, Operations, and Problem Solving",
+      "topic": "Whole Numbers: Place Value, Operations, and Problem Solving",
+      "course": "Florida Grade 4 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 4",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "MA.4.NSO.1.1",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.4.NSO.1.2",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.4.NSO.2.2",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.4.NSO.2.3",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.4.NSO.2.4",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "e4baa23ace7c68704c7cf35bbea7dfba",
+      "title": "Mastering Algebraic Manipulation and Functions: GCSE Higher Skills",
+      "topic": "Algebraic Manipulation and Functions",
+      "course": "GCSE Higher Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "UK GCSE Algebra A1",
+          "framework": "UK GCSE Mathematics algebra objectives from source lesson"
+        },
+        {
+          "code": "UK GCSE Algebra A4",
+          "framework": "UK GCSE Mathematics algebra objectives from source lesson"
+        },
+        {
+          "code": "UK GCSE Algebra A5",
+          "framework": "UK GCSE Mathematics algebra objectives from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "99094c7cb08f292737edbd0989f36b1f",
+      "title": "Circles Unveiled: Arcs, Angles, Tangents, Chords, and Equations",
+      "topic": "Circles and Their Properties (Arcs, Angles, Chords, Tangents, Secants, Equations of Circles)",
+      "course": "Geometry",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.HSG-C.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSG-C.B.5",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSG-GPE.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSG-C.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "003e3fe012a39f30ae7c22a87eb54d0a",
+      "title": "Computing Adventures: Hardware, Software, Input, and Output",
+      "topic": "Introduction to Computer Systems (Hardware & Software Basics)",
+      "course": "Grade 1 Computer Science and Technology",
+      "subject": "Computer Science",
+      "grade": "Grade 1",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.1A-CS-01",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.1A-CS-02",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.1A-IC-17",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "00399d9fbdf5132cc57ca51bdf7037b3",
+      "title": "Rhyme Time Fun: Exploring Poems Together",
+      "topic": "Poetry & Rhyme Fun",
+      "course": "Grade 1 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 1",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.1.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RF.1.2.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RF.1.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.1.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "0055bb13f6471e974e4af8f0d2bdd8b1",
+      "title": "Graphing Our Fun: Collecting, Representing, and Interpreting Data",
+      "topic": "Understanding Data",
+      "course": "Grade 1 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 1",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "FL.MA.1.DP.1.1",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.1.MD.C.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "32a968718f0a2b6d3adb0b448b2cd23f",
+      "title": "Place Value, Tens, Ones, and Counting to 120",
+      "topic": "Number and Operations in Base Ten: Place Value and Counting to 120",
+      "course": "Grade 1 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 1",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.1.NBT.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.1.NBT.B.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.1.NBT.B.2.A",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "4f89737d4723681ac5a194afd1e6c36b",
+      "title": "Our World Map Adventure: Continents and Oceans",
+      "topic": "Our World Map: Continents and Oceans",
+      "course": "Grade 1 Social Studies",
+      "subject": "Social Studies",
+      "grade": "Grade 1",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS Social Studies 1.4A",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "TEKS Social Studies 1.5A",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "TEKS Social Studies 1.5B",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "aad556b6160af7e0dc8a70bc04d1e203",
+      "title": "Mastering Complex Equations and Inequalities",
+      "topic": "Solving Equations and Inequalities (Polynomial, Rational, Radical, Absolute Value)",
+      "course": "Grade 10 Algebra 2",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "MA.912.AR.1.5",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.AR.3.3",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.AR.4.3",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.AR.5.2",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "65bd874536b35f97e71a7ea06d121df5",
+      "title": "The Enduring Legacy: Art and Architecture of Ancient Civilizations",
+      "topic": "Art of Ancient Civilizations: Mesopotamia, Egypt, Greece, and Rome",
+      "course": "Grade 10 Art History",
+      "subject": "Visual Arts and World History",
+      "grade": "Grade 10",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Source Grade 10 Art History Competency 1",
+          "framework": "Canada-aligned source lesson competencies"
+        },
+        {
+          "code": "Source Grade 10 Art History Competency 2",
+          "framework": "Canada-aligned source lesson competencies"
+        },
+        {
+          "code": "Source Grade 10 Art History Competency 3",
+          "framework": "Canada-aligned source lesson competencies"
+        }
+      ]
+    },
+    {
+      "id": "21940de6000f2dc968907a8a72e4040c",
+      "title": "Cybersecurity, Ethics, and Impact: Protecting Our Digital World",
+      "topic": "Cybersecurity, Ethics & Impact",
+      "course": "Grade 10 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 10",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA 3A-NI-05",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-NI-06",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-IC-24",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "e654af6a41469f79b64d7f5bbb52939a",
+      "title": "Introduction to Programming with Python: Your First Steps into Coding",
+      "topic": "Introduction to Programming with Python",
+      "course": "Grade 10 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 10",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA 3A-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-AP-23",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "bc5e5ad9f9c07a7b0d7e30414a9520fe",
+      "title": "Decoding the Depths: Interpreting Complex Literary Texts",
+      "topic": "Interpreting Complex Literary Texts",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ELA.10.R.1.3",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.10.R.1.4",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.10.R.3.1",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "4d08ec2021335b75533cf1df9af08080",
+      "title": "Deepening Literary Analysis: Elements, Devices, and Techniques",
+      "topic": "Deepening Literary Analysis: Elements, Devices, and Techniques",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "a8d255c9180bffe8846b7a50fb686330",
+      "title": "Foundations of Narrative: Character, Plot, Setting, and Point of View",
+      "topic": "Foundations of Narrative: Character, Plot, Setting, and Point of View",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "c76be9675cddffdf9874160e1d4ac79c",
+      "title": "From Spark to Polish: Mastering the Writer's Process",
+      "topic": "The Writer's Process: Idea Generation, Revision, & Workshop",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "ae0e389b6dbf4c974688ebeb22a58598",
+      "title": "Mastering the Art of Critical Reading: Unlocking Deeper Meaning",
+      "topic": "Developing Critical Reading and Interpretive Skills",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RI.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.9-10.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.9-10.8",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "debe50d119025792fc7440371bbac405",
+      "title": "The Shifting Canvas: Neoclassicism, Romanticism, Realism, and Impressionism in the Long 19th Century",
+      "topic": "The Long 19th Century: Neoclassicism, Romanticism, Realism, and Impressionism",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ELA.10.R.3.1",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.10.R.1.2",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.10.V.1.3",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "87a94dcd01c6a8db2cdefdbf00e0fe98",
+      "title": "The Writing Process: Drafting, Revision, and Editing",
+      "topic": "The Writing Process: Drafting, Revision, and Editing",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.9-10.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "bf8afab0287ce6923d290044b9cbd8b7",
+      "title": "Theme, Plot, and Complex Character Development",
+      "topic": "Theme, Plot, and Complex Character Development",
+      "course": "Grade 10 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.2",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.3",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.5",
+          "framework": "California Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "acb7452f78076fadf1add85aa0794b96",
+      "title": "Climate Change and Ecosystem Dynamics: A Canadian Perspective",
+      "topic": "Climate Change and Ecosystem Dynamics",
+      "course": "Grade 10 Environmental Science",
+      "subject": "Science",
+      "grade": "Grade 10",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.HS-ESS3-5",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-ESS3-6",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-LS2-6",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-LS2-7",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "294e0cb12c75a98b26f7c622de654ad1",
+      "title": "Ecologia, Biodiversidad y Sostenibilidad Ambiental: Desafios y Soluciones para Mexico y el Mundo",
+      "topic": "Ecology, Biodiversity, and Environmental Sustainability",
+      "course": "Grade 10 Environmental Science",
+      "subject": "Science",
+      "grade": "Grade 12",
+      "country": "Mexico",
+      "state": "",
+      "language": "Spanish",
+      "standards": [
+        {
+          "code": "NGSS.HS-ESS3-5",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-ESS3-6",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-LS2-6",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-LS2-7",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "4668e39765885d7831e57b50b4d8e2e1",
+      "title": "Solving Real-World Problems with Probability and Statistics",
+      "topic": "Probability and Statistics for Problem Solving",
+      "course": "Grade 10 GCSE Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "UK.NC.KS4.Probability",
+          "framework": "UK National Curriculum Mathematics"
+        },
+        {
+          "code": "UK.NC.KS4.Statistics",
+          "framework": "UK National Curriculum Mathematics"
+        },
+        {
+          "code": "GCSE.Maths.Statistics",
+          "framework": "GCSE Mathematics Higher Tier"
+        },
+        {
+          "code": "GCSE.Maths.Probability",
+          "framework": "GCSE Mathematics Higher Tier"
+        }
+      ]
+    },
+    {
+      "id": "495414a3b099aa9c1f79de77b0c54aa1",
+      "title": "Mechanics: Motion, Forces, Work, Energy, and Power",
+      "topic": "Mechanics: Motion, Forces, and Energy",
+      "course": "Grade 10 Physics",
+      "subject": "Physics",
+      "grade": "Grade 10",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS HS-PS2-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS HS-PS2-2",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS HS-PS3-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS HS-PS3-2",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "4f5e70e72ba5cca1703ec4c35c0af237",
+      "title": "World Wars, Revolution, and Totalitarianism, 1914-1945",
+      "topic": "The Era of World Wars and Totalitarianism (c. 1914-1945): World War I, Russian Revolution, Interwar Period, and World War II",
+      "course": "Grade 10 World History Studies",
+      "subject": "World History",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS.WH.10.2A",
+          "framework": "Texas Essential Knowledge and Skills for World History Studies"
+        },
+        {
+          "code": "TEKS.WH.10.4A",
+          "framework": "Texas Essential Knowledge and Skills for World History Studies"
+        },
+        {
+          "code": "TEKS.WH.10.12A",
+          "framework": "Texas Essential Knowledge and Skills for World History Studies"
+        },
+        {
+          "code": "TEKS.WH.10.13A",
+          "framework": "Texas Essential Knowledge and Skills for World History Studies"
+        }
+      ]
+    },
+    {
+      "id": "4510631056616a99ea8a450f6ee39023",
+      "title": "Journey Through Time: From Ancient Civilizations to Gothic Grandeur",
+      "topic": "From Ancient Civilizations to the Gothic Era",
+      "course": "Grade 11 Canadian History",
+      "subject": "History and Art History",
+      "grade": "Grade 11",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Canada Grade 11 Historical Thinking: Continuity and Change",
+          "framework": "General Canadian Grade 11 History expectations from source lesson"
+        },
+        {
+          "code": "Canada Grade 11 Cause and Consequence",
+          "framework": "General Canadian Grade 11 History expectations from source lesson"
+        },
+        {
+          "code": "Canada Grade 11 Cultural Structures",
+          "framework": "General Canadian Grade 11 History expectations from source lesson"
+        },
+        {
+          "code": "Canada Grade 11 Source Analysis",
+          "framework": "General Canadian Grade 11 History expectations from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "8c4d90220e6d707dba202c48fb4bf694",
+      "title": "Fundamentals of Programming & Computational Thinking: Building Logical Solutions",
+      "topic": "Fundamentals of Programming and Computational Thinking",
+      "course": "Grade 11 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA 3A-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-AP-14",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-AP-15",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "c0e2fcae886db3d4df26c945a8c25a24",
+      "title": "The Digital Deep Dive: Computer Systems, Networks, and Binary Representation",
+      "topic": "Computer Systems, Networking & Binary Representation",
+      "course": "Grade 11 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.3A-CS-01",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-CS-02",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-NI-04",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-DA-09",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "77bf7f7d331aa2e5b49e89d97868a6d9",
+      "title": "Leccion: Fundamentos de Redes de Computadoras y Principios de Ciberseguridad",
+      "topic": "Computer Networks and Cybersecurity Principles",
+      "course": "Grade 11 Computer Science and Digital Literacy",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "Mexico",
+      "state": "",
+      "language": "Spanish",
+      "standards": [
+        {
+          "code": "CSTA 3A-NI-04",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-NI-05",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-NI-06",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-NI-07",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "1c2a38c8d18d7ada49dc78915847e143",
+      "title": "Advanced Literary Analysis: Genres, Structure, and Meaning",
+      "topic": "Advanced Literary Analysis: Genres, Structure, and Elements",
+      "course": "Grade 11 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 11",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "b5964dd86fdcf1fe7ea371a5c70a7d28",
+      "title": "Crafting Narrative: Developing Plot, Character, Setting, and Point of View in Short Stories",
+      "topic": "Crafting Narrative: Developing Plot, Character, Setting, and Point of View in Short Stories",
+      "course": "Grade 11 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 11",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "03449d9c29413f90e8e918d791e02b1b",
+      "title": "Literary Foundations: Craft, Voice, and Meaning in Narrative",
+      "topic": "Foundations of Literary Craft and Voice",
+      "course": "Grade 11 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS ELAR 11.8(A)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS ELAR 11.9(A)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS ELAR 11.9(B)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        }
+      ]
+    },
+    {
+      "id": "489bc56036a785c1f483dbb6be32e044",
+      "title": "Fundamentos del Desarrollo Web (Lado del Cliente): HTML, CSS y la Magia de la Interaccion",
+      "topic": "Web Development Fundamentals (Client-Side)",
+      "course": "Grade 11 Web Development",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "Mexico",
+      "state": "",
+      "language": "Spanish",
+      "standards": [
+        {
+          "code": "CSTA.3A-CS-01",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-IC-25",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "38f91db8853bc897c859c58209759b97",
+      "title": "Introduction to Web Development: Building Blocks of the Digital World",
+      "topic": "Web Development Fundamentals",
+      "course": "Grade 11 Web Development",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.3A-CS-01",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-IC-25",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "d9d7f36dfa6249661792bb0a66c569f8",
+      "title": "Ideologies and Global Conflict, 1900-1945",
+      "topic": "Ideologies, Conflict, and the Global Wars of the Early 20th Century (c. 1900-1945)",
+      "course": "Grade 11 World History",
+      "subject": "World History",
+      "grade": "Grade 11",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "D2.His.1.9-12",
+          "framework": "College, Career, and Civic Life C3 Framework"
+        },
+        {
+          "code": "D2.His.2.9-12",
+          "framework": "College, Career, and Civic Life C3 Framework"
+        },
+        {
+          "code": "D2.His.14.9-12",
+          "framework": "College, Career, and Civic Life C3 Framework"
+        }
+      ]
+    },
+    {
+      "id": "e97281ab1a365be15524424b936302c0",
+      "title": "Renaissance to Rococo: Europe's Artistic Rebirths and Refinements",
+      "topic": "Renaissance to Rococo: Europe's Artistic Rebirths & Refinements (14th-18th Century)",
+      "course": "Grade 11 World History",
+      "subject": "World History and Art History",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SS.912.W.2.7",
+          "framework": "Florida B.E.S.T. Standards for Social Studies"
+        },
+        {
+          "code": "SS.912.W.3.5",
+          "framework": "Florida B.E.S.T. Standards for Social Studies"
+        },
+        {
+          "code": "SS.912.W.4.4",
+          "framework": "Florida B.E.S.T. Standards for Social Studies"
+        },
+        {
+          "code": "SS.912.W.1.3",
+          "framework": "Florida B.E.S.T. Standards for Social Studies"
+        },
+        {
+          "code": "SS.912.W.1.4",
+          "framework": "Florida B.E.S.T. Standards for Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "51d9e15d9195603699aed2dcf05edadb",
+      "title": "Grade 12 English: Advanced Genre Studies - Deconstructing Drama, Poetry, and Prose",
+      "topic": "Genre Studies: Drama, Poetry, and Prose (Advanced)",
+      "course": "Grade 12 Advanced Literature and Genre Studies",
+      "subject": "English Language Arts",
+      "grade": "Grade 12",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-Literacy.RL.11-12.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-Literacy.RL.11-12.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-Literacy.RL.11-12.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-Literacy.W.11-12.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "5376789a86f79954b3814db09c135294",
+      "title": "Exploring Sacred Expressions: Medieval, Byzantine, and Ethiopian Christian Art",
+      "topic": "Medieval and Byzantine Art, with an Emphasis on Ethiopian Christian Art",
+      "course": "Grade 12 Art History",
+      "subject": "Visual Arts",
+      "grade": "Grade 12",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.IIIa",
+          "framework": "National Core Arts Standards - Visual Arts"
+        },
+        {
+          "code": "VA:Re8.1.IIIa",
+          "framework": "National Core Arts Standards - Visual Arts"
+        },
+        {
+          "code": "VA:Cn11.1.IIIa",
+          "framework": "National Core Arts Standards - Visual Arts"
+        }
+      ]
+    },
+    {
+      "id": "78952b1033a8cee0b8e5ebee14c71508",
+      "title": "Foundations of Art History: Prehistoric to Roman Worlds",
+      "topic": "Foundations of Art History & Global Ancient Worlds (Prehistoric to Roman Empire)",
+      "course": "Grade 12 Art History",
+      "subject": "Art History",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.IIIa",
+          "framework": "National Core Arts Standards: Visual Arts"
+        },
+        {
+          "code": "VA:Re8.1.IIIa",
+          "framework": "National Core Arts Standards: Visual Arts"
+        },
+        {
+          "code": "VA:Cn11.1.IIIa",
+          "framework": "National Core Arts Standards: Visual Arts"
+        }
+      ]
+    },
+    {
+      "id": "9258c955c12b129f36f585d7addfab30",
+      "title": "Lines, Planes, and Intersections in Three-Dimensional Space",
+      "topic": "Vectors and 3D Geometry",
+      "course": "Grade 12 Calculus and Vectors",
+      "subject": "Mathematics",
+      "grade": "Grade 12",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ON-MCV4U-C2.1",
+          "framework": "Ontario Grade 12 Calculus and Vectors expectations adapted from the source lesson"
+        },
+        {
+          "code": "ON-MCV4U-C2.2",
+          "framework": "Ontario Grade 12 Calculus and Vectors expectations adapted from the source lesson"
+        },
+        {
+          "code": "ON-MCV4U-C2.3",
+          "framework": "Ontario Grade 12 Calculus and Vectors expectations adapted from the source lesson"
+        }
+      ]
+    },
+    {
+      "id": "c841bd8aa588d5b3650ef3b0e916535a",
+      "title": "From Colonies to Global Voices: Decolonization and the Emergence of the Global South",
+      "topic": "Decolonization and the Emergence of the Global South",
+      "course": "Grade 12 Canadian Social Studies",
+      "subject": "History and Global Politics",
+      "grade": "Grade 12",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Canada Grade 12 Historical Thinking: Cause and Consequence",
+          "framework": "General Canadian Grade 12 Social Studies/History expectations from source lesson"
+        },
+        {
+          "code": "Canada Grade 12 Global Interconnections",
+          "framework": "General Canadian Grade 12 Social Studies/History expectations from source lesson"
+        },
+        {
+          "code": "Canada Grade 12 Economic Development and Inequality",
+          "framework": "General Canadian Grade 12 Social Studies/History expectations from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "c7236c8d72209dbc60fbb1f4d99981cc",
+      "title": "Advanced Revision, Portfolio Development, and Publication Pathways",
+      "topic": "Revision, Portfolio & Publication Strategies",
+      "course": "Grade 12 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.5",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.4",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.6",
+          "framework": "California Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "b56c16e4df64098063b6205a8caed67b",
+      "title": "Crafting Worlds: Advanced Narrative Techniques in Short Stories and Novellas",
+      "topic": "Narrative Craft: Advanced Fiction Writing (Short Stories & Novellas)",
+      "course": "Grade 12 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.3.B",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.11-12.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "748e3a4381c7c59619dcd4e9abd28939",
+      "title": "From Draft to Debut: Revision, Workshop, and Publication",
+      "topic": "Revision, Workshop, and Publication: Refining Work and Understanding the Literary World (Aligned with Florida B.E.S.T. Standards: ELA.12.C.2.1, ELA.12.C.3.1, ELA.12.C.4.1)",
+      "course": "Grade 12 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.11-12.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.11-12.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "39cf05f07bbfa490b84c057c71776700",
+      "title": "Unveiling Layers: Mastering Advanced Textual Analysis and Interpretation",
+      "topic": "Advanced Textual Analysis and Interpretation",
+      "course": "Grade 12 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.11-12.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "ebc3d46acb05b727b590b36c5b11eaec",
+      "title": "Poetry and Poetic Devices: Exploring Forms and Figurative Language",
+      "topic": "Poetry and Poetic Devices: Exploring Forms and Figurative Language",
+      "course": "Grade 12 English Literature",
+      "subject": "English Language Arts",
+      "grade": "Grade 12",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Ethiopia G12 ELA Literature 1",
+          "framework": "Ethiopian Grade 12 English objectives from source lesson"
+        },
+        {
+          "code": "Ethiopia G12 ELA Literature 2",
+          "framework": "Ethiopian Grade 12 English objectives from source lesson"
+        },
+        {
+          "code": "Ethiopia G12 ELA Literature 3",
+          "framework": "Ethiopian Grade 12 English objectives from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "182fdc186f42fc61f6d0f3747204b781",
+      "title": "The Cold War and Bipolar World: A Global and Ethiopian Perspective",
+      "topic": "The Cold War and Bipolar World (1945-1991)",
+      "course": "Grade 12 History",
+      "subject": "World History",
+      "grade": "Grade 12",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Source Ethiopia Grade 12 History Competency 1",
+          "framework": "Ethiopian curriculum alignment from source lesson"
+        },
+        {
+          "code": "Source Ethiopia Grade 12 History Competency 2",
+          "framework": "Ethiopian curriculum alignment from source lesson"
+        },
+        {
+          "code": "Source Ethiopia Grade 12 History Competency 3",
+          "framework": "Ethiopian curriculum alignment from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "7a5af1172e7741fbe825dcd746131a68",
+      "title": "Unlocking Patterns in Sequences and Series",
+      "topic": "Sequences and Series",
+      "course": "Grade 12 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 12",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Ethiopia G12 Mathematics Sequences 1",
+          "framework": "Ethiopian Grade 12 Mathematics objectives from source lesson"
+        },
+        {
+          "code": "Ethiopia G12 Mathematics Sequences 2",
+          "framework": "Ethiopian Grade 12 Mathematics objectives from source lesson"
+        },
+        {
+          "code": "Ethiopia G12 Mathematics Sequences 3",
+          "framework": "Ethiopian Grade 12 Mathematics objectives from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "43fc264d293117536fe07812cabdafe5",
+      "title": "Quantum Mechanics and Cosmic Origins",
+      "topic": "Quantum Mechanics and Cosmology",
+      "course": "Grade 12 Physics and Astronomy",
+      "subject": "Science",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "HS-PS4-3",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "HS-ESS1-2",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "HS-PS4-1",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "42774c92875431f415b22a24ac61d454",
+      "title": "Exploring Mathematical Foundations: Matrices, Vectors, and Limits",
+      "topic": "Matrices, Vectors, and Introduction to Limits",
+      "course": "Grade 12 Precalculus",
+      "subject": "Mathematics",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.HSN.VM.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSN.VM.B.4",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSN.VM.C.8",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSF.IF.B.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "c9da64056b01cdd693d2af7a5705706e",
+      "title": "Vectors, Matrices, and Systems of Equations",
+      "topic": "Vectors, Matrices, and Systems",
+      "course": "Grade 12 Precalculus and Advanced Algebra",
+      "subject": "Mathematics",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "MA.912.AR.4.2",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.AR.5.1",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.AR.5.2",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.GR.5.1",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        },
+        {
+          "code": "MA.912.GR.5.2",
+          "framework": "Florida B.E.S.T. Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "82cfa15f0627dea5d34c571186488840",
+      "title": "Web Development Fundamentals: Understanding Client-Side Scripting, Server-Side Scripting, and APIs",
+      "topic": "Web Development Fundamentals (Client-Side and Server-Side Scripting, APIs)",
+      "course": "Grade 12 Web Development",
+      "subject": "Computer Science",
+      "grade": "Grade 12",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.3A-CS-01",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-IC-25",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "671e69a3acc7bc096a501c8bdca3d434",
+      "title": "From Trenches to Tech: Global Transformation Since 1900",
+      "topic": "The 20th and 21st Centuries: Global Conflicts, New Orders, and Interdependence (c. 1900 CE - Present)",
+      "course": "Grade 12 World History",
+      "subject": "World History",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "D2.His.1.9-12",
+          "framework": "C3 Framework for Social Studies State Standards"
+        },
+        {
+          "code": "D2.His.2.9-12",
+          "framework": "C3 Framework for Social Studies State Standards"
+        },
+        {
+          "code": "D2.His.14.9-12",
+          "framework": "C3 Framework for Social Studies State Standards"
+        }
+      ]
+    },
+    {
+      "id": "c8aaf9de56706c644904ca389d026391",
+      "title": "Making Words Pop: Similes, Onomatopoeia, and Alliteration",
+      "topic": "Literary Devices & Figurative Language",
+      "course": "Grade 2 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 2",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.2.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.2.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.2.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.2.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "04a0a9e73373a00c93ebb97944a184bf",
+      "title": "Painting with Words: Sensory Details and Adjectives",
+      "topic": "Descriptive Writing: Using Sensory Details and Adjectives",
+      "course": "Grade 2 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 2",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.2.3",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.2.1.E",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.2.5",
+          "framework": "Common Core State Standards"
+        }
+      ]
+    },
+    {
+      "id": "1e5ce22f52429afa7ce1e65e6982f1aa",
+      "title": "Matter in Motion: Reversible and Irreversible Changes",
+      "topic": "Changes in Matter",
+      "course": "Grade 2 Science",
+      "subject": "Science",
+      "grade": "Grade 2",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.2-PS1-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.2-PS1-4",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.2.3",
+          "framework": "Common Core State Standards for Speaking and Listening"
+        }
+      ]
+    },
+    {
+      "id": "ae730b8c339f374b1452853010e8e8fa",
+      "title": "Story Elements and Text-Based Comprehension",
+      "topic": "Story Elements and Text-Based Comprehension (Recounting stories, asking/answering questions with text evidence)",
+      "course": "Grade 3 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 3",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.1",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.2",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.3",
+          "framework": "California Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "5b93be596ee9ec5e2adc22088767b72e",
+      "title": "Unlocking Story Secrets: Finding the Message in Fables, Folktales, and Myths",
+      "topic": "Central Message, Theme, and Literary Genres (Fables, folktales, myths; comparing and contrasting stories)",
+      "course": "Grade 3 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 3",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.2",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.9",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.3.1",
+          "framework": "Common Core State Standards"
+        }
+      ]
+    },
+    {
+      "id": "b1faef7865eb74291211e8a201aea24c",
+      "title": "Operations with Whole Numbers: Addition, Subtraction, Multiplication, and Division",
+      "topic": "Operations with Whole Numbers (Addition, Subtraction, Multiplication, Division)",
+      "course": "Grade 3 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 3",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.3.NBT.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.3.OA.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.3.OA.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.3.OA.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "b2fe90bba58df358b0851320cc14ecfa",
+      "title": "Words, Pictures, and Puzzling Phrases: Unlocking Stories!",
+      "topic": "Vocabulary, Figurative Language, and Visuals in Literature (Word meaning in context, illustrations contributing to meaning)",
+      "course": "Grade 3 Reading Literature and Language",
+      "subject": "English Language Arts",
+      "grade": "Grade 3",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.3.7",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.3.4.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.3.5.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "76565bbf3e1d68ca8d65141c871a0c97",
+      "title": "Earth's Dynamic Canvas: Exploring Weathering, Erosion, and Fossils",
+      "topic": "Earth's Changing Surface: Weathering, Erosion, and Fossils",
+      "course": "Grade 4 Earth Science",
+      "subject": "Science",
+      "grade": "Grade 4",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "4-ESS1-1",
+          "framework": "New York State P-12 Science Learning Standards / NGSS"
+        },
+        {
+          "code": "4-ESS2-1",
+          "framework": "New York State P-12 Science Learning Standards / NGSS"
+        },
+        {
+          "code": "3-LS4-1",
+          "framework": "New York State P-12 Science Learning Standards / NGSS supporting standard"
+        }
+      ]
+    },
+    {
+      "id": "ebb6059945d7fe7751a90a3b7bbe6c4a",
+      "title": "Exploring Stories: Point of View, Message, and Culture",
+      "topic": "Analyzing Perspectives, Themes, and Cultural Narratives (RL.4.6, RL.4.9)",
+      "course": "Grade 4 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 4",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.9",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "90375155bdc2245211350354a48b6cc8",
+      "title": "Figurative Fun: Painting Pictures with Words",
+      "topic": "Exploring Figurative Language & Literary Devices",
+      "course": "Grade 4 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 4",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.4.5.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.4.3.D",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.4.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "0d48b841d293ae6dc00f6c5f841b3c38",
+      "title": "Imaginative Storytelling: Fantasy, Fables, and Personal Narratives",
+      "topic": "Imaginative Storytelling: Fantasy, Fables, and Personal Narratives",
+      "course": "Grade 4 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 4",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.4.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.4.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "b64aff534fe7b59fdc54a6ffb82f2210",
+      "title": "Unlocking Story Secrets: Characters, Setting, and Plot Structure",
+      "topic": "Understanding Story Elements & Structure",
+      "course": "Grade 4 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 4",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.4.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "7fb9df8b222e8155629ae1cf0ac34477",
+      "title": "Words in Motion: Poetic Forms and Figurative Language",
+      "topic": "Exploring Poetic Forms and Figurative Language",
+      "course": "Grade 4 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 4",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Florida B.E.S.T. ELA.4.R.1.3",
+          "framework": "Florida B.E.S.T. Standards"
+        },
+        {
+          "code": "Florida B.E.S.T. ELA.4.R.1.4",
+          "framework": "Florida B.E.S.T. Standards"
+        },
+        {
+          "code": "Florida B.E.S.T. ELA.4.V.1.3",
+          "framework": "Florida B.E.S.T. Standards"
+        }
+      ]
+    },
+    {
+      "id": "a70a6ebb78e3078dba99158b4d4181f9",
+      "title": "Lines, Angles, Two-Dimensional Shapes, and Three-Dimensional Solids",
+      "topic": "Geometry and Spatial Understanding",
+      "course": "Grade 4 Geometry",
+      "subject": "Mathematics",
+      "grade": "Grade 4",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.4.G.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.4.G.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.4.G.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "11fd2330625f6c8b4ba5ecf9d9da1591",
+      "title": "Unlocking Author's Secrets: Crafting Meaning with Words, Pictures, and Story Shapes",
+      "topic": "Decoding Author's Craft: Vocabulary, Figurative Language, and Genre Structures (RL.4.4, RL.4.5)",
+      "course": "Grade 4 Reading Literature",
+      "subject": "English Language Arts",
+      "grade": "Grade 4",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "RL.4.4",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "RL.4.5",
+          "framework": "California Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "L.4.5",
+          "framework": "California Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "cfbc7bc259f510197ecaa08777536ffa",
+      "title": "Story Architects: Building Engaging Plots with the Story Mountain",
+      "topic": "Developing Engaging Plots and Story Structure",
+      "course": "Grade 5 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "RL.5.5",
+          "framework": "New York State P-12 Common Core Learning Standards for ELA"
+        },
+        {
+          "code": "W.5.3",
+          "framework": "New York State P-12 Common Core Learning Standards for ELA"
+        },
+        {
+          "code": "W.5.3a",
+          "framework": "New York State P-12 Common Core Learning Standards for ELA"
+        },
+        {
+          "code": "W.5.3c",
+          "framework": "New York State P-12 Common Core Learning Standards for ELA"
+        },
+        {
+          "code": "SL.5.1",
+          "framework": "New York State P-12 Common Core Learning Standards for ELA"
+        }
+      ]
+    },
+    {
+      "id": "f90973fe835de99bb4ff66fee05471dd",
+      "title": "Ecosystem Connections: Understanding Food Chains and Food Webs",
+      "topic": "Life Science: Organisms and Ecosystems",
+      "course": "Grade 5 Life Science",
+      "subject": "Science",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS 5-LS2-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "Florida SC.4.L.17.2",
+          "framework": "Florida Next Generation Sunshine State Standards"
+        },
+        {
+          "code": "Florida SC.4.L.17.3",
+          "framework": "Florida Next Generation Sunshine State Standards"
+        }
+      ]
+    },
+    {
+      "id": "b82d9da7a1287060d1062828d482192e",
+      "title": "Ecosystem Explorers: Interdependence, Matter, and Energy Flow",
+      "topic": "Ecosystems: Interdependence and Energy Flow",
+      "course": "Grade 5 Life Science",
+      "subject": "Science",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS 5-LS2-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS 5-PS3-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS 5-LS1-1",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "53ce6c06182ff9cf8bc8e08e3ea26a15",
+      "title": "Classifying Two-Dimensional Shapes in a Hierarchy",
+      "topic": "Classifying Two-Dimensional Shapes",
+      "course": "Grade 5 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.5.G.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.G.B.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "ed2ad6365295e68e1d2d63bc4460b4dd",
+      "title": "Exploring Shapes, Angles, and Data: Geometry and Information",
+      "topic": "Geometry and Data Handling: Basic geometric concepts (points, lines, angles, types of angles), identification of 2D and 3D shapes, symmetry, introduction to pictographs and bar graphs.",
+      "course": "Grade 5 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 5",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.5.G.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.G.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.MD.B.2",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "2dd40ec0f43b5251f5946e26c10d13d7",
+      "title": "Graphing Numerical Patterns on the Coordinate Plane",
+      "topic": "Algebraic Thinking and Coordinate Geometry",
+      "course": "Grade 5 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.5.OA.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.G.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.G.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "b44941f7753ed0a5e70c5fd9cbf48729",
+      "title": "Journey to Crores: Large Numbers, Place Value, and Operations",
+      "topic": "Numbers and Operations (Up to Crores): Place value (Indian and International systems), large number operations (addition, subtraction, multiplication, division), factors, multiples, HCF, LCM.",
+      "course": "Grade 5 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 5",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.5.NBT.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.NBT.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.NBT.B.5",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.4.OA.B.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "08a19779a9a2e88f77e5d89dcc2f7fe0",
+      "title": "Mastering Fraction Operations: Adding, Subtracting, and Multiplying in Problem Solving",
+      "topic": "Fractions: Operations and Problem Solving",
+      "course": "Grade 5 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.5.NF.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.5.NF.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.5.NF.B.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "0fde08244dd149aa49f6539410996cc0",
+      "title": "Mastering Numbers: Place Value, Whole-Number Operations, Decimals, and Rounding",
+      "topic": "Number Operations: Whole Numbers and Decimals (Place Value, Operations, Rounding)",
+      "course": "Grade 5 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.5.NBT.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.5.NBT.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.5.NBT.A.4",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.5.NBT.B.5",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.5.NBT.B.7",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "e223ce820568cb1d163f625958f95c11",
+      "title": "Detective Readers: Citing Evidence and Making Inferences",
+      "topic": "Citing Textual Evidence and Making Inferences",
+      "course": "Grade 5 Reading",
+      "subject": "English Language Arts",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.5.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.5.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.5.9",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "152c9330d315057017560668227c874d",
+      "title": "The Transatlantic Slave Trade and Its Human Cost",
+      "topic": "The Transatlantic Slave Trade and its Human Cost",
+      "course": "Grade 5 Social Studies",
+      "subject": "Social Studies",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NYS.SS.5.3c",
+          "framework": "New York State K-8 Social Studies Framework"
+        },
+        {
+          "code": "NYS.SS.5.7a",
+          "framework": "New York State K-8 Social Studies Framework"
+        },
+        {
+          "code": "D2.His.4.3-5",
+          "framework": "C3 Framework for Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "c170b68ec8e8d51e17ad388a3db524b7",
+      "title": "Igniting Freedom: How Enlightenment Ideas Shaped America and the World",
+      "topic": "Enlightenment Ideas and Global Influence",
+      "course": "Grade 5 United States History and Literacy",
+      "subject": "History-Social Science and English Language Arts",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CA HSS 5.5.4",
+          "framework": "California History-Social Science Content Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.5.1",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.5.1",
+          "framework": "Common Core State Standards"
+        }
+      ]
+    },
+    {
+      "id": "3fc779a086fa4d7cd95bef4b8492cb7a",
+      "title": "Polishing Our Prose: A Writer's Workshop for Revision, Editing, and Sharing",
+      "topic": "The Writer's Workshop: Revision, Editing, and Sharing (Aligned with CA CCSS ELA W.5.5, W.5.6)",
+      "course": "Grade 5 Writing and Communication",
+      "subject": "English Language Arts",
+      "grade": "Grade 5",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.5.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.5.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.5.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.5.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "99f13762bdd839f5e836a2d3a96f242e",
+      "title": "Introduction to Poetry and Figurative Language",
+      "topic": "Introduction to Poetry and Figurative Language",
+      "course": "Grade 6 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 6",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.6.5.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "d9c0abf3c9ec8a60e5704c1386abcae6",
+      "title": "Themes, Author Purpose, and Point of View",
+      "topic": "Understanding Themes, Author's Purpose & Point of View",
+      "course": "Grade 6 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 6",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.6.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "ce247eafb30771a28895dd24c80836d4",
+      "title": "Unlocking Meaning: Figurative Language and Text Structure",
+      "topic": "Understanding Figurative Language and Text Structure",
+      "course": "Grade 6 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.6.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.6.5.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "ba50fef9a101d10a4f1a43d1886a663e",
+      "title": "Unlocking Stories: Analyzing Key Elements (Plot, Character, Setting, Theme, Conflict, Resolution)",
+      "topic": "Analyzing Story Elements (Plot, Character, Setting, Theme, Conflict, Resolution)",
+      "course": "Grade 6 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 6",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.6.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "a1cab95ad1f67dbc8aab1406a90de29c",
+      "title": "Unmasking Characters: Analyzing Motivations and Development",
+      "topic": "Character Analysis and Development",
+      "course": "Grade 6 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS.6.8B",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS.6.6F",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS.6.7C",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        }
+      ]
+    },
+    {
+      "id": "836d4dd9f138b9c468118d49f3969afd",
+      "title": "Cracking the Code: Unlocking Variables, Expressions, and Equations",
+      "topic": "Patterns and Algebra (Variables, Expressions, Equations)",
+      "course": "Grade 6 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 6",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "B2.3",
+          "framework": "Ontario Grade 6 Mathematics Curriculum, 2020"
+        },
+        {
+          "code": "B2.1",
+          "framework": "Ontario Grade 6 Mathematics Curriculum, 2020"
+        },
+        {
+          "code": "B2.2",
+          "framework": "Ontario Grade 6 Mathematics Curriculum, 2020"
+        }
+      ]
+    },
+    {
+      "id": "79c60228ca264e121c7c271dd14aabfd",
+      "title": "Making Sense of Data: Histograms and Measures of Center",
+      "topic": "Data Representation & Analysis",
+      "course": "Grade 6 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.6.SP.B.4",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.6.SP.B.5.C",
+          "framework": "Common Core State Standards"
+        },
+        {
+          "code": "MA.6.DP.1.2",
+          "framework": "Florida B.E.S.T. Mathematics Standards"
+        }
+      ]
+    },
+    {
+      "id": "e8fa8b9bac9f888baf1f1181ec8f603a",
+      "title": "Measurement Mastery: Area, Volume, Angles, and Metric Conversion",
+      "topic": "Measurement (Area, Volume, Angles, Metric Conversion)",
+      "course": "Grade 6 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 6",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.6.G.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.6.G.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.6.G.A.4",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.5.MD.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "ac17a67caac77a5b85604cf58c1946a6",
+      "title": "Navigating the Number Line: Rational Numbers and Operations",
+      "topic": "Number Systems and Operations with Rational Numbers",
+      "course": "Grade 6 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.6.NS.C.5",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.6.NS.C.6",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.6.NS.C.7",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.6.NS.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.6.NS.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "cad16d368e7c6ee20bce69e42d0b7756",
+      "title": "Solving Smarter: Computational Thinking and Algorithms",
+      "topic": "Computational Thinking and Algorithms",
+      "course": "Grade 6 Technology Applications",
+      "subject": "Technology Applications",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS 126.7(c)(1)(A)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications, Grade 6, Adopted 2022"
+        },
+        {
+          "code": "TEKS 126.7(c)(1)(B)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications, Grade 6, Adopted 2022"
+        },
+        {
+          "code": "TEKS 126.7(c)(1)(C)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications, Grade 6, Adopted 2022"
+        }
+      ]
+    },
+    {
+      "id": "bf8588b58369a85da8d0af700b3869be",
+      "title": "The Art of Ancient and Medieval Asia: China, Japan, and India",
+      "topic": "Art of Ancient and Medieval Asia (China, Japan, India)",
+      "course": "Grade 6 World History and Visual Arts",
+      "subject": "History-Social Science and Visual Arts",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CA HSS 6.5",
+          "framework": "California History-Social Science Content Standards"
+        },
+        {
+          "code": "CA HSS 6.6",
+          "framework": "California History-Social Science Content Standards"
+        },
+        {
+          "code": "CA HSS 6.7",
+          "framework": "California History-Social Science Content Standards"
+        },
+        {
+          "code": "CA Visual Arts 6.3.1",
+          "framework": "California Visual Arts Content Standards"
+        },
+        {
+          "code": "CA Visual Arts 6.3.2",
+          "framework": "California Visual Arts Content Standards"
+        }
+      ]
+    },
+    {
+      "id": "8285e0822f68b2c6203ed7382a40f15e",
+      "title": "Discovering Theme and Crafting Objective Summaries",
+      "topic": "Determining Theme and Summarizing Literature",
+      "course": "Grade 7 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.7.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "2fa26295bccbfd82ca7e06def4d9dfe2",
+      "title": "Interpreting Figurative Language, Word Choice, Tone, and Mood",
+      "topic": "Interpreting Figurative Language, Word Choice, Tone, and Mood",
+      "course": "Grade 7 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ELA.7.R.3.4",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.7.R.3.2",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.7.V.1.2",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "6d1c345018130d2214873e178fa4e6ac",
+      "title": "Literary Journeys: Prose, Poetry, Drama, and Folktales",
+      "topic": "Understanding Genres and Forms (Prose, Poetry, Drama, Folktales)",
+      "course": "Grade 7 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 7",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "ee11eae7dd6d3f97319947c788fd3130",
+      "title": "Sensory Details and Figurative Language",
+      "topic": "Mastering Descriptive Language: Sensory Details and Figurative Language",
+      "course": "Grade 7 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.4",
+          "framework": "New York State P-12 Common Core Learning Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.7.3.D",
+          "framework": "New York State P-12 Common Core Learning Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.7.5",
+          "framework": "New York State P-12 Common Core Learning Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "c2830ad8171bc0d255fd3616c7fd8a61",
+      "title": "Unlocking Stories: Analyzing Literary Elements in Grade 7 English",
+      "topic": "Analyzing Literary Elements (Character, Plot, Setting, Conflict, Theme)",
+      "course": "Grade 7 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 7",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.7.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "ea98c4873f39a3e191965b3b3338b510",
+      "title": "Bringing Words to Life: Figurative Language, Imagery, and Show, Do Not Tell",
+      "topic": "Literary Devices and Sensory Language: Figurative Language, Imagery, and 'Show, Don't Tell'",
+      "course": "Grade 7 English Language Arts and Reading",
+      "subject": "English Language Arts",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS 7.8(A)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS 7.10(A)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS 7.9(D)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS 7.11(B)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        }
+      ]
+    },
+    {
+      "id": "4a469f55624f30357e96ddbeac3f9170",
+      "title": "Connecting Literature to Historical, Cultural, and Social Contexts",
+      "topic": "Connecting Literature to Historical and Cultural Contexts",
+      "course": "Grade 7 English Language Arts and Reading",
+      "subject": "English Language Arts and Reading",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS ELAR.7.6(B)",
+          "framework": "Texas Essential Knowledge and Skills"
+        },
+        {
+          "code": "TEKS ELAR.7.6(C)",
+          "framework": "Texas Essential Knowledge and Skills"
+        },
+        {
+          "code": "TEKS ELAR.7.8(D)",
+          "framework": "Texas Essential Knowledge and Skills"
+        }
+      ]
+    },
+    {
+      "id": "1c5d37fa1d84599952ccbbd29b186a23",
+      "title": "The Age of Reason: Scientific Discoveries and Democratic Ideas",
+      "topic": "The Scientific Revolution and The Enlightenment: New Ideas and Philosophical Foundations",
+      "course": "Grade 7 Florida World History and Civics",
+      "subject": "Social Studies",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SS.7.W.3.1",
+          "framework": "Florida State Standards"
+        },
+        {
+          "code": "SS.7.W.3.2",
+          "framework": "Florida State Standards"
+        },
+        {
+          "code": "SS.7.W.3.4",
+          "framework": "Florida State Standards"
+        },
+        {
+          "code": "SS.7.W.3.5",
+          "framework": "Florida State Standards"
+        },
+        {
+          "code": "SS.7.C.1.1",
+          "framework": "Florida State Standards"
+        },
+        {
+          "code": "SS.7.C.1.3",
+          "framework": "Florida State Standards"
+        }
+      ]
+    },
+    {
+      "id": "103c59d2fec438734a90c139b6b01510",
+      "title": "Golden Empires and Advanced Civilizations: Africa and the Americas (500-1500 CE)",
+      "topic": "African Kingdoms and Pre-Columbian American Civilizations (ca. 500-1500 CE)",
+      "course": "Grade 7 History-Social Science",
+      "subject": "World History",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "7.4.3",
+          "framework": "California History-Social Science Standards Addressed in source lesson"
+        },
+        {
+          "code": "7.5.1",
+          "framework": "California History-Social Science Standards Addressed in source lesson"
+        },
+        {
+          "code": "7.7.1",
+          "framework": "California History-Social Science Standards Addressed in source lesson"
+        },
+        {
+          "code": "7.7.2",
+          "framework": "California History-Social Science Standards Addressed in source lesson"
+        }
+      ]
+    },
+    {
+      "id": "1c6b68af0eb1efb9c4a441cb62380498",
+      "title": "Data Detectives: Representing and Analyzing the World Around Us",
+      "topic": "Data Representation & Analysis",
+      "course": "Grade 7 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 7",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Ontario Math 7.D1",
+          "framework": "Ontario Curriculum, Mathematics, Grade 7, 2020"
+        },
+        {
+          "code": "Ontario Math 7.D1.1",
+          "framework": "Ontario Curriculum, Mathematics, Grade 7, 2020"
+        },
+        {
+          "code": "Ontario Math 7.D1.2",
+          "framework": "Ontario Curriculum, Mathematics, Grade 7, 2020"
+        },
+        {
+          "code": "Ontario Math 7.D1.3",
+          "framework": "Ontario Curriculum, Mathematics, Grade 7, 2020"
+        },
+        {
+          "code": "Ontario Math 7.D1.6",
+          "framework": "Ontario Curriculum, Mathematics, Grade 7, 2020"
+        }
+      ]
+    },
+    {
+      "id": "fcdb459c5e15e35161d342dc56b54ad5",
+      "title": "Understanding Algebra: Expressions and One-Step Linear Equations",
+      "topic": "Algebraic Expressions and Linear Equations",
+      "course": "Grade 7 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 7",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.7.EE.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.7.EE.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.7.EE.B.4.A",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "5919b51738c442151d54ee666733e060",
+      "title": "Unlocking Data: Visualizing and Analyzing with Bar Graphs, Dot Plots, and Circle Graphs",
+      "topic": "Data Representation and Management",
+      "course": "Grade 7 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS 7.12(E)",
+          "framework": "Texas Essential Knowledge and Skills for Mathematics"
+        },
+        {
+          "code": "TEKS 7.12(F)",
+          "framework": "Texas Essential Knowledge and Skills for Mathematics"
+        },
+        {
+          "code": "TEKS 7.1",
+          "framework": "Texas Essential Knowledge and Skills for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "ce0d339acee7a9fccd8c081741a67677",
+      "title": "Exploring the Invisible Force: Electric Current and its Everyday Effects",
+      "topic": "Electric Current and its Effects",
+      "course": "Grade 7 Physical Science",
+      "subject": "Science",
+      "grade": "Grade 7",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS MS-PS2-3",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS MS-PS3-5",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RST.6-8.3",
+          "framework": "Common Core State Standards for Literacy in Science and Technical Subjects"
+        }
+      ]
+    },
+    {
+      "id": "be442b84d7d58973ac03c6e89ee0205c",
+      "title": "Ancient Asian Empires, Innovations, and the Silk Road",
+      "topic": "Empires and Connectivity in Asia (India, China, and the Silk Road)",
+      "course": "Grade 7 World History",
+      "subject": "Social Studies",
+      "grade": "Grade 7",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "C3.D2.His.1.6-8",
+          "framework": "College, Career, and Civic Life C3 Framework"
+        },
+        {
+          "code": "C3.D2.Geo.2.6-8",
+          "framework": "College, Career, and Civic Life C3 Framework"
+        },
+        {
+          "code": "C3.D2.His.14.6-8",
+          "framework": "College, Career, and Civic Life C3 Framework"
+        }
+      ]
+    },
+    {
+      "id": "4404c185982e6dbce305843af95f78bd",
+      "title": "Origins and Spread of Islam, 500-1200 CE",
+      "topic": "The Rise and Spread of Islam (ca. 500-1200 CE)",
+      "course": "Grade 7 World History",
+      "subject": "History-Social Science",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CA HSS 7.2",
+          "framework": "California History-Social Science Content Standards"
+        },
+        {
+          "code": "CA HSS 7.2.1",
+          "framework": "California History-Social Science Content Standards"
+        },
+        {
+          "code": "CA HSS 7.2.4",
+          "framework": "California History-Social Science Content Standards"
+        }
+      ]
+    },
+    {
+      "id": "503cb5102333f0f47927d15443031f5a",
+      "title": "From Rebirth to Grandeur: Exploring the European Renaissance and Baroque Era",
+      "topic": "The European Renaissance & Baroque Era",
+      "course": "Grade 7 World History Studies",
+      "subject": "World History",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS 7.1(A)",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "TEKS 7.1(B)",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "TEKS 7.3(A)",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "TEKS 7.3(B)",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "4cf3331a2c84d6994889136aa434733e",
+      "title": "Baroque and Rococo: Emotion, Drama, and Opulence in Art",
+      "topic": "Baroque and Rococo: Emotion, Drama, and Opulence",
+      "course": "Grade 8 Art and Design",
+      "subject": "Visual Arts",
+      "grade": "Grade 8",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.8a",
+          "framework": "National Core Arts Standards - Visual Arts"
+        },
+        {
+          "code": "VA:Re8.1.8a",
+          "framework": "National Core Arts Standards - Visual Arts"
+        },
+        {
+          "code": "VA:Cn11.1.8a",
+          "framework": "National Core Arts Standards - Visual Arts"
+        }
+      ]
+    },
+    {
+      "id": "956a206dd371b4dca5f64db7c090b791",
+      "title": "Understanding the Digital World: Data Representation and Boolean Logic",
+      "topic": "Data Representation and Boolean Logic",
+      "course": "Grade 8 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 8",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA 2-DA-07",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 2-AP-10",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 2-NI-06",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "636ea458769bbaf8fd2a2f7ee219270c",
+      "title": "Exploring Literary Lenses: Character Development and Point of View",
+      "topic": "Character Development & Point of View",
+      "course": "Grade 8 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.6",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.8.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "2185d9ed27dfef80e5716a44a24a972f",
+      "title": "The Writer Journey: Revision, Refinement, and Publishing",
+      "topic": "The Writer's Journey: Revision, Refinement, and Publishing",
+      "course": "Grade 8 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS ELAR 8.10(C)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS ELAR 8.10(D)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        },
+        {
+          "code": "TEKS ELAR 8.10(E)",
+          "framework": "Texas Essential Knowledge and Skills for English Language Arts and Reading"
+        }
+      ]
+    },
+    {
+      "id": "431a8b01f2a715e98182396739e32fc2",
+      "title": "Unleashing Descriptive Power: Imagery and Figurative Language",
+      "topic": "Unleashing Descriptive Power: Imagery and Figurative Language",
+      "course": "Grade 8 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.L.8.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.8.3.D",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.8.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "bc237304f5a2cc0797664f909b1bb1d6",
+      "title": "Unpacking Literary Blueprints: Structural Analysis and Genre Study",
+      "topic": "Structural Analysis and Genre Study (Fiction, Poetry, Drama)",
+      "course": "Grade 8 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ELA.8.R.2.1",
+          "framework": "Florida B.E.S.T. Standards Alignment in source lesson"
+        },
+        {
+          "code": "ELA.8.R.3.1",
+          "framework": "Florida B.E.S.T. Standards Alignment in source lesson"
+        },
+        {
+          "code": "ELA.8.R.3.3",
+          "framework": "Florida B.E.S.T. Standards Alignment in source lesson"
+        }
+      ]
+    },
+    {
+      "id": "fd04e0f0b5aec07fe4e6bb21d6cb2629",
+      "title": "Unpacking Narrative: Theme, Plot, and Character Development",
+      "topic": "Unpacking Theme, Plot, and Character Development",
+      "course": "Grade 8 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.8.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.8.2",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "a9778b67551de0912f079df555ed4816",
+      "title": "Ecosystems and Biodiversity: Understanding Our Interconnected World",
+      "topic": "Ecosystems and Biodiversity",
+      "course": "Grade 8 Life Science",
+      "subject": "Science",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "MS-LS2-3",
+          "framework": "New York State P-12 Science Learning Standards / NGSS"
+        },
+        {
+          "code": "MS-LS2-4",
+          "framework": "New York State P-12 Science Learning Standards / NGSS"
+        },
+        {
+          "code": "MS-LS2-5",
+          "framework": "New York State P-12 Science Learning Standards / NGSS"
+        },
+        {
+          "code": "MS-LS2-1",
+          "framework": "New York State P-12 Science Learning Standards / NGSS supporting standard"
+        }
+      ]
+    },
+    {
+      "id": "4420fb11fdb8b42b9df197c94f4d33a5",
+      "title": "Exploring the Number System: Rational Numbers, Irrational Numbers, Exponents, and Scientific Notation",
+      "topic": "The Number System: Rational & Irrational Numbers, Exponents & Scientific Notation",
+      "course": "Grade 8 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "8.NS.A.1",
+          "framework": "New York State Next Generation Mathematics Learning Standards"
+        },
+        {
+          "code": "8.EE.A.1",
+          "framework": "New York State Next Generation Mathematics Learning Standards"
+        },
+        {
+          "code": "8.EE.A.3",
+          "framework": "New York State Next Generation Mathematics Learning Standards"
+        }
+      ]
+    },
+    {
+      "id": "f1e85c23535478a6e114d1aefbb21792",
+      "title": "Scatter Plots and Two-Way Tables",
+      "topic": "Data Analysis & Visualization",
+      "course": "Grade 8 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.8.SP.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.SP.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.SP.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.SP.A.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "c81e907eaef77a93feac9931414b8155",
+      "title": "Solving Linear Equations and Systems of Equations",
+      "topic": "Expressions & Equations: Solving Linear Equations & Systems of Equations",
+      "course": "Grade 8 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.8.EE.C.7",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.8.EE.C.8",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.8.EE.C.8c",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "55c51d44f0b905bb7ff3a08c12a6b67d",
+      "title": "The Real Number System and Exponent Rules",
+      "topic": "The Real Number System and Exponents",
+      "course": "Grade 8 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.8.NS.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.NS.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.EE.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.EE.A.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.8.EE.A.4",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "f1dbd6819300c558ef6a0378e2f70c88",
+      "title": "Grade 8 Science: Forces, Motion, and Energy Transformations",
+      "topic": "Forces, Motion, and Energy Transformations",
+      "course": "Grade 8 Physical Science",
+      "subject": "Science",
+      "grade": "Grade 8",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Ethiopia Grade 8 Science Competency 1",
+          "framework": "Ethiopian Curriculum Alignment from source lesson"
+        },
+        {
+          "code": "Ethiopia Grade 8 Science Competency 2",
+          "framework": "Ethiopian Curriculum Alignment from source lesson"
+        },
+        {
+          "code": "Ethiopia Grade 8 Science Competency 3",
+          "framework": "Ethiopian Curriculum Alignment from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "9d457958af586c726d60ac470a412354",
+      "title": "Mechanical Marvels: Gears, Levers, Pulleys, and Everyday Systems",
+      "topic": "Mechanical Systems",
+      "course": "Grade 8 Physical Science and Engineering",
+      "subject": "Science and Engineering",
+      "grade": "Grade 8",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS MS-PS2-2",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS MS-PS3-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS MS-ETS1-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS MS-ETS1-2",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "bf90578c3e2ad280e92ab770bae5faf4",
+      "title": "Enlightenment, Industry, and Global Revolutions",
+      "topic": "Age of Revolutions: Enlightenment, Industry, and Political Transformations",
+      "course": "Grade 8 U.S. History and World History Connections",
+      "subject": "Social Studies",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS.8.3B",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "TEKS.8.4D",
+          "framework": "Texas Essential Knowledge and Skills for Social Studies"
+        },
+        {
+          "code": "D2.His.14.6-8",
+          "framework": "C3 Framework for Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "254c9a207e61925b6a6d3990fe540f63",
+      "title": "Exponential Growth and Decay Functions",
+      "topic": "Exponential Functions and Equations",
+      "course": "Grade 9 Algebra I",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS.A.9(A)",
+          "framework": "Texas Essential Knowledge and Skills for Algebra I"
+        },
+        {
+          "code": "TEKS.A.9(B)",
+          "framework": "Texas Essential Knowledge and Skills for Algebra I"
+        },
+        {
+          "code": "TEKS.A.9(C)",
+          "framework": "Texas Essential Knowledge and Skills for Algebra I"
+        },
+        {
+          "code": "TEKS.A.9(D)",
+          "framework": "Texas Essential Knowledge and Skills for Algebra I"
+        }
+      ]
+    },
+    {
+      "id": "30c0b8a7a2cbb7ed8b2f51273d4a8afd",
+      "title": "Quadratic and Exponential Functions: Curves, Growth, and Decay",
+      "topic": "Introduction to Quadratic and Exponential Functions",
+      "course": "Grade 9 Algebra I",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.HSF.IF.C.7.A",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSF.IF.C.7.E",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSF.BF.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSF.LE.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "6436d96d19b2bf45b888e21da8aac392",
+      "title": "Real Numbers and Algebraic Expressions",
+      "topic": "The Real Number System and Algebraic Expressions",
+      "course": "Grade 9 Algebra I",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.HSN.RN.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSA.SSE.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSA.SSE.A.1.A",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSA.SSE.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "bd8ddeea4b145633495541ccc066a33e",
+      "title": "Classical Art of Ancient Greece and Rome",
+      "topic": "Classical Art: Ancient Greece and Rome",
+      "course": "Grade 9 Art History",
+      "subject": "Art History",
+      "grade": "Grade 9",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.Ia",
+          "framework": "National Core Arts Standards - Visual Arts"
+        },
+        {
+          "code": "VA:Re8.1.Ia",
+          "framework": "National Core Arts Standards - Visual Arts"
+        },
+        {
+          "code": "VA:Cn11.1.Ia",
+          "framework": "National Core Arts Standards - Visual Arts"
+        }
+      ]
+    },
+    {
+      "id": "fd6f8644d57e8b500c3cc69fbb3d8976",
+      "title": "Cell Theory, Cell Structure, and Organelle Function",
+      "topic": "Molecular and Cellular Biology",
+      "course": "Grade 9 Biology",
+      "subject": "Science",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SC.912.L.14.1",
+          "framework": "Florida Next Generation Sunshine State Standards for Science"
+        },
+        {
+          "code": "SC.912.L.14.2",
+          "framework": "Florida Next Generation Sunshine State Standards for Science"
+        },
+        {
+          "code": "HS-LS1-2",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "80aeb385283a784eab161b5bbe8b9ba0",
+      "title": "Connecting Our Digital World: Networks and the Internet",
+      "topic": "Networking and Internet Basics",
+      "course": "Grade 9 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 9",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.3A-NI-04",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-NI-05",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.3A-IC-25",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.2-NI-04",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "0915aad827ad1e76a31bd4f873c4607d",
+      "title": "Foundations of Computing and Digital Citizenship: Navigating the Digital World Responsibly",
+      "topic": "Foundations of Computing and Digital Citizenship",
+      "course": "Grade 9 Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 9",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA 3A-CS-02",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-NI-05",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 3A-IC-29",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "e2e098e5aa873100d2240e8437e39575",
+      "title": "Bytes, Brains, and Boards: Unpacking Digital Data and Computer Hardware",
+      "topic": "Data Representation and Computer Hardware Fundamentals",
+      "course": "Grade 9 Computer Science Foundations",
+      "subject": "Computer Science",
+      "grade": "Grade 9",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA 3A-CS-02",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 2-CS-02",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 2-DA-07",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA 2-CS-03",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "e4f325959a7ff952316433e2df448ada",
+      "title": "Exploring Literary Worlds: An Introduction to Genre Analysis (Grade 9 English)",
+      "topic": "Analyzing Literary Genres and Forms (e.g., short stories, poetry, drama, non-fiction narratives, graphic novels)",
+      "course": "Grade 9 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 9",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RL.9-10.10",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.RI.9-10.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "4fa30b0ccb217a9f5f3ba511762a7c16",
+      "title": "Foundations of Creative Writing: Genres and Essential Elements",
+      "topic": "Foundations of Creative Writing: Genres and Elements",
+      "course": "Grade 9 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 9",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.3",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.3.A",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "484fbebb0c381a4c12dd0f8b70cdecee",
+      "title": "Revision and Peer Feedback in Writer Workshop",
+      "topic": "Revision, Peer Feedback, and Writer's Workshop",
+      "course": "Grade 9 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.5",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.W.9-10.4",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "CCSS.ELA-LITERACY.SL.9-10.1",
+          "framework": "Common Core State Standards for English Language Arts"
+        },
+        {
+          "code": "NYS.ELA.W.9-10.5",
+          "framework": "New York State Next Generation ELA Standards"
+        }
+      ]
+    },
+    {
+      "id": "8ff311c462bb80db3153cc229fa5c3d1",
+      "title": "Unlocking Your Literary Signature: Mastering Voice, Style, and Devices",
+      "topic": "Mastering Language: Voice, Style & Devices (Focus: Developing writer's voice, stylistic choices, dialogue, imagery, figurative language. FL Standards: ELA.9.C.1.4, ELA.9.V.1.3, ELA.9.R.3.2)",
+      "course": "Grade 9 English Language Arts",
+      "subject": "English Language Arts",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "ELA.9.R.3.2",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.9.V.1.3",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        },
+        {
+          "code": "ELA.9.C.1.4",
+          "framework": "Florida B.E.S.T. Standards for English Language Arts"
+        }
+      ]
+    },
+    {
+      "id": "8497b55828bf71df0ae22a893b097674",
+      "title": "Scientific and Engineering Practices: STEM Superpowers",
+      "topic": "Scientific and Engineering Practices",
+      "course": "Grade 9 Integrated Science",
+      "subject": "Science",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.SEP.1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.SEP.2",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.SEP.3",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.SEP.4",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.SEP.7",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "031797279d15ddfbf2355ffd323a2485",
+      "title": "Grade 9 Mathematics: Exploring Number Systems and Operations with Real Numbers",
+      "topic": "Number Systems and Operations with Real Numbers",
+      "course": "Grade 9 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.8.NS.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSN.RN.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "3636b1aca8e29732f99f82d3a2ef15e2",
+      "title": "Unlocking Data: Collection, Central Tendency, and Basic Probability",
+      "topic": "Statistics and Probability",
+      "course": "Grade 9 Statistics and Probability",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.MATH.CONTENT.HSS.ID.A.1",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSS.ID.A.2",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.HSS.IC.B.3",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.MATH.CONTENT.7.SP.C.5",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "a6f8cf7b5f8db2ae062275c8d7db16fc",
+      "title": "Global Turmoil: World Wars and the Interwar Period (1900-1945)",
+      "topic": "Global Conflicts and Challenges (c. 1900-1945): World War I, interwar period (Great Depression, rise of totalitarianism), and World War II.",
+      "course": "Grade 9 World History",
+      "subject": "World History",
+      "grade": "Grade 9",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SS.912.W.7.1",
+          "framework": "Florida B.E.S.T. Social Studies"
+        },
+        {
+          "code": "SS.912.W.7.2",
+          "framework": "Florida B.E.S.T. Social Studies"
+        },
+        {
+          "code": "SS.912.W.7.3",
+          "framework": "Florida B.E.S.T. Social Studies"
+        },
+        {
+          "code": "SS.912.W.7.4",
+          "framework": "Florida B.E.S.T. Social Studies"
+        },
+        {
+          "code": "SS.912.W.7.5",
+          "framework": "Florida B.E.S.T. Social Studies"
+        },
+        {
+          "code": "SS.912.W.7.7",
+          "framework": "Florida B.E.S.T. Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "080cc84bf20beb1d2661059b1a1938ff",
+      "title": "A Journey Through Stone and Light: Early Medieval and Gothic Art, 500-1500 CE",
+      "topic": "Early Medieval and Gothic Art",
+      "course": "High School Art History and Visual Culture",
+      "subject": "Visual Arts",
+      "grade": "High School Proficient",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Re8.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Cn11.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        }
+      ]
+    },
+    {
+      "id": "03dca6e2e8a2e96e22986928ef59ea82",
+      "title": "Baroque and Rococo Art: Drama, Patronage, and Elite Leisure",
+      "topic": "Baroque and Rococo Art",
+      "course": "High School Art History and Visual Culture",
+      "subject": "Visual Arts",
+      "grade": "High School Proficient",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Re8.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Cn11.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        }
+      ]
+    },
+    {
+      "id": "0bb0d258feace544eb78253df3234db9",
+      "title": "Foundations of Art: Prehistoric, Ancient Civilizations, and Early African Art - A Global Heritage",
+      "topic": "Foundations of Art: Prehistoric, Ancient Civilizations, and Early African Art",
+      "course": "High School Art History and Visual Culture",
+      "subject": "Visual Arts",
+      "grade": "High School Proficient",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Re8.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Cn11.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        }
+      ]
+    },
+    {
+      "id": "99d813de5a7d5c829b377e1b1371fd87",
+      "title": "From Grandeur to Reason: European Art of the Seventeenth and Eighteenth Centuries",
+      "topic": "Baroque to Enlightenment: 17th and 18th Century European Art",
+      "course": "High School Art History and Visual Culture",
+      "subject": "Visual Arts",
+      "grade": "High School Proficient",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Re8.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Cn11.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        }
+      ]
+    },
+    {
+      "id": "f416fdd399d6f445e4c57260ca7de3e2",
+      "title": "Global Expressions: Art and Faith in the Medieval World",
+      "topic": "Medieval Art & Global Traditions (Early Christian, Byzantine, Islamic, Early Asian)",
+      "course": "High School Art History and Visual Culture",
+      "subject": "Visual Arts",
+      "grade": "High School Proficient",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "VA:Re7.2.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Re8.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        },
+        {
+          "code": "VA:Cn11.1.HSI.a",
+          "framework": "National Core Arts Standards - Visual Arts, HS Proficient"
+        }
+      ]
+    },
+    {
+      "id": "0e62d653f6337c8e9a81b3be94fc2d8f",
+      "title": "Ecosystems and Environmental Sustainability: Protecting Our Shared Home",
+      "topic": "Ecosystems and Environmental Sustainability",
+      "course": "High School Biology and Environmental Science",
+      "subject": "Environmental Science",
+      "grade": "Grade 10",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "HS-LS2-2",
+          "framework": "NGSS"
+        },
+        {
+          "code": "HS-LS2-6",
+          "framework": "NGSS"
+        },
+        {
+          "code": "HS-LS2-7",
+          "framework": "NGSS"
+        }
+      ]
+    },
+    {
+      "id": "0a17bff98bd660a60c8907ddd83e1ac3",
+      "title": "Chemical Reactions and Stoichiometry",
+      "topic": "Chemical Reactions and Stoichiometry",
+      "course": "High School Chemistry",
+      "subject": "Chemistry",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.HS-PS1-2",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.HS-PS1-7",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.Science Practice 5",
+          "framework": "NGSS Science and Engineering Practices"
+        }
+      ]
+    },
+    {
+      "id": "79a2eb982d283330ab7784b247bdffe2",
+      "title": "Grade 10 Chemistry Lesson: Chemical Bonding and Stoichiometry",
+      "topic": "Chemical Bonding and Stoichiometry",
+      "course": "High School Chemistry",
+      "subject": "Chemistry",
+      "grade": "Grade 10",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "HS-PS1-1",
+          "framework": "NGSS"
+        },
+        {
+          "code": "HS-PS1-2",
+          "framework": "NGSS"
+        },
+        {
+          "code": "HS-PS1-7",
+          "framework": "NGSS"
+        }
+      ]
+    },
+    {
+      "id": "d7c973569a974e0a598bd8dcf553bce2",
+      "title": "pH Power and Electron Flow: Acids, Bases, and Electrochemistry",
+      "topic": "Acids, Bases, and Electrochemistry",
+      "course": "High School Chemistry",
+      "subject": "Chemistry",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "HS-PS1-2",
+          "framework": "New York State P-12 Science Learning Standards"
+        },
+        {
+          "code": "HS-PS1-3",
+          "framework": "New York State P-12 Science Learning Standards"
+        },
+        {
+          "code": "HS-PS3-3",
+          "framework": "New York State P-12 Science Learning Standards"
+        }
+      ]
+    },
+    {
+      "id": "7147ecbc93001276a38ab82733f2cb3e",
+      "title": "Unlocking Electromagnetism: Circuits, Fields, and Induction",
+      "topic": "Electricity and Magnetism (Circuits, Fields, Induction)",
+      "course": "High School Physics",
+      "subject": "Physics",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "PHYS.6.B",
+          "framework": "Texas Essential Knowledge and Skills, High School Physics"
+        },
+        {
+          "code": "PHYS.6.E",
+          "framework": "Texas Essential Knowledge and Skills, High School Physics"
+        }
+      ]
+    },
+    {
+      "id": "ff7dd09006a159c85a18b0947c778afc",
+      "title": "Measurement and Data Handling for Everyday Grade 2 Mathematics",
+      "topic": "Measurement (Length, Weight, Capacity, Time, Money) and Data Handling",
+      "course": "India Grade 2 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 2",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "IN-NCERT-G2-MATH-MEAS-1",
+          "framework": "India NCERT/CBSE Grade 2 mathematics expectations adapted from the source lesson"
+        },
+        {
+          "code": "IN-NCERT-G2-MATH-TIME-MONEY-2",
+          "framework": "India NCERT/CBSE Grade 2 mathematics expectations adapted from the source lesson"
+        },
+        {
+          "code": "IN-NCERT-G2-MATH-DATA-3",
+          "framework": "India NCERT/CBSE Grade 2 mathematics expectations adapted from the source lesson"
+        }
+      ]
+    },
+    {
+      "id": "867a95f6a13823508bd6e26875105afd",
+      "title": "Computational Thinking and Algorithmic Design",
+      "topic": "Computational Thinking and Algorithmic Design",
+      "course": "Introduction to Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 9",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "3A-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3A"
+        },
+        {
+          "code": "3A-AP-15",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3A"
+        },
+        {
+          "code": "3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3A"
+        }
+      ]
+    },
+    {
+      "id": "f1467b272325804c4318b7d4d74078cb",
+      "title": "The Algebraic Toolkit: Expressions, Equations, Inequalities, and Formulae",
+      "topic": "Algebraic Expressions, Equations and Formulae (including expanding, factorising, solving linear/quadratic/simultaneous equations, inequalities, algebraic fractions, rearranging formulae)",
+      "course": "Key Stage 3 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 9",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "England NC KS3-Math-Algebra-Notation",
+          "framework": "National curriculum in England: mathematics programmes of study"
+        },
+        {
+          "code": "England NC KS3-Math-Algebra-Manipulation",
+          "framework": "National curriculum in England: mathematics programmes of study"
+        },
+        {
+          "code": "England NC KS3-Math-Algebra-Formulae",
+          "framework": "National curriculum in England: mathematics programmes of study"
+        },
+        {
+          "code": "England NC KS3-Math-Algebra-Equations",
+          "framework": "National curriculum in England: mathematics programmes of study"
+        },
+        {
+          "code": "England NC KS4-Math-Algebra-Quadratics",
+          "framework": "National curriculum in England: mathematics programmes of study"
+        }
+      ]
+    },
+    {
+      "id": "b79efa4173d608402995853998fa7b79",
+      "title": "El Renacimiento, la Reforma y la Revolucion Cientifica, 1300-1700",
+      "topic": "Renaissance, Reformation, and the Scientific Revolution (c. 1300 - 1700 CE)",
+      "course": "Mexico Grade 8 World History",
+      "subject": "History",
+      "grade": "Grade 8",
+      "country": "Mexico",
+      "state": "",
+      "language": "Spanish",
+      "standards": [
+        {
+          "code": "MX-HIST-SEC-B2-CAMBIO-1",
+          "framework": "Mexico secondary history expectations adapted from the source lesson"
+        },
+        {
+          "code": "MX-HIST-SEC-B2-FUENTES-2",
+          "framework": "Mexico secondary history inquiry expectations adapted from the source lesson"
+        },
+        {
+          "code": "MX-HIST-SEC-B2-TIEMPO-3",
+          "framework": "Mexico secondary history sequence expectations adapted from the source lesson"
+        }
+      ]
+    },
+    {
+      "id": "ae1048712982941abfa31d0864c95e82",
+      "title": "Introduccion a la Programacion Orientada a Objetos",
+      "topic": "Object-Oriented Programming (OOP)",
+      "course": "Mexico Upper Secondary Programming",
+      "subject": "Computer Science",
+      "grade": "Grade 11",
+      "country": "Mexico",
+      "state": "",
+      "language": "Spanish",
+      "standards": [
+        {
+          "code": "MX-BACH-TIC-PC-1",
+          "framework": "Mexico upper-secondary computing expectations adapted from the source lesson"
+        },
+        {
+          "code": "MX-BACH-TIC-SW-2",
+          "framework": "Mexico upper-secondary programming expectations adapted from the source lesson"
+        },
+        {
+          "code": "MX-BACH-TIC-MODEL-3",
+          "framework": "Mexico upper-secondary technology expectations adapted from the source lesson"
+        }
+      ]
+    },
+    {
+      "id": "49e33e9e71e4665b3dba56da4ef996fc",
+      "title": "Computational Thinking Fundamentals: Problem-Solving Like a Computer Scientist",
+      "topic": "Computational Thinking Fundamentals",
+      "course": "Middle School Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.2-AP-10",
+          "framework": "CSTA K-12 Computer Science Standards, Level 2"
+        },
+        {
+          "code": "CSTA.2-AP-13",
+          "framework": "CSTA K-12 Computer Science Standards, Level 2"
+        },
+        {
+          "code": "CSTA.2-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards, Level 2"
+        }
+      ]
+    },
+    {
+      "id": "58debc0d89dd050bbd0c7c4c1db8bc71",
+      "title": "Fundamentals of Computers: Hardware, Software, and Operating Systems",
+      "topic": "Fundamentals of Computers: Hardware, Software and Operating Systems",
+      "course": "Middle School Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 7",
+      "country": "Ethiopia",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.2-CS-01",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.2-CS-02",
+          "framework": "CSTA K-12 Computer Science Standards"
+        },
+        {
+          "code": "CSTA.2-CS-03",
+          "framework": "CSTA K-12 Computer Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "8d19a1935693abd9c0b8d3c0c1fc5026",
+      "title": "Understanding the Internet, Networks, and Online Safety",
+      "topic": "The Internet, Networks, and Online Safety",
+      "course": "Middle School Digital Citizenship",
+      "subject": "Computer Science",
+      "grade": "Grade 6",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.2-NI-04",
+          "framework": "CSTA K-12 Computer Science Standards, Level 2"
+        },
+        {
+          "code": "CSTA.2-NI-05",
+          "framework": "CSTA K-12 Computer Science Standards, Level 2"
+        },
+        {
+          "code": "CSTA.2-IC-20",
+          "framework": "CSTA K-12 Computer Science Standards, Level 2"
+        }
+      ]
+    },
+    {
+      "id": "5985b339ccc0ecf79f51740048606ae8",
+      "title": "From Genes to Generations: How Traits Shape Life and Drive Evolution",
+      "topic": "Heredity and Evolution",
+      "course": "Middle School Life Science",
+      "subject": "Life Science",
+      "grade": "Grade 7",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.MS-LS4-4",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.MS-LS3-1",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.MS-LS4-6",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "e02524cd8a7449bb6477f6567650580a",
+      "title": "Heat, Temperature, Measurement, and Energy Transfer",
+      "topic": "Heat and Temperature",
+      "course": "Middle School Physical Science",
+      "subject": "Science",
+      "grade": "Grade 7",
+      "country": "India",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NGSS.MS-PS3-3",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.MS-PS3-4",
+          "framework": "Next Generation Science Standards"
+        },
+        {
+          "code": "NGSS.MS-PS3-5",
+          "framework": "Next Generation Science Standards"
+        }
+      ]
+    },
+    {
+      "id": "95d8e6eab6e0a2ea039675ce118c5f9d",
+      "title": "Totalitarianism and the Road to World War II, 1900-1945",
+      "topic": "Global Conflicts and Totalitarian Regimes (c. 1900-1945)",
+      "course": "New York Grade 11 US History and Government with Global Context",
+      "subject": "US History and Government",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NYSS-11.6",
+          "framework": "New York State Social Studies Framework cited in source lesson"
+        },
+        {
+          "code": "NYSS-11.7",
+          "framework": "New York State Social Studies Framework cited in source lesson"
+        },
+        {
+          "code": "NYSS-RH.11-12.1",
+          "framework": "New York literacy in history expectations adapted from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "628ebf81b8deaca99fa7a74a82eb13d6",
+      "title": "Atomic Structure, Electron Arrangement, and Periodic Trends",
+      "topic": "Atomic Structure and Periodicity",
+      "course": "New York Physical Setting Chemistry",
+      "subject": "Chemistry",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "NY-P12-SCI-HS-PS1-1",
+          "framework": "New York State P-12 Science Learning Standards"
+        },
+        {
+          "code": "NY-CHEM-PS1.A",
+          "framework": "New York Physical Setting Chemistry core ideas adapted from source lesson"
+        },
+        {
+          "code": "NY-CHEM-SEP-MODELS",
+          "framework": "New York science and engineering practices adapted from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "a46d1cf541486240829bd2e2c6d60323",
+      "title": "Push, Pull, and Power Up: Forces, Movement, and Simple Machines",
+      "topic": "Forces, Movement, and Simple Machines",
+      "course": "Ontario Grade 2 Science and Technology",
+      "subject": "Science and Technology",
+      "grade": "Grade 2",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "Ontario Science 2-D1.1",
+          "framework": "The Ontario Curriculum: Science and Technology, Grades 1-8, 2022"
+        },
+        {
+          "code": "Ontario Science 2-D2.1",
+          "framework": "The Ontario Curriculum: Science and Technology, Grades 1-8, 2022"
+        },
+        {
+          "code": "Ontario Science 2-D2.3",
+          "framework": "The Ontario Curriculum: Science and Technology, Grades 1-8, 2022"
+        },
+        {
+          "code": "Ontario Science 2-D2.4",
+          "framework": "The Ontario Curriculum: Science and Technology, Grades 1-8, 2022"
+        },
+        {
+          "code": "Ontario Science 2-D2.5",
+          "framework": "The Ontario Curriculum: Science and Technology, Grades 1-8, 2022"
+        }
+      ]
+    },
+    {
+      "id": "7ae534f523a72a4b987cf662655984df",
+      "title": "Trigonometric Functions in Action: Modeling and Solving Real-World Problems",
+      "topic": "Trigonometric Functions and Applications",
+      "course": "Precalculus",
+      "subject": "Mathematics",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "California",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CCSS.Math.Content.HSF-TF.B.5",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSF-TF.B.7",
+          "framework": "Common Core State Standards for Mathematics"
+        },
+        {
+          "code": "CCSS.Math.Content.HSG-SRT.D.11",
+          "framework": "Common Core State Standards for Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "09690b9274f33b96464dddc49e912e34",
+      "title": "Unlocking Data: Database Management Systems, Data Modeling, and SQL Essentials",
+      "topic": "Database Management Systems (Relational Databases, SQL) and Data Modeling",
+      "course": "Senior Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 12",
+      "country": "Canada",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "CSTA.3A-DA-10",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3A"
+        },
+        {
+          "code": "CSTA.3A-AP-17",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3A"
+        },
+        {
+          "code": "CSTA.3B-DA-05",
+          "framework": "CSTA K-12 Computer Science Standards, Level 3B"
+        }
+      ]
+    },
+    {
+      "id": "626b43863edb5f34462b070cdf4d377b",
+      "title": "Navigating the Digital Blueprint: Software Engineering Principles and the SDLC",
+      "topic": "Software Engineering Principles and Practices",
+      "course": "Software Engineering",
+      "subject": "Computer Science",
+      "grade": "Grade 12",
+      "country": "USA",
+      "state": "New York",
+      "language": "English",
+      "standards": [
+        {
+          "code": "9-12.AP.C.1",
+          "framework": "New York State K-12 Computer Science and Digital Fluency Standards in source lesson"
+        },
+        {
+          "code": "9-12.AP.C.2",
+          "framework": "New York State K-12 Computer Science and Digital Fluency Standards in source lesson"
+        },
+        {
+          "code": "9-12.AP.PD.1",
+          "framework": "New York State K-12 Computer Science and Digital Fluency Standards in source lesson"
+        }
+      ]
+    },
+    {
+      "id": "5a229572339169ab2239930915d1193c",
+      "title": "Unlocking Code: Programming Fundamentals from Blocks to Text",
+      "topic": "Programming Fundamentals (Intro to Block/Text-Based Coding)",
+      "course": "Technology Applications",
+      "subject": "Computer Science",
+      "grade": "Grade 8",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS 126.18.3(B)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications Grade 8"
+        },
+        {
+          "code": "TEKS 126.18.3(C)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications Grade 8"
+        },
+        {
+          "code": "TEKS 126.18.3(D)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications Grade 8"
+        },
+        {
+          "code": "TEKS 126.18.4(A)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications Grade 8"
+        },
+        {
+          "code": "TEKS 126.18.4(C)",
+          "framework": "Texas Essential Knowledge and Skills, Technology Applications Grade 8"
+        }
+      ]
+    },
+    {
+      "id": "b3ad48c210f61fd9601a6b30f11b2d84",
+      "title": "Programming Fundamentals: Logic and Control",
+      "topic": "Programming Fundamentals: Logic and Control",
+      "course": "Texas Computer Science I",
+      "subject": "Computer Science",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "113.43 Computer Science I (c)(5)(B)",
+          "framework": "Texas Essential Knowledge and Skills"
+        },
+        {
+          "code": "113.43 Computer Science I (c)(4)(B)",
+          "framework": "Texas Essential Knowledge and Skills"
+        },
+        {
+          "code": "113.43 Computer Science I (c)(5)(A)",
+          "framework": "Texas Essential Knowledge and Skills"
+        }
+      ]
+    },
+    {
+      "id": "8f43099e6a685a25ead9f2b25c23a866",
+      "title": "Motion, Forces, and Newtons Laws",
+      "topic": "Motion, Forces, and Newton's Laws (Kinematics and Dynamics)",
+      "course": "Texas High School Physics",
+      "subject": "Physics",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Texas",
+      "language": "English",
+      "standards": [
+        {
+          "code": "TEKS.112.39.c.4A",
+          "framework": "Texas Essential Knowledge and Skills for Physics"
+        },
+        {
+          "code": "TEKS.112.39.c.4D",
+          "framework": "Texas Essential Knowledge and Skills for Physics"
+        },
+        {
+          "code": "TEKS.112.39.c.4H",
+          "framework": "Texas Essential Knowledge and Skills for Physics"
+        }
+      ]
+    },
+    {
+      "id": "430256ef673125bbb9ce952bf20f796f",
+      "title": "Global Conflict and Transformation: The World at War, 1914-1945",
+      "topic": "The World at War (c. 1914-1945)",
+      "course": "U.S. History / World History",
+      "subject": "Social Studies",
+      "grade": "Grade 11",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SS.912.A.4.3",
+          "framework": "Florida State Standards: Social Studies"
+        },
+        {
+          "code": "SS.912.A.4.4",
+          "framework": "Florida State Standards: Social Studies"
+        },
+        {
+          "code": "SS.912.A.6.1",
+          "framework": "Florida State Standards: Social Studies"
+        },
+        {
+          "code": "SS.912.A.6.4",
+          "framework": "Florida State Standards: Social Studies"
+        }
+      ]
+    },
+    {
+      "id": "448769af12ab6973a5ecfae6e0841477",
+      "title": "Exploring Scriptwriting, Creative Non-Fiction, and Experimental Prose",
+      "topic": "Exploring Diverse Forms: Scriptwriting, Creative Non-Fiction, and Experimental Writing",
+      "course": "UK Key Stage 3 English",
+      "subject": "English Language Arts",
+      "grade": "Grade 8",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "UK-KS3-ENG-WRITING-FORM",
+          "framework": "UK Key Stage 3 English National Curriculum"
+        },
+        {
+          "code": "UK-KS3-ENG-READ-CRITICAL",
+          "framework": "UK Key Stage 3 English National Curriculum"
+        },
+        {
+          "code": "UK-KS3-ENG-SPOKEN-LANG",
+          "framework": "UK Key Stage 3 English National Curriculum"
+        }
+      ]
+    },
+    {
+      "id": "23911d98ed0194c5d0f0630bfba897e3",
+      "title": "Computer Systems Architecture and Operating Systems",
+      "topic": "Computer Systems Architecture and Operating Systems",
+      "course": "UK Upper Secondary Computer Science",
+      "subject": "Computer Science",
+      "grade": "Grade 12",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "UK-CS-ALEVEL-ARCH-1",
+          "framework": "UK upper-secondary computer science expectations adapted from source lesson"
+        },
+        {
+          "code": "UK-CS-ALEVEL-ARCH-2",
+          "framework": "UK upper-secondary computer science expectations adapted from source lesson"
+        },
+        {
+          "code": "UK-CS-ALEVEL-OS-1",
+          "framework": "UK upper-secondary computer science expectations adapted from source lesson"
+        }
+      ]
+    },
+    {
+      "id": "0034ce659c24b078cba9a08d588fc2dd",
+      "title": "Medieval Worlds: Early Christian, Byzantine, Romanesque, and Gothic Art",
+      "topic": "Medieval Worlds: Early Christian, Byzantine, Romanesque, and Gothic Art",
+      "course": "World History",
+      "subject": "World History / Art History",
+      "grade": "Grade 10",
+      "country": "USA",
+      "state": "Florida",
+      "language": "English",
+      "standards": [
+        {
+          "code": "SS.912.W.2.5",
+          "framework": "Florida State Academic Standards for Social Studies, World History"
+        },
+        {
+          "code": "SS.912.W.2.6",
+          "framework": "Florida State Academic Standards for Social Studies, World History"
+        },
+        {
+          "code": "SS.912.W.3.3",
+          "framework": "Florida State Academic Standards for Social Studies, World History"
+        }
+      ]
+    },
+    {
+      "id": "2a6d5389e394cb0b340e0ee6f0937b73",
+      "title": "Adding and Taking Away: Number Adventures Up to 20",
+      "topic": "Addition and Subtraction (within 20)",
+      "course": "Year 1 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 1",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "UK-NC-Y1-AS-1",
+          "framework": "England National Curriculum Mathematics Year 1: Addition and Subtraction"
+        },
+        {
+          "code": "UK-NC-Y1-AS-2",
+          "framework": "England National Curriculum Mathematics Year 1: Addition and Subtraction"
+        },
+        {
+          "code": "UK-NC-Y1-AS-3",
+          "framework": "England National Curriculum Mathematics Year 1: Addition and Subtraction"
+        },
+        {
+          "code": "UK-NC-Y1-AS-4",
+          "framework": "England National Curriculum Mathematics Year 1: Addition and Subtraction"
+        }
+      ]
+    },
+    {
+      "id": "11a9695e7688ba8438f8b970ee236351",
+      "title": "Mastering Millions: Place Value and Four Operations",
+      "topic": "Number and Place Value (up to 10,000,000) & Four Operations",
+      "course": "Year 6 Mathematics",
+      "subject": "Mathematics",
+      "grade": "Grade 6",
+      "country": "UK",
+      "state": "",
+      "language": "English",
+      "standards": [
+        {
+          "code": "England.NC.Math.Y6.Number.PlaceValue",
+          "framework": "England National Curriculum: Mathematics, Year 6"
+        },
+        {
+          "code": "England.NC.Math.Y6.Number.PlaceValue.Round",
+          "framework": "England National Curriculum: Mathematics, Year 6"
+        },
+        {
+          "code": "England.NC.Math.Y6.Number.FourOperations.Multiply",
+          "framework": "England National Curriculum: Mathematics, Year 6"
+        },
+        {
+          "code": "England.NC.Math.Y6.Number.FourOperations.Divide",
+          "framework": "England National Curriculum: Mathematics, Year 6"
+        },
+        {
+          "code": "England.NC.Math.Y6.Number.FourOperations.Order",
+          "framework": "England National Curriculum: Mathematics, Year 6"
+        }
+      ]
+    }
+  ]
+}

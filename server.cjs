@@ -74,11 +74,62 @@ const WAREHOUSE_DIR = path.join(__dirname, 'warehouse');
 const CURRICULUM_DIR = path.join(WAREHOUSE_DIR, 'curriculums');
 const LESSONS_DIR = path.join(WAREHOUSE_DIR, 'lessons');
 const PACKAGES_DIR = path.join(WAREHOUSE_DIR, 'packages');
+const APPROVED_LESSONS_DIR = path.join(__dirname, 'data', 'approved-lessons');
 const WORKSPACE_ROOT = path.resolve(process.env.LOCAL_WORKSPACE_ROOT || path.join(__dirname, 'scratch', 'agent-workspace'));
 
 [WAREHOUSE_DIR, CURRICULUM_DIR, LESSONS_DIR, PACKAGES_DIR, WORKSPACE_ROOT].forEach((dir) => {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
+
+function loadCuratedLessonById(id) {
+    const safeId = String(id || '').trim().toLowerCase();
+    if (!/^[a-f0-9]{32}$/.test(safeId)) return null;
+    const file = path.join(APPROVED_LESSONS_DIR, `${safeId}.json`);
+    if (!fs.existsSync(file)) return null;
+    try {
+        return JSON.parse(fs.readFileSync(file, 'utf8'));
+    } catch (err) {
+        console.error('[Curated lesson read error]', err.message);
+        return null;
+    }
+}
+
+function findCuratedLesson(body = {}) {
+    const byId = loadCuratedLessonById(body.approvedLessonId);
+    if (byId) return byId;
+    if (!fs.existsSync(APPROVED_LESSONS_DIR)) return null;
+    const topic = cleanString(body.topic, 180).toLowerCase();
+    const course = cleanString(body.course, 160).toLowerCase();
+    if (!topic) return null;
+    for (const fileName of fs.readdirSync(APPROVED_LESSONS_DIR)) {
+        if (!fileName.endsWith('.json')) continue;
+        const lesson = loadCuratedLessonById(fileName.replace(/\.json$/i, ''));
+        if (!lesson) continue;
+        const lessonTopic = String(lesson.topic || '').trim().toLowerCase();
+        const lessonCourse = String(lesson.course || '').trim().toLowerCase();
+        if (lessonTopic === topic && (!course || lessonCourse === course)) return lesson;
+    }
+    return null;
+}
+
+const firestoreReady = () => Boolean(
+    process.env.K_SERVICE
+    || process.env.GOOGLE_APPLICATION_CREDENTIALS
+    || process.env.FIRESTORE_EMULATOR_HOST
+);
+
+function isPublicMarketplaceItem(item = {}) {
+    const title = String(item.title || '').trim();
+    const normalized = title.toLowerCase();
+    if (!title || title.length < 4) return false;
+    if (String(item.id || '').startsWith('sample-')) return false;
+    if (/^(test|untitled|demo|sample|asdf|xxx|tbd|n\/a|na)\b/i.test(normalized)) return false;
+    if (normalized.includes('untitled')) return false;
+    const summary = String(item.summary || '').trim().toLowerCase();
+    const content = String(item.content || '').trim().toLowerCase();
+    if (summary === 'test' || content === 'test' || summary === 'asdf' || content === 'asdf') return false;
+    return true;
+}
 
 const cleanString = (value = '', maxLength = 5000) => (
     String(value || '')
@@ -1830,6 +1881,7 @@ app.post('/api/chatgpt/quick-draft', async (req, res) => {
 });
 
 async function recordUsageEvent({ type, email = '', visitorId = '', role = '', name = '', plan = null, topic = '', pathName = '', userAgent = '', ip = '' }) {
+    if (!firestoreReady()) return;
     const safeEmail = cleanEmail(email);
     const safeVisitorId = cleanString(visitorId, 80);
     const event = {
@@ -1865,6 +1917,20 @@ app.post('/api/users/signin', async (req, res) => {
         const safeEmail = cleanEmail(req.body.email);
         if (!safeEmail) return res.status(400).json({ error: 'A valid email is required to save an account.' });
         const safeRole = roleForEmail(safeEmail, req.body.role);
+        if (!firestoreReady()) {
+            return res.json({
+                user: {
+                    email: safeEmail,
+                    name: cleanString(req.body.name, 100) || safeEmail.split('@')[0],
+                    role: safeRole,
+                    workspaceType: cleanString(req.body.workspaceType, 80) || 'Individual teacher',
+                    workspaceName: cleanString(req.body.workspaceName, 120) || '',
+                    freeLessonLimit: FREE_LESSON_LIMIT,
+                    freeLessonRemaining: FREE_LESSON_LIMIT
+                },
+                accessCheck: 'local-unchecked'
+            });
+        }
         await recordUsageEvent({
             type: 'sign_in',
             email: safeEmail,
@@ -2292,8 +2358,58 @@ app.post('/api/lesson', async (req, res) => {
     const lessonId = crypto.createHash('md5').update(`${country}_${state || ''}_${grade}_${topic}_${language}`).digest('hex');
 
     try {
+        const curatedLesson = findCuratedLesson(req.body);
+        if (curatedLesson) {
+            let access;
+            if (!firestoreReady()) {
+                access = {
+                    allowed: true,
+                    guestAccess: true,
+                    guestLessonLimit: GUEST_FREE_LESSON_LIMIT,
+                    guestLessonRemaining: GUEST_FREE_LESSON_LIMIT,
+                    accessCheck: 'local-unchecked'
+                };
+            } else {
+            try {
+                access = await reserveLessonAccess({
+                    email: req.body.email,
+                    country: curatedLesson.country || country,
+                    topic: curatedLesson.topic || topic,
+                    ip: clientIp(req)
+                });
+            } catch (accessErr) {
+                const message = String(accessErr.message || accessErr);
+                const missingCreds = /Could not load the default credentials|UNAUTHENTICATED|getApplicationDefault|Could not refresh access token/i.test(message);
+                if (!missingCreds) throw accessErr;
+                access = {
+                    allowed: true,
+                    guestAccess: true,
+                    guestLessonLimit: GUEST_FREE_LESSON_LIMIT,
+                    guestLessonRemaining: GUEST_FREE_LESSON_LIMIT,
+                    accessCheck: 'local-unchecked'
+                };
+            }
+            }
+            if (!access.allowed) {
+                return res.status(access.status || 402).json(access);
+            }
+            return res.json({ ...curatedLesson, access });
+        }
+
         const exactRequest = { country, state, grade, topic, language, need, course: course || 'General Education' };
         const localLesson = loadOrCreateLocalLesson(exactRequest);
+        if (!firestoreReady()) {
+            return res.json({
+                ...localLesson,
+                access: {
+                    allowed: true,
+                    guestAccess: true,
+                    guestLessonLimit: GUEST_FREE_LESSON_LIMIT,
+                    guestLessonRemaining: GUEST_FREE_LESSON_LIMIT,
+                    accessCheck: 'local-unchecked'
+                }
+            });
+        }
         const access = await reserveLessonAccess({
             email: req.body.email,
             country,
@@ -2468,20 +2584,24 @@ const sampleMarketplaceItems = [
 
 app.get('/api/marketplace', async (req, res) => {
     try {
+        if (!firestoreReady()) {
+            return res.json({ items: [], emptyState: 'coming_soon' });
+        }
         const snapshot = await marketplaceCol.limit(100).get();
         const items = snapshot.docs
             .map((doc) => ({ id: doc.id, ...doc.data() }))
             .filter((item) => MARKETPLACE_STATUS.includes(item.status))
+            .filter(isPublicMarketplaceItem)
             .sort((a, b) => {
                 const left = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : 0;
                 const right = b.createdAt?.toDate ? b.createdAt.toDate().getTime() : 0;
                 return right - left;
             })
             .slice(0, 60);
-        res.json({ items: items.length ? items : sampleMarketplaceItems });
+        res.json({ items, emptyState: items.length ? null : 'coming_soon' });
     } catch (err) {
         console.error('[Marketplace List Error]:', err);
-        res.json({ items: sampleMarketplaceItems });
+        res.json({ items: [], emptyState: 'coming_soon' });
     }
 });
 

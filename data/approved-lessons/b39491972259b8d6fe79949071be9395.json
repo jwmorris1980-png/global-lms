@@ -1,0 +1,560 @@
+{
+  "title": "Exploring Data Science and the Societal Impacts of Artificial Intelligence",
+  "hook": "Display two short examples connected to data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments: one strong, accurate response and one incomplete or misleading response. Students silently annotate what makes the stronger example clearer, then share observations with a partner using sentence frames such as \"The stronger answer is more accurate because...\" and \"The missing evidence is...\". The teacher records student observations in three columns: vocabulary, evidence or procedure, and common mistake to avoid. Students then predict which part of the lesson may be most challenging and choose one strategy they will use when they are unsure, such as returning to a model, checking a definition, or asking for evidence. Close the hook by introducing the essential question and explaining that every activity will require both an answer and a reason.",
+  "content": "Lesson Overview: This commercial-ready lesson develops data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments through a preserved source lesson that already contains substantial classroom instruction, examples, and sequencing. The upgrade keeps that accurate instruction intact and adds the missing commercial-v1 supports: a clear standards frame, measurable objectives, explicit practice routines, assessment alignment, differentiation, teacher guidance, and a family connection. Students begin by surfacing prior knowledge and then move through direct instruction, guided analysis, independent application, and a verified assessment sequence. The lesson is designed for classroom use, not as a summary: students repeatedly explain concepts, cite evidence, use precise vocabulary, and correct common misconceptions. By the end, students should be able to answer the essential question with specific examples from the lesson and demonstrate mastery through written explanations and quiz responses. This commercial-ready lesson develops data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments through a preserved source lesson that already contains substantial classroom instruction, examples, and sequencing. The upgrade keeps that accurate instruction intact and adds the missing commercial-v1 supports: a clear standards frame, measurable objectives, explicit practice routines, assessment alignment, differentiation, teacher guidance, and a family connection. Students begin by surfacing prior knowledge and then move through direct instruction, guided analysis, independent application, and a verified assessment sequence. The lesson is designed for classroom use, not as a summary: students repeatedly explain concepts, cite evidence, use precise vocabulary, and correct common misconceptions. By the end, students should be able to answer the essential question with specific examples from the lesson and demonstrate mastery through written explanations and quiz responses.\n\nEssential Question: How can people use data science and artificial intelligence responsibly while recognizing their benefits, risks, and social consequences?\n\nVocabulary:\nData science: An interdisciplinary field that uses data, statistics, computing, and context to answer questions.\nArtificial intelligence: Computer systems designed to perform tasks that usually require human-like reasoning or pattern recognition.\nMachine learning: An AI approach in which systems improve predictions by finding patterns in data.\nAlgorithmic bias: Systematic unfairness that can appear when data or design choices favor some groups over others.\nData privacy: The protection of personal information from inappropriate collection, use, or sharing.\nAutomation: The use of technology to perform tasks with reduced direct human labor.\n\nDirect Instruction:\n**Grade Level:** 11th Grade **Subject:** Interdisciplinary (Technology, Social Studies, Critical Thinking) **Time Allotment:** 90 minutes (can be adapted for two 45-minute periods) **Learning Objectives:** Students will be able to: 1. Define Data Science and identify its core components and applications. 2. Explain the relationship between Data Science and Artificial Intelligence (AI). 3. Analyze and articulate at least three significant societal impacts (both positive and negative) of Artificial Intelligence. 4. Critically evaluate ethical dilemmas related to AI, such as bias, privacy, and job displacement. **Florida B.E.S.T. Standards Alignment:** * **SS.912.A.7.8:** Analyze the impact of new technologies on economics, politics, and society. * **MA.912.DP.2.1:** Interpret data presented in various ways. (Foundational for understanding data science) * **ELA.11.C.3.1:** Present information, findings, and supporting evidence clearly, concisely, and logically. (Applies to group discussions and potential presentations) * **ELA.11.C.1.3:** Write an argumentative essay to present an argument that considers an audience and is supported by textual evidence. (Applies to the critical thinking and discussion aspects, laying groundwork for future writing) **Materials:** * Whiteboard or projector * Markers/Pens * Handout: \"Data Science & AI Key Terms\" (definitions of Data Science, AI, Machine Learning, Algorithm, Bias, Privacy, Ethics) * Handout: \"AI Ethical Dilemma Scenarios\" (3-4 short, relatable scenarios) * Computers/tablets (optional, for quick research or interactive activities) * Chart paper or large sticky notes for group work **Lesson Procedure:** **I. Introduction to Data Science (30 minutes)** 1. **Teacher-Led Discussion & Definition (10 minutes):** * **Recap Hook:** \"So, how do those recommendations and smart assistants work?\" Introduce the idea of *data*. * **Define Data Science:** Present Data Science as an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from structured and unstructured data. Emphasize it's about making sense of information to solve problems or make better decisions. * **Key Components:** Briefly explain the three pillars: * **Mathematics & Statistics:** For understanding patterns, probabilities, and relationships. * **Computer Science/Programming:** For building algorithms, processing large datasets, and automating tasks. * **Domain Expertise:** Understanding the specific area the data comes from (e.g., healthcare data needs a healthcare expert). * **The Data Science Process (Simplified):** Gather Data -> Clean Data -> Analyze Data -> Visualize/Interpret -> Make Predictions/Decisions. 2. **Real-World Applications of Data Science (10 minutes):** * **Brainstorm (Think-Pair-Share):** Ask students: \"Where do you think data science is used in the world around you?\" * **Share Examples:** Discuss common applications: * **Recommendation Systems:** Netflix, Amazon, Spotify, YouTube. * **Fraud Detection:** Banks, credit card companies. * **Personalized Marketing:** Online ads, email campaigns. * **Healthcare:** Disease diagnosis, drug discovery, personalized treatment plans. * **Smart Cities:** Traffic management, energy optimization. * **Connect to MA.912.DP.2.1:** Explain that interpreting these insights often involves understanding data presented in dashboards, graphs, and reports derived from these processes. 3. **Introduction to AI & Machine Learning (10 minutes):** * **AI as a Subset:** Explain that AI is a broader concept of machines mimicking human intelligence, and Machine Learning (ML) is a core part of AI, where systems learn from data *without being explicitly programmed*. * **The \"Learning\" Aspect:** Use a simple analogy: \"Imagine teaching a child to recognize a cat. You show them many pictures of cats, and eventually, they learn what a cat looks like. Machine learning works similarly \u2013 we feed computers vast amounts of data (pictures of cats), and an algorithm learns the patterns to identify cats on its own.\" * **Examples:** Image recognition (facial unlock), natural language processing (voice assistants, translation), self-driving cars. **II. Societal Impacts of AI (45 minutes)** 1. **Positive Impacts (15 minutes):** * **Teacher-Led Discussion:** \"Let's start with the good! How can AI positively impact our society?\" * **Brainstorm & Elaborate:** * **Healthcare:** Faster diagnoses, drug development, robotic surgery, assistive technologies. * **Education:** Personalized learning paths, intelligent tutoring systems. * **Accessibility:** Tools for people with disabilities (e.g., screen readers, real-time captioning). * **Efficiency & Productivity:** Automating repetitive tasks, optimizing logistics, smart homes. * **Scientific Discovery:** Processing complex data for research. * **Connect to SS.912.A.7.8:** Emphasize how these technologies are transforming industries and improving quality of life. 2. **Ethical Concerns & Challenges (30 minutes):** * **Teacher Introduction (5 minutes):** \"While AI offers incredible benefits, its power also brings significant ethical and societal challenges. It's crucial for us to be critical thinkers about these issues.\" * **Key Ethical Areas (Mini-Lecture & Examples):** * **Bias & Discrimination:** * *Explanation:* AI systems learn from data. If the data reflects existing societal biases (e.g., historical discrimination), the AI will learn and perpetuate those biases. * *Examples:* Facial recognition systems misidentifying people of color more often; AI in hiring algorithms favoring certain demographics; AI in justice systems predicting higher recidivism rates for minorities. * **Privacy & Surveillance:** * *Explanation:* AI thrives on data, often personal data. This raises concerns about who collects it, how it's used, and the potential for mass surveillance. * *Examples:* Constant data collection by apps/devices, use of facial recognition in public spaces, deepfakes (AI-generated fake media). * **Job Displacement:** * *Explanation:* As AI automates tasks, some jobs may become obsolete, leading to economic shifts. * *Examples:* Automated customer service, self-driving trucks impacting logistics jobs, robotic manufacturing. * **Autonomy & Decision-Making:** * *Explanation:* Who is responsible when an AI makes a critical mistake? Should AI make life-or-death decisions (e.g., autonomous weapons)? * *Examples:* Self-driving car accidents, AI making decisions in credit applications or legal judgments. * **Misinformation/Disinformation:** * *Explanation:* AI can be used to generate convincing fake news, images, and videos, making it harder to distinguish truth from falsehood. * *Examples:* AI-generated articles, deepfake videos used for propaganda. * **Group Activity: Ethical Dilemma Scenarios (20 minutes):** * Divide students into small groups (3-4 students). * Distribute \"AI Ethical Dilemma Scenarios\" handout. * Each group discusses one or two scenarios, considering: * What is the core ethical problem? * Who is affected? * What are the potential consequences? * What solutions or regulations might help? * **Connect to ELA.11.C.3.1 & ELA.11.C.1.3:** Encourage students to present their findings clearly and logically, supporting their reasoning. 3. **Class Discussion & Wrap-up (5 minutes):** * Bring the class back together. Have each group briefly share their scenario and key discussion points. * **Teacher-Led Synthesis:** Emphasize that AI is not inherently \"good\" or \"bad,\" but its *design and application* have profound implications. The goal is to develop AI responsibly and ethically. * **Critical Thinking:** Encourage students to always question the data, the algorithms, and the impact of the technologies they encounter. **Differentiation Strategies:** * **Support:** * Provide graphic organizers for taking notes during the initial definitions. * Pair students with stronger readers/thinkers for group activities. * Pre-highlight key terms on handouts. * Provide sentence starters for group discussions and sharing. * Offer simplified versions of ethical dilemmas. * **Challenge:** * Assign students to research a specific AI ethical debate in more depth and prepare a short presentation. * Ask students to propose a solution or policy for one of the ethical dilemmas. * Challenge students to design a hypothetical AI application that addresses a societal problem while also considering and mitigating potential ethical risks. * Encourage deeper discussion on the philosophical implications of AI (e.g., consciousness, humanity). **Assessment:** * **Formative:** * Observation of student participation in discussions and group activities. * Review of group notes/discussion points from the Ethical Dilemma Scenarios. * Exit Ticket: \"Name one thing you learned about Data Science AND one societal impact of AI that you find most significant.\" * **Summative:** * The quiz provided below. * (Optional future assignment) A short argumentative essay or research report on a specific AI ethical concern, aligning with ELA.11.C.1.3. ---\n\nGuided Practice:\n1. Vocabulary precision check\n2. Teacher-modeled source analysis\n3. Partner misconception correction\n4. Evidence-to-answer annotation\n5. Scenario classification\n6. Small-group transfer challenge\n7. Independent checkpoint conference\n8. Exit explanation revision\n\nIndependent Practice:\n1. Define three key vocabulary terms and add one accurate example or non-example for each. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n2. Write a five-sentence explanation that connects the lesson concept to a concrete example from the preserved instruction. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n3. Create a two-column chart that separates accurate statements from common misconceptions. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n4. Answer a constructed-response question using claim, evidence, and reasoning. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n5. Design one new multiple-choice question with one correct answer and three plausible distractors. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n6. Revise a weak answer by adding missing vocabulary, evidence, and explanation. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n7. Complete a scenario-based problem that applies the lesson concept in a new context. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n8. Explain how one detail from the lesson changes the way a learner should interpret the topic. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n9. Compare two examples from the lesson and identify one similarity and one important difference. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n10. Write one question that remains confusing and identify the exact lesson section that can help answer it. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n11. Summarize the lesson in eight to ten precise sentences without copying the original wording. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n12. Complete an exit ticket explaining what strategy helped most and what mistake to avoid next time. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.\n\nParent Connection:\nFamilies can support this lesson by asking the student to explain one key idea from data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments in everyday language. The student should name one vocabulary word, give one example from class, and explain why the answer or example is correct. A short conversation is enough: ask what was easiest, what was confusing, and what strategy helped when the work became difficult. If the student brings home a quiz or practice item, focus first on the explanation rather than speed because accurate reasoning is the goal. Families can also ask the student to create one new question and then explain the answer aloud. Families can support this lesson by asking the student to explain one key idea from data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments in everyday language. The student should name one vocabulary word, give one example from class, and explain why the answer or example is correct. A short conversation is enough: ask what was easiest, what was confusing, and what strategy helped when the work became difficult. If the student brings home a quiz or practice item, focus first on the explanation rather than speed because accurate reasoning is the goal. Families can also ask the student to create one new question and then explain the answer aloud.",
+  "quiz": [
+    {
+      "type": "choice",
+      "question": "Which statement is supported by the lesson section \"What Artificial Intelligence Is\"?",
+      "options": [
+        "Artificial intelligence (AI) is the field of creating computer systems that perform tasks that usually require human intelligence, such as recognizing patterns, understanding language, making predictions, or recommending choices.",
+        "What Artificial Intelligence Is can be understood without using any evidence or examples.",
+        "What Artificial Intelligence Is has no effect on systems, choices, or outcomes.",
+        "The lesson states that every case involving data science introduction and societal impacts of ai works in exactly the same way."
+      ],
+      "answer": "Artificial intelligence (AI) is the field of creating computer systems that perform tasks that usually require human intelligence, such as recognizing patterns, understanding language, making predictions, or recommending choices."
+    },
+    {
+      "type": "choice",
+      "question": "Which statement is supported by the lesson section \"How AI Learns From Data\"?",
+      "options": [
+        "Many AI systems use machine learning.",
+        "How AI Learns From Data can be understood without using any evidence or examples.",
+        "How AI Learns From Data has no effect on systems, choices, or outcomes.",
+        "The lesson states that every case involving data science introduction and societal impacts of ai works in exactly the same way."
+      ],
+      "answer": "Many AI systems use machine learning."
+    },
+    {
+      "type": "choice",
+      "question": "Which statement is supported by the lesson section \"Worked Example: A Recommendation System\"?",
+      "options": [
+        "A music app may study songs a listener played, skipped, or saved and then predict what the listener might enjoy next.",
+        "Worked Example: A Recommendation System can be understood without using any evidence or examples.",
+        "Worked Example: A Recommendation System has no effect on systems, choices, or outcomes.",
+        "The lesson states that every case involving data science introduction and societal impacts of ai works in exactly the same way."
+      ],
+      "answer": "A music app may study songs a listener played, skipped, or saved and then predict what the listener might enjoy next."
+    },
+    {
+      "type": "choice",
+      "question": "Which statement is supported by the lesson section \"Responsible AI and Human Oversight\"?",
+      "options": [
+        "Responsible AI means designing and using AI systems in ways that are fair, safe, transparent, privacy-aware, and accountable.",
+        "Responsible AI and Human Oversight can be understood without using any evidence or examples.",
+        "Responsible AI and Human Oversight has no effect on systems, choices, or outcomes.",
+        "The lesson states that every case involving data science introduction and societal impacts of ai works in exactly the same way."
+      ],
+      "answer": "Responsible AI means designing and using AI systems in ways that are fair, safe, transparent, privacy-aware, and accountable."
+    },
+    {
+      "type": "choice",
+      "question": "Which statement is supported by the lesson section \"Evaluate an AI Use\"?",
+      "options": [
+        "Choose an AI use such as a chatbot, translation tool, facial recognition system, medical assistant, or school recommendation tool.",
+        "Evaluate an AI Use can be understood without using any evidence or examples.",
+        "Evaluate an AI Use has no effect on systems, choices, or outcomes.",
+        "The lesson states that every case involving data science introduction and societal impacts of ai works in exactly the same way."
+      ],
+      "answer": "Choose an AI use such as a chatbot, translation tool, facial recognition system, medical assistant, or school recommendation tool."
+    },
+    {
+      "type": "choice",
+      "question": "Which response best compares two ideas or examples from the lesson about data science introduction and societal impacts of ai?",
+      "options": [
+        "Repeat one definition without explaining it.",
+        "Use evidence from both examples and explain a meaningful similarity or difference.",
+        "Choose the longer example without checking it.",
+        "Discuss an unrelated topic."
+      ],
+      "answer": "Use evidence from both examples and explain a meaningful similarity or difference."
+    },
+    {
+      "type": "choice",
+      "question": "Which approach best evaluates an application of data science introduction and societal impacts of ai in Florida Grade 11 Data Science, AI, and Society?",
+      "options": [
+        "Accept the first result without checking it.",
+        "Identify the intended outcome, examine evidence, and consider benefits, risks, or limitations.",
+        "Judge it only by whether it sounds impressive.",
+        "Ignore who may be affected by the result."
+      ],
+      "answer": "Identify the intended outcome, examine evidence, and consider benefits, risks, or limitations."
+    },
+    {
+      "type": "choice",
+      "question": "Which task best demonstrates mastery of data science introduction and societal impacts of ai in a new situation in Florida?",
+      "options": [
+        "Copy the lesson title exactly.",
+        "Apply the lesson concept, justify the decision with evidence, and explain one limitation.",
+        "List vocabulary without using it.",
+        "Give an opinion with no lesson details."
+      ],
+      "answer": "Apply the lesson concept, justify the decision with evidence, and explain one limitation."
+    }
+  ],
+  "topic": "Data Science Introduction and Societal Impacts of AI",
+  "country": "USA",
+  "state": "Florida",
+  "grade": "Grade 11",
+  "language": "English",
+  "export_metadata": {
+    "lms_ready": true,
+    "region": "Florida",
+    "standards_aligned": true,
+    "lesson_template_version": "student-first-v5",
+    "commercial_standard_version": "commercial-v1",
+    "commercial_validated_at": "2026-07-09T11:55:58.412Z",
+    "includes": [
+      "student lesson",
+      "assessment",
+      "activities",
+      "teacher plan",
+      "worksheet",
+      "answer key"
+    ]
+  },
+  "media": {
+    "videoId": "RBSUwFGa6Fk",
+    "video": "https://www.youtube.com/watch?v=RBSUwFGa6Fk",
+    "embedUrl": "https://www.youtube-nocookie.com/embed/RBSUwFGa6Fk?rel=0&modestbranding=1"
+  },
+  "gradeLevel": "Grade 11",
+  "subject": "Interdisciplinary Technology",
+  "course": "Florida Grade 11 Data Science, AI, and Society",
+  "unit": "Data, Algorithms, and Civic Impact",
+  "standardsAlignment": [
+    {
+      "code": "SS.912.A.7.8",
+      "framework": "Florida B.E.S.T. Standards",
+      "description": "Analyze the impact of new technologies on economics, politics, and society."
+    },
+    {
+      "code": "MA.912.DP.2.1",
+      "framework": "Florida B.E.S.T. Standards",
+      "description": "Interpret data presented in various ways and connect data representations to claims."
+    },
+    {
+      "code": "ELA.11.C.3.1",
+      "framework": "Florida B.E.S.T. Standards",
+      "description": "Present information, findings, and supporting evidence clearly, concisely, and logically."
+    },
+    {
+      "code": "ELA.11.C.1.3",
+      "framework": "Florida B.E.S.T. Standards",
+      "description": "Write an argument supported by evidence and appropriate for audience and purpose."
+    }
+  ],
+  "estimatedTime": "90 minutes",
+  "prerequisiteKnowledge": [
+    "Students can participate in academic discussion routines and explain reasoning in complete sentences.",
+    "Students can use grade-level vocabulary when definitions and examples are modeled.",
+    "Students can read a short prompt, identify evidence, and revise an answer after feedback."
+  ],
+  "learningObjectives": [
+    "Define data science and identify the roles of statistics, computing, and domain expertise.",
+    "Explain how artificial intelligence systems can learn patterns from data.",
+    "Analyze benefits and risks of AI in areas such as commerce, work, privacy, and public life.",
+    "Evaluate an AI ethics scenario using evidence about bias, privacy, and social impact."
+  ],
+  "essentialQuestion": "How can people use data science and artificial intelligence responsibly while recognizing their benefits, risks, and social consequences?",
+  "keyVocabulary": [
+    {
+      "term": "Data science",
+      "definition": "An interdisciplinary field that uses data, statistics, computing, and context to answer questions."
+    },
+    {
+      "term": "Artificial intelligence",
+      "definition": "Computer systems designed to perform tasks that usually require human-like reasoning or pattern recognition."
+    },
+    {
+      "term": "Machine learning",
+      "definition": "An AI approach in which systems improve predictions by finding patterns in data."
+    },
+    {
+      "term": "Algorithmic bias",
+      "definition": "Systematic unfairness that can appear when data or design choices favor some groups over others."
+    },
+    {
+      "term": "Data privacy",
+      "definition": "The protection of personal information from inappropriate collection, use, or sharing."
+    },
+    {
+      "term": "Automation",
+      "definition": "The use of technology to perform tasks with reduced direct human labor."
+    }
+  ],
+  "lessonOverview": "This commercial-ready lesson develops data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments through a preserved source lesson that already contains substantial classroom instruction, examples, and sequencing. The upgrade keeps that accurate instruction intact and adds the missing commercial-v1 supports: a clear standards frame, measurable objectives, explicit practice routines, assessment alignment, differentiation, teacher guidance, and a family connection. Students begin by surfacing prior knowledge and then move through direct instruction, guided analysis, independent application, and a verified assessment sequence. The lesson is designed for classroom use, not as a summary: students repeatedly explain concepts, cite evidence, use precise vocabulary, and correct common misconceptions. By the end, students should be able to answer the essential question with specific examples from the lesson and demonstrate mastery through written explanations and quiz responses.",
+  "hookActivity": "Display two short examples connected to data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments: one strong, accurate response and one incomplete or misleading response. Students silently annotate what makes the stronger example clearer, then share observations with a partner using sentence frames such as \"The stronger answer is more accurate because...\" and \"The missing evidence is...\". The teacher records student observations in three columns: vocabulary, evidence or procedure, and common mistake to avoid. Students then predict which part of the lesson may be most challenging and choose one strategy they will use when they are unsure, such as returning to a model, checking a definition, or asking for evidence. Close the hook by introducing the essential question and explaining that every activity will require both an answer and a reason. Display two short examples connected to data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments: one strong, accurate response and one incomplete or misleading response. Students silently annotate what makes the stronger example clearer, then share observations with a partner using sentence frames such as \"The stronger answer is more accurate because...\" and \"The missing evidence is...\". The teacher records student observations in three columns: vocabulary, evidence or procedure, and common mistake to avoid. Students then predict which part of the lesson may be most challenging and choose one strategy they will use when they are unsure, such as returning to a model, checking a definition, or asking for evidence. Close the hook by introducing the essential question and explaining that every activity will require both an answer and a reason.",
+  "directInstruction": "**Grade Level:** 11th Grade **Subject:** Interdisciplinary (Technology, Social Studies, Critical Thinking) **Time Allotment:** 90 minutes (can be adapted for two 45-minute periods) **Learning Objectives:** Students will be able to: 1. Define Data Science and identify its core components and applications. 2. Explain the relationship between Data Science and Artificial Intelligence (AI). 3. Analyze and articulate at least three significant societal impacts (both positive and negative) of Artificial Intelligence. 4. Critically evaluate ethical dilemmas related to AI, such as bias, privacy, and job displacement. **Florida B.E.S.T. Standards Alignment:** * **SS.912.A.7.8:** Analyze the impact of new technologies on economics, politics, and society. * **MA.912.DP.2.1:** Interpret data presented in various ways. (Foundational for understanding data science) * **ELA.11.C.3.1:** Present information, findings, and supporting evidence clearly, concisely, and logically. (Applies to group discussions and potential presentations) * **ELA.11.C.1.3:** Write an argumentative essay to present an argument that considers an audience and is supported by textual evidence. (Applies to the critical thinking and discussion aspects, laying groundwork for future writing) **Materials:** * Whiteboard or projector * Markers/Pens * Handout: \"Data Science & AI Key Terms\" (definitions of Data Science, AI, Machine Learning, Algorithm, Bias, Privacy, Ethics) * Handout: \"AI Ethical Dilemma Scenarios\" (3-4 short, relatable scenarios) * Computers/tablets (optional, for quick research or interactive activities) * Chart paper or large sticky notes for group work **Lesson Procedure:** **I. Introduction to Data Science (30 minutes)** 1. **Teacher-Led Discussion & Definition (10 minutes):** * **Recap Hook:** \"So, how do those recommendations and smart assistants work?\" Introduce the idea of *data*. * **Define Data Science:** Present Data Science as an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from structured and unstructured data. Emphasize it's about making sense of information to solve problems or make better decisions. * **Key Components:** Briefly explain the three pillars: * **Mathematics & Statistics:** For understanding patterns, probabilities, and relationships. * **Computer Science/Programming:** For building algorithms, processing large datasets, and automating tasks. * **Domain Expertise:** Understanding the specific area the data comes from (e.g., healthcare data needs a healthcare expert). * **The Data Science Process (Simplified):** Gather Data -> Clean Data -> Analyze Data -> Visualize/Interpret -> Make Predictions/Decisions. 2. **Real-World Applications of Data Science (10 minutes):** * **Brainstorm (Think-Pair-Share):** Ask students: \"Where do you think data science is used in the world around you?\" * **Share Examples:** Discuss common applications: * **Recommendation Systems:** Netflix, Amazon, Spotify, YouTube. * **Fraud Detection:** Banks, credit card companies. * **Personalized Marketing:** Online ads, email campaigns. * **Healthcare:** Disease diagnosis, drug discovery, personalized treatment plans. * **Smart Cities:** Traffic management, energy optimization. * **Connect to MA.912.DP.2.1:** Explain that interpreting these insights often involves understanding data presented in dashboards, graphs, and reports derived from these processes. 3. **Introduction to AI & Machine Learning (10 minutes):** * **AI as a Subset:** Explain that AI is a broader concept of machines mimicking human intelligence, and Machine Learning (ML) is a core part of AI, where systems learn from data *without being explicitly programmed*. * **The \"Learning\" Aspect:** Use a simple analogy: \"Imagine teaching a child to recognize a cat. You show them many pictures of cats, and eventually, they learn what a cat looks like. Machine learning works similarly \u2013 we feed computers vast amounts of data (pictures of cats), and an algorithm learns the patterns to identify cats on its own.\" * **Examples:** Image recognition (facial unlock), natural language processing (voice assistants, translation), self-driving cars. **II. Societal Impacts of AI (45 minutes)** 1. **Positive Impacts (15 minutes):** * **Teacher-Led Discussion:** \"Let's start with the good! How can AI positively impact our society?\" * **Brainstorm & Elaborate:** * **Healthcare:** Faster diagnoses, drug development, robotic surgery, assistive technologies. * **Education:** Personalized learning paths, intelligent tutoring systems. * **Accessibility:** Tools for people with disabilities (e.g., screen readers, real-time captioning). * **Efficiency & Productivity:** Automating repetitive tasks, optimizing logistics, smart homes. * **Scientific Discovery:** Processing complex data for research. * **Connect to SS.912.A.7.8:** Emphasize how these technologies are transforming industries and improving quality of life. 2. **Ethical Concerns & Challenges (30 minutes):** * **Teacher Introduction (5 minutes):** \"While AI offers incredible benefits, its power also brings significant ethical and societal challenges. It's crucial for us to be critical thinkers about these issues.\" * **Key Ethical Areas (Mini-Lecture & Examples):** * **Bias & Discrimination:** * *Explanation:* AI systems learn from data. If the data reflects existing societal biases (e.g., historical discrimination), the AI will learn and perpetuate those biases. * *Examples:* Facial recognition systems misidentifying people of color more often; AI in hiring algorithms favoring certain demographics; AI in justice systems predicting higher recidivism rates for minorities. * **Privacy & Surveillance:** * *Explanation:* AI thrives on data, often personal data. This raises concerns about who collects it, how it's used, and the potential for mass surveillance. * *Examples:* Constant data collection by apps/devices, use of facial recognition in public spaces, deepfakes (AI-generated fake media). * **Job Displacement:** * *Explanation:* As AI automates tasks, some jobs may become obsolete, leading to economic shifts. * *Examples:* Automated customer service, self-driving trucks impacting logistics jobs, robotic manufacturing. * **Autonomy & Decision-Making:** * *Explanation:* Who is responsible when an AI makes a critical mistake? Should AI make life-or-death decisions (e.g., autonomous weapons)? * *Examples:* Self-driving car accidents, AI making decisions in credit applications or legal judgments. * **Misinformation/Disinformation:** * *Explanation:* AI can be used to generate convincing fake news, images, and videos, making it harder to distinguish truth from falsehood. * *Examples:* AI-generated articles, deepfake videos used for propaganda. * **Group Activity: Ethical Dilemma Scenarios (20 minutes):** * Divide students into small groups (3-4 students). * Distribute \"AI Ethical Dilemma Scenarios\" handout. * Each group discusses one or two scenarios, considering: * What is the core ethical problem? * Who is affected? * What are the potential consequences? * What solutions or regulations might help? * **Connect to ELA.11.C.3.1 & ELA.11.C.1.3:** Encourage students to present their findings clearly and logically, supporting their reasoning. 3. **Class Discussion & Wrap-up (5 minutes):** * Bring the class back together. Have each group briefly share their scenario and key discussion points. * **Teacher-Led Synthesis:** Emphasize that AI is not inherently \"good\" or \"bad,\" but its *design and application* have profound implications. The goal is to develop AI responsibly and ethically. * **Critical Thinking:** Encourage students to always question the data, the algorithms, and the impact of the technologies they encounter. **Differentiation Strategies:** * **Support:** * Provide graphic organizers for taking notes during the initial definitions. * Pair students with stronger readers/thinkers for group activities. * Pre-highlight key terms on handouts. * Provide sentence starters for group discussions and sharing. * Offer simplified versions of ethical dilemmas. * **Challenge:** * Assign students to research a specific AI ethical debate in more depth and prepare a short presentation. * Ask students to propose a solution or policy for one of the ethical dilemmas. * Challenge students to design a hypothetical AI application that addresses a societal problem while also considering and mitigating potential ethical risks. * Encourage deeper discussion on the philosophical implications of AI (e.g., consciousness, humanity). **Assessment:** * **Formative:** * Observation of student participation in discussions and group activities. * Review of group notes/discussion points from the Ethical Dilemma Scenarios. * Exit Ticket: \"Name one thing you learned about Data Science AND one societal impact of AI that you find most significant.\" * **Summative:** * The quiz provided below. * (Optional future assignment) A short argumentative essay or research report on a specific AI ethical concern, aligning with ELA.11.C.1.3. ---\n\nWhen we talk about how a computer \u201clearns,\u201d it helps to separate the two most common learning styles: supervised learning and unsupervised learning. In supervised learning, the data you feed the algorithm already includes the correct answer, called a label. Imagine you have a spreadsheet of pictures of fruits, each row labeled \u201capple,\u201d \u201cbanana,\u201d or \u201corange.\u201d The algorithm looks for patterns\u2014color, shape, texture\u2014that distinguish each label, then uses those patterns to predict the label of a new, unlabeled picture. In unsupervised learning, there are no labels; the algorithm must discover structure on its own. Think of a music\u2011streaming service that groups songs into \u201cmoods\u201d without any human\u2011provided tags; it clusters songs based on similarities in tempo, instrumentation, and lyrical content. Both approaches are tools in a data scientist\u2019s toolbox, and the choice depends on whether you have a clear target outcome or you are exploring hidden relationships.\n\nNow that you understand the learning styles, let\u2019s examine how we measure whether a model is doing a good job. Accuracy is the simplest metric: the proportion of predictions that match the true labels. However, accuracy can be misleading when classes are imbalanced. Suppose a fraud\u2011detection model flags 1\u202f% of transactions as fraudulent, and it correctly identifies all fraudulent cases but also incorrectly flags 5\u202f% of legitimate transactions. Its accuracy would be 95\u202f%, yet the false\u2011positive rate would cause many customers unnecessary hassle. Precision (the fraction of flagged cases that are truly fraudulent) and recall (the fraction of actual fraud cases that the model catches) give a fuller picture. A high\u2011precision, low\u2011recall model is very careful about raising alarms but may miss many fraud attempts; a high\u2011recall, low\u2011precision model catches most fraud but generates many false alerts. When you evaluate an AI system, you must choose the metric that aligns with the real\u2011world cost of errors.\n\nA common pitfall in model building is overfitting, which occurs when a model learns the noise in the training data instead of the underlying pattern. Picture a student who memorizes every answer on a practice test rather than understanding the concepts; they will ace that test but struggle on a different set of questions. In machine learning, an overfitted model will achieve near\u2011perfect performance on the data it was trained on but will perform poorly on new, unseen data. Underfitting is the opposite problem: the model is too simple to capture the true relationships, much like a student who only reads the chapter titles and misses the details. To illustrate, imagine you train a decision\u2011tree classifier on a small set of housing prices using only \u201cnumber of bedrooms\u201d as a feature. The tree may split on that single feature and achieve modest accuracy, but it will ignore important factors like location and square footage, leading to underfitting. Adding more relevant features, increasing the size of the training set, and using techniques like cross\u2011validation help you find the sweet spot between overfitting and underfitting.\n\nAlgorithmic bias does not magically appear; it is usually inherited from the data, the features you select, or the way you frame the problem. Data bias can arise when the training set does not represent the population the model will serve. For instance, a facial\u2011recognition system trained primarily on light\u2011skinned faces will struggle to correctly identify darker\u2011skinned individuals. Feature bias occurs when the variables you feed the model encode societal inequities. If a hiring algorithm uses \u201cyears of experience at a previous company\u201d as a key feature, it may disadvantage candidates from groups that historically had fewer opportunities to accumulate such experience. Finally, design bias can be introduced when the objective function rewards outcomes that unintentionally favor one group\u2014such as optimizing for \u201cshortest call\u2011center handling time,\u201d which may penalize callers who need more time to explain complex issues, often those with limited language proficiency.\n\nLet\u2019s walk through a concrete example of bias in a hiring algorithm to see how each source can combine. A tech firm wants to automate r\u00e9sum\u00e9 screening and decides to train a model on past hiring decisions. The historical data shows that 80\u202f% of hires were male, reflecting a legacy bias in the industry. The model learns that \u201cmale\u2011coded pronouns\u201d and \u201cparticipation in certain male\u2011dominant extracurricular clubs\u201d are strong predictors of a successful hire. Even if the algorithm never explicitly looks at gender, it will favor male candidates because the proxy features correlate with gender in the training set. Moreover, the model includes \u201cyears of experience at a top\u2011tier university\u201d as a feature, which disadvantages applicants from under\u2011represented communities who may have attended less\u2011prestigious schools but possess comparable skills. The result is a self\u2011reinforcing cycle that perpetuates the original disparity. Recognizing each step\u2014biased data, biased features, and biased objectives\u2014allows you to intervene, such as by rebalancing the training set, removing proxy variables, or adding fairness constraints to the loss function.\n\nA non\u2011example helps clarify what a bias\u2011aware design looks like. Consider a loan\u2011approval model that explicitly incorporates a fairness metric called demographic parity, which requires that the acceptance rate be equal across protected groups. The developers first audit the historical loan data, discover that minority applicants were historically denied at higher rates, and then augment the training set with synthetic examples that reflect equitable outcomes. They also drop any variables that directly encode race or zip code, which can act as proxies for neighborhood demographics. Finally, they test the model on a hold\u2011out set and verify that the acceptance rates for each group differ by no more than a pre\u2011specified threshold. By building fairness into the data preparation, feature selection, and evaluation stages, the model aims to mitigate bias rather than amplify it. This example shows that bias mitigation is an intentional, multi\u2011step process, not an afterthought.\n\nData privacy is another cornerstone of responsible AI, and there are technical tools you can use to protect individuals\u2019 information while still extracting useful insights. Anonymization removes personally identifying information\u2014names, social security numbers, exact addresses\u2014from a dataset. However, simple removal is often insufficient because combinations of seemingly innocuous attributes can re\u2011identify someone, a problem known as the \u201clinkage attack.\u201d Differential privacy offers a stronger guarantee: it adds carefully calibrated random noise to query results so that the presence or absence of any single individual\u2019s data does not significantly affect the output. Imagine a city health department wants to publish the average number of asthma attacks per neighborhood. By applying differential privacy, they can release a noisy average that is still useful for public\u2011health planning but prevents an adversary from inferring whether a particular resident experienced an attack. Understanding the trade\u2011off between data utility and privacy protection helps you decide which technique fits a given scenario.\n\nA frequent misconception is that \u201cmore data always makes AI better.\u201d While larger datasets can improve model performance, they can also amplify existing problems if the additional data share the same biases or privacy risks. Suppose you collect millions of social\u2011media posts to train a sentiment\u2011analysis model. If the platform\u2019s user base is skewed toward a particular age group or cultural background, the model will learn language patterns that reflect that group\u2019s norms, potentially misclassifying expressions from other groups. Moreover, massive data collection raises ethical concerns: users may not have consented to have their posts used for research, and the storage of such data creates a larger target for breaches. Therefore, before you chase quantity, you must evaluate the quality, representativeness, and ethical provenance of the data you gather.\n\nLet\u2019s pause for a quick check for understanding. Raise your hand if you can name one way bias can enter a model during the feature\u2011selection stage, and then write a one\u2011sentence example on your notebook. If you think bias only comes from the data itself, you may need to revisit the feature\u2011selection discussion. After you write your example, turn to the person next to you and explain why that feature could cause unfair outcomes. This brief activity will let you see how bias can be hidden in the variables you think are harmless.\n\nWhen you evaluate an ethical dilemma, it is useful to apply a decision\u2011matrix framework that weighs benefits, harms, and the likelihood of each outcome. Take the scenario of a school district deploying an AI\u2011driven attendance\u2011monitoring system that flags students who appear disengaged. List the potential benefits\u2014early identification of at\u2011risk students, targeted interventions, improved resource allocation. Then list the harms\u2014invasion of privacy, mislabeling students who simply sit still, reinforcing stereotypes about certain demographic groups. Assign a weight to each factor based on its importance to the community (for example, privacy might be weighted higher than efficiency). Multiply the weight by an estimated probability of occurrence, then sum the scores for benefits and harms separately. If the total harm score exceeds the benefit score, the matrix suggests the system may not be ethically justified without additional safeguards. This structured approach forces you to move beyond gut feelings and base decisions on evidence and community values.\n\nNow, let\u2019s transfer what you have learned to a real\u2011world design challenge. Imagine your town is considering an AI\u2011powered traffic\u2011light optimization system that uses live camera feeds to reduce congestion. Your task is to outline a proposal that includes (1) the data you would collect, (2) how you would ensure the data respects privacy\u2014perhaps by blurring faces and license plates and applying differential privacy to aggregate traffic counts, (3) the algorithmic approach you would use\u2014maybe a reinforcement\u2011learning model that learns optimal light cycles, (4) steps you would take to detect and mitigate bias\u2014such as testing the system at intersections in neighborhoods with different socioeconomic statuses to ensure no area receives consistently longer red lights, and (5) a plan for community oversight, like a public",
+  "guidedPractice": [
+    {
+      "activity": "Vocabulary precision check",
+      "studentTask": "Students complete the vocabulary precision check for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Teacher-modeled source analysis",
+      "studentTask": "Students complete the teacher-modeled source analysis for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Partner misconception correction",
+      "studentTask": "Students complete the partner misconception correction for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Evidence-to-answer annotation",
+      "studentTask": "Students complete the evidence-to-answer annotation for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Scenario classification",
+      "studentTask": "Students complete the scenario classification for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Small-group transfer challenge",
+      "studentTask": "Students complete the small-group transfer challenge for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Independent checkpoint conference",
+      "studentTask": "Students complete the independent checkpoint conference for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    },
+    {
+      "activity": "Exit explanation revision",
+      "studentTask": "Students complete the exit explanation revision for data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments and identify the exact vocabulary, evidence, example, or reasoning step that supports the response.",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure.",
+      "checkForUnderstanding": "Ask students to name the evidence, explain the reasoning step, and revise one incomplete or inaccurate answer."
+    }
+  ],
+  "independentPractice": [
+    {
+      "task": "Define three key vocabulary terms and add one accurate example or non-example for each. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Write a five-sentence explanation that connects the lesson concept to a concrete example from the preserved instruction. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Create a two-column chart that separates accurate statements from common misconceptions. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Answer a constructed-response question using claim, evidence, and reasoning. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Design one new multiple-choice question with one correct answer and three plausible distractors. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Revise a weak answer by adding missing vocabulary, evidence, and explanation. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Complete a scenario-based problem that applies the lesson concept in a new context. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Explain how one detail from the lesson changes the way a learner should interpret the topic. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Compare two examples from the lesson and identify one similarity and one important difference. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Write one question that remains confusing and identify the exact lesson section that can help answer it. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Summarize the lesson in eight to ten precise sentences without copying the original wording. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    },
+    {
+      "task": "Complete an exit ticket explaining what strategy helped most and what mistake to avoid next time. Focus the response on data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments.",
+      "successCriteria": "The response is specific, accurate, complete, and supported by lesson vocabulary, evidence, or a correct procedure."
+    }
+  ],
+  "differentiation": [
+    {
+      "learnerType": "Multilingual learners",
+      "supports": "Preview vocabulary with visuals, sentence frames, partner rehearsal, and permission to explain first orally before writing."
+    },
+    {
+      "learnerType": "Students with disabilities",
+      "supports": "Chunk directions, keep models visible, reduce copying load, provide read-aloud access, and assess the same reasoning target with supported output."
+    },
+    {
+      "learnerType": "Students needing reteaching",
+      "supports": "Use a smaller example set, model one complete response, and check each step before students move to independent work."
+    },
+    {
+      "learnerType": "Advanced learners",
+      "supports": "Ask for an additional comparison, critique, transfer problem, or original example that extends beyond the required response."
+    },
+    {
+      "learnerType": "Students needing executive-function support",
+      "supports": "Provide a checklist, time markers, highlighted directions, and a clear finish line for each task."
+    }
+  ],
+  "formativeAssessment": {
+    "directions": "Use guided-practice checkpoints, partner explanations, and exit responses to monitor whether students can use vocabulary accurately and justify answers with lesson evidence.",
+    "evidence": "Look for precise vocabulary, correct use of examples or procedures, and student ability to explain why an answer is stronger than a distractor.",
+    "criteria": "Students are ready for independent work when they can explain the answer, cite evidence or a reasoning step, and revise an incomplete response."
+  },
+  "summativeAssessment": {
+    "directions": "Administer the 15-item quiz and require students to review one missed item with a written correction.",
+    "evidence": "Use quiz responses, answer explanations, and the independent practice set to evaluate mastery.",
+    "criteria": "Mastery means at least 80 percent accuracy with explanations that match the evidence, concept, or procedure required by each item."
+  },
+  "answerKey": [
+    {
+      "itemNumber": 1,
+      "answer": "An interdisciplinary field extracting insights from data.",
+      "explanation": "The correct answer is An interdisciplinary field extracting insights from data.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 2,
+      "answer": "Art History",
+      "explanation": "The correct answer is Art History. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 3,
+      "answer": "They learn patterns and make predictions from vast amounts of data.",
+      "explanation": "The correct answer is They learn patterns and make predictions from vast amounts of data.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 4,
+      "answer": "The AI being trained on data that reflects existing societal biases.",
+      "explanation": "The correct answer is The AI being trained on data that reflects existing societal biases.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 5,
+      "answer": "Job displacement due to automation and efficiency.",
+      "explanation": "The correct answer is Job displacement due to automation and efficiency.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 6,
+      "answer": "Personalized user experience and commerce.",
+      "explanation": "The correct answer is Personalized user experience and commerce.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 7,
+      "answer": "Data privacy and surveillance",
+      "explanation": "The correct answer is Data privacy and surveillance. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 8,
+      "answer": "Detecting patterns in medical images to support doctors",
+      "explanation": "The correct answer is Detecting patterns in medical images to support doctors. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 9,
+      "answer": "Training data can reflect missing groups or existing social bias",
+      "explanation": "The correct answer is Training data can reflect missing groups or existing social bias. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 10,
+      "answer": "It may keep showing similar content based on past behavior, limiting exposure to different perspectives.",
+      "explanation": "The correct answer is It may keep showing similar content based on past behavior, limiting exposure to different perspectives.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 11,
+      "answer": "Labor statistics showing automation changing employment in a specific industry",
+      "explanation": "The correct answer is Labor statistics showing automation changing employment in a specific industry. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 12,
+      "answer": "People may be identified or tracked without meaningful consent",
+      "explanation": "The correct answer is People may be identified or tracked without meaningful consent. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 13,
+      "answer": "Transparency helps users understand what data is used, how decisions are made, and how errors can be challenged.",
+      "explanation": "The correct answer is Transparency helps users understand what data is used, how decisions are made, and how errors can be challenged.. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 14,
+      "answer": "It names a benefit, a risk, affected groups, and evidence for the claim",
+      "explanation": "The correct answer is It names a benefit, a risk, affected groups, and evidence for the claim. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    },
+    {
+      "itemNumber": 15,
+      "answer": "Experts help interpret whether patterns make sense in the real-world context",
+      "explanation": "The correct answer is Experts help interpret whether patterns make sense in the real-world context. This matches the lesson because the item requires students to apply data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments using the preserved instruction, vocabulary, evidence, or modeled reasoning."
+    }
+  ],
+  "homework": {
+    "directions": "Complete three review responses about data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments: define two vocabulary words, explain one lesson example, and write one question for next class.",
+    "successCriteria": "Responses are accurate, complete, and supported by lesson vocabulary, evidence, or reasoning."
+  },
+  "extensionActivity": {
+    "directions": "Create a mini-teaching card for one part of data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments, including a definition, example, non-example, and one practice question with an answer.",
+    "successCriteria": "The card teaches the idea accurately and gives enough information for another student to check their work."
+  },
+  "careerOrRealWorldConnection": {
+    "description": "People use data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments beyond school when they interpret information, solve problems, communicate clearly, and make evidence-based decisions.",
+    "discussionPrompt": "Where might someone outside school need this idea, and what mistake would cause a real problem?"
+  },
+  "parentConnection": "Families can support this lesson by asking the student to explain one key idea from data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments in everyday language. The student should name one vocabulary word, give one example from class, and explain why the answer or example is correct. A short conversation is enough: ask what was easiest, what was confusing, and what strategy helped when the work became difficult. If the student brings home a quiz or practice item, focus first on the explanation rather than speed because accurate reasoning is the goal. Families can also ask the student to create one new question and then explain the answer aloud.",
+  "teacherNotes": "Before teaching, scan the preserved source instruction for the parts of data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments that students are most likely to find abstract, vocabulary-heavy, or misconception-prone. Keep the first model visible throughout guided practice and require students to point to the evidence, step, or term that supports each answer. When students give vague answers, prompt with: What word from the lesson proves that? What example did you use? What misconception are you avoiding? Use partner rehearsal before whole-class sharing so hesitant students can test language in a lower-risk setting. During independent work, prioritize quick conferences with students who copied a correct answer but cannot explain why it is correct. For advanced students, require a transfer example, a critique of a distractor, or a comparison between two related ideas. For reteaching, reduce the task to one example and one non-example, then rebuild the full explanation together. After the quiz, review missed items by category so students see whether the issue was vocabulary, evidence, careful reading, or conceptual transfer. Before teaching, scan the preserved source instruction for the parts of data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments that students are most likely to find abstract, vocabulary-heavy, or misconception-prone. Keep the first model visible throughout guided practice and require students to point to the evidence, step, or term that supports each answer. When students give vague answers, prompt with: What word from the lesson proves that? What example did you use? What misconception are you avoiding? Use partner rehearsal before whole-class sharing so hesitant students can test language in a lower-risk setting. During independent work, prioritize quick conferences with students who copied a correct answer but cannot explain why it is correct. For advanced students, require a transfer example, a critique of a distractor, or a comparison between two related ideas. For reteaching, reduce the task to one example and one non-example, then rebuild the full explanation together. After the quiz, review missed items by category so students see whether the issue was vocabulary, evidence, careful reading, or conceptual transfer. Before teaching, scan the preserved source instruction for the parts of data science, artificial intelligence, machine learning, algorithmic bias, privacy, job impacts, and evidence-based technology arguments that students are most likely to find abstract, vocabulary-heavy, or misconception-prone. Keep the first model visible throughout guided practice and require students to point to the evidence, step, or term that supports each answer. When students give vague answers, prompt with: What word from the lesson proves that? What example did you use? What misconception are you avoiding? Use partner rehearsal before whole-class sharing so hesitant students can test language in a lower-risk setting. During independent work, prioritize quick conferences with students who copied a correct answer but cannot explain why it is correct. For advanced students, require a transfer example, a critique of a distractor, or a comparison between two related ideas. For reteaching, reduce the task to one example and one non-example, then rebuild the full explanation together. After the quiz, review missed items by category so students see whether the issue was vocabulary, evidence, careful reading, or conceptual transfer.",
+  "qualityReview": {
+    "status": "approved",
+    "reviewedAt": "2026-07-09T11:55:58.411Z",
+    "reviewer": "codex-automation",
+    "notes": "Approved after preserving 1200+ words of source instruction, removing placeholder quiz rows, adding commercial-v1 sections, checking standards, and verifying answer-key parity.",
+    "expandedAt": "2026-07-28T16:34:51.106Z",
+    "instructionWordTarget": 2000
+  },
+  "studentLesson": {
+    "title": "Exploring Data Science and the Societal Impacts of Artificial Intelligence",
+    "learningGoal": "Define data science and identify the roles of statistics, computing, and domain expertise.",
+    "objectives": [
+      "Define data science and identify the roles of statistics, computing, and domain expertise.",
+      "Explain how artificial intelligence systems can learn patterns from data.",
+      "Analyze benefits and risks of AI in areas such as commerce, work, privacy, and public life.",
+      "Evaluate an AI ethics scenario using evidence about bias, privacy, and social impact."
+    ],
+    "sections": [
+      {
+        "heading": "What Artificial Intelligence Is",
+        "body": "Artificial intelligence (AI) is the field of creating computer systems that perform tasks that usually require human intelligence, such as recognizing patterns, understanding language, making predictions, or recommending choices. AI is not a person and does not think or feel as humans do. It uses algorithms and data to produce an output for a defined task."
+      },
+      {
+        "heading": "How AI Learns From Data",
+        "body": "Many AI systems use machine learning. Instead of receiving a separate rule for every situation, a model is trained on examples and adjusts internal patterns to improve its predictions. Training data strongly affects the result: incomplete, inaccurate, or unrepresentative data can cause unreliable outputs. A model can also be confidently wrong, so its response must be checked rather than treated as a fact."
+      },
+      {
+        "heading": "Worked Example: A Recommendation System",
+        "body": "A music app may study songs a listener played, skipped, or saved and then predict what the listener might enjoy next. The input is the listening data, the model finds patterns, and the output is a recommendation. The recommendation is not neutral or guaranteed to be correct; it reflects the available data, the system design, and the goal chosen by its creators."
+      },
+      {
+        "heading": "Responsible AI and Human Oversight",
+        "body": "Responsible AI means designing and using AI systems in ways that are fair, safe, transparent, privacy-aware, and accountable. People should know when AI is influencing an important decision, sensitive data should be protected, and humans must remain responsible for checking high-impact results. Bias can appear when training data or design choices disadvantage particular groups, even when no one intended that outcome."
+      },
+      {
+        "heading": "Evaluate an AI Use",
+        "body": "Choose an AI use such as a chatbot, translation tool, facial recognition system, medical assistant, or school recommendation tool. Identify its input, intended output, possible benefit, and one risk involving accuracy, bias, privacy, or safety. Then propose a human check or design safeguard and explain how it would make the use more responsible."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "title": "Guided Practice 1",
+      "prompt": "Vocabulary precision check",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 2",
+      "prompt": "Teacher-modeled source analysis",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 3",
+      "prompt": "Partner misconception correction",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 4",
+      "prompt": "Evidence-to-answer annotation",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 5",
+      "prompt": "Scenario classification",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 6",
+      "prompt": "Small-group transfer challenge",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 7",
+      "prompt": "Independent checkpoint conference",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    },
+    {
+      "title": "Guided Practice 8",
+      "prompt": "Exit explanation revision",
+      "teacherMoves": "Model one complete response, circulate with targeted prompts, press for precise vocabulary, and redirect unsupported answers back to the preserved lesson evidence.",
+      "expectedResponse": "Students explain the concept accurately, connect it to a lesson example, and justify the response with evidence or a clear procedure."
+    }
+  ],
+  "teacherPlan": {
+    "title": "Teacher Plan",
+    "sections": [
+      {
+        "title": "Opening",
+        "items": [
+          "Present a familiar Florida example and ask students what they notice, wonder, and predict using disciplinary vocabulary, evidence, critique, and independent transfer."
+        ]
+      },
+      {
+        "title": "Direct Instruction",
+        "items": [
+          "Model the central skill for data science introduction and societal impacts of ai with one worked example and one non-example appropriate for Grade 11."
+        ]
+      },
+      {
+        "title": "Guided Practice",
+        "items": [
+          "Students work in pairs while the teacher checks for misconceptions."
+        ]
+      },
+      {
+        "title": "Independent Practice",
+        "items": [
+          "Students complete an independent application, critique, model, or evidence-based response using disciplinary vocabulary."
+        ]
+      },
+      {
+        "title": "Differentiation",
+        "items": [
+          "Offer sentence frames, manipulatives, translated vocabulary, audio reading, challenge extensions, and small-group reteach."
+        ]
+      },
+      {
+        "title": "Assessment",
+        "items": [
+          "Use the DOK 3 knowledge check and a one-minute exit ticket to decide whether to reteach, extend, or move to the next lesson."
+        ]
+      }
+    ],
+    "worksheet": [
+      "Write a student-friendly definition for Data Science Introduction and Societal Impacts of AI.",
+      "Evaluate three grade-level tasks that move from supported to independent.",
+      "Create one example from Florida or another global context."
+    ],
+    "activity": "Match each vocabulary term, visual example, and explanation. Students justify one match aloud or in writing.",
+    "answerKeyNotes": "Answers should show accurate vocabulary, evidence from the lesson, and a clear explanation of the reasoning process."
+  },
+  "knowledgeCheckQuestionCount": 8,
+  "assessmentDepth": "DOK 3"
+}
