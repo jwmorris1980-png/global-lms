@@ -2,6 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, BookOpen, GraduationCap, Clock, CheckCircle, ArrowRight, User, Shield, Info, CreditCard, Trophy, Users, BarChart3, Star, Image, Video, MonitorOff, Printer, Mail, Play, Pause, Square, Volume2, ChevronLeft, ChevronRight, Copy, Share2, Download, PenTool, Eraser, Trash2, Save, Upload, ScreenShare, Type, MousePointer2 } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
+import {
+  BUILD_STAMP,
+  mergeMarketplaceCatalog,
+  findSampleLesson,
+  findSampleCurriculum,
+  READING_SAMPLE_LESSON,
+  imageSetForTopic,
+  topicSpecificQuiz,
+  SOCIAL_PROOF,
+  PRODUCT_TOUR,
+  STANDARD_PRICING,
+  viewFromPath,
+  pathForView,
+  pageTitleFor
+} from './visitorTrust';
 
 const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || import.meta.env.VITE_STRIPE_PUBLIC_KEY || '';
 const stripePromise = stripePublishableKey && !stripePublishableKey.includes('placeholder')
@@ -185,15 +200,15 @@ const imageSignature = (value = '') => (
   Array.from(String(value)).reduce((sum, char) => sum + char.charCodeAt(0), 0)
 );
 
-const buildTopicImageUrl = (title, course, index = 0, width = 900) => {
-  const seed = encodeURIComponent(`${title}-${course}-${index}`.replace(/\s+/g, '-').toLowerCase());
-  return `https://picsum.photos/seed/${seed}/${width}/600`;
+const buildTopicImageUrl = (title, course, index = 0) => {
+  const set = imageSetForTopic(title, course);
+  return set[index % set.length];
 };
 
 const getLessonImages = (lesson, topic) => {
   const baseTitle = lesson?.title || topic || 'lesson';
   const course = lesson?.course || lesson?.subject || 'education';
-  const generated = [0, 1, 2].map((index) => buildTopicImageUrl(`${baseTitle} ${index}`, course, index, 1200));
+  const generated = imageSetForTopic(baseTitle, course);
   const existing = (lesson?.media?.images || []).filter(Boolean);
   const combined = [...existing, ...generated];
   return combined.filter((url, index, list) => list.indexOf(url) === index).slice(0, 3);
@@ -222,7 +237,7 @@ const readSharedPlanFromUrl = () => {
     grade: params.get('grade') || 'Grade 5',
     course: params.get('course') || 'General Education',
     need: params.get('need') || 'Lesson',
-    role: params.get('role') || 'Student',
+    role: params.get('role') || 'Teacher',
     topic: params.get('topic') || ''
   };
 };
@@ -236,7 +251,7 @@ const buildShareUrl = (studentData = {}, curriculum = {}, topic = '') => {
     grade: studentData.grade || curriculum.grade || 'Grade 5',
     course: curriculum.course || studentData.course || 'General Education',
     need: studentData.need || curriculum.need || 'Lesson',
-    role: studentData.role || 'Student',
+    role: studentData.role || 'Teacher',
     topic
   };
 
@@ -266,6 +281,9 @@ const normalizeLessonItem = (lesson, sequence = 1, fallback = '') => ({
 });
 
 const buildTeacherScriptSections = (lesson, topic) => {
+  if (Array.isArray(lesson?.teacherScript) && lesson.teacherScript.length) {
+    return lesson.teacherScript;
+  }
   const lessonTitle = lesson?.title || topic || 'Today\'s lesson';
   const grade = lesson?.grade || 'the selected grade';
   const region = lesson?.export_metadata?.region || lesson?.state || lesson?.country || 'your classroom context';
@@ -493,10 +511,10 @@ const CourseCard = ({ id, title, category, description, price, image, onAction, 
   <div className="course-card" id={`card-${id}`}>
     <div className="course-media">
       <img 
-        src={image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60"} 
+        src={image || buildTopicImageUrl(displayTitle, category, 0)} 
         alt={displayTitle} 
         className="course-image"
-        onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60" }}
+        onError={(e) => { e.target.src = buildTopicImageUrl(displayTitle, category, 0); }}
       />
     </div>
     <div className="course-content">
@@ -878,8 +896,8 @@ const normalizeLoginEmail = (value = '') => (
 );
 const OWNER_EMAILS = ['jwmorris1980@gmail.com', SUPPORT_EMAIL].map(normalizeLoginEmail);
 const isOwnerAdminEmail = (email = '') => OWNER_EMAILS.includes(normalizeLoginEmail(email));
-const publicAccountRole = (role = 'Student') => (role === 'Teacher' ? 'Teacher' : 'Student');
-const roleForEmail = (email = '', requestedRole = 'Student') => (
+const publicAccountRole = (role = 'Teacher') => (role === 'Student' ? 'Student' : 'Teacher');
+const roleForEmail = (email = '', requestedRole = 'Teacher') => (
   isOwnerAdminEmail(email) ? 'Admin' : publicAccountRole(requestedRole)
 );
 const isOwnerAdmin = (user) => isOwnerAdminEmail(user?.email);
@@ -901,9 +919,10 @@ const Navbar = ({ onNavigate, user, onOpenContact, onSignOut }) => {
     
     <div className="nav-links">
       <button type="button" className="nav-link" onClick={() => onNavigate('onboarding')}>Home</button>
+      <button type="button" className="nav-link" onClick={() => onNavigate('pricing')}>Pricing</button>
+      <button type="button" className="nav-link" onClick={() => onNavigate('sample')}>Free sample</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('path')}>Courses</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('marketplace')}>Marketplace</button>
-      <button type="button" className="nav-link" onClick={() => onNavigate('marketing')}>Marketing</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('sis')}>Student Info</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('about')}>About</button>
       <button type="button" className="nav-link" onClick={() => onNavigate('lms-guide')}>LMS Guide</button>
@@ -955,8 +974,8 @@ const PrivacyShield = () => (
     <div className="flex items-center gap-3 text-slate-500">
       <Shield className="text-primary" size={24} />
       <div className="text-left">
-        <p className="text-[10px] font-black uppercase tracking-widest leading-tight">COPPA Compliant</p>
-        <p className="text-xs font-medium">Safe for Students & Schools</p>
+        <p className="text-[10px] font-black uppercase tracking-widest leading-tight">COPPA / FERPA-minded</p>
+        <p className="text-xs font-medium">K-12 curriculum, not a medical product</p>
       </div>
     </div>
     <div className="flex items-center gap-3 text-slate-500">
@@ -977,28 +996,7 @@ const PrivacyShield = () => (
 );
 
 // ── About / How It Works ──────────────────────────────────────────────────────
-const DEMO_VIDEOS = [
-  {
-    id: 'about-intro',
-    title: 'What is Global LMS?',
-    youtubeId: '',   // fill in your YouTube video ID e.g. 'dQw4w9WgXcQ'
-    description: 'A quick overview of how the platform works — pick your country, grade, and subject and get a full lesson in seconds.'
-  },
-  {
-    id: 'about-lesson',
-    title: 'Generating a Lesson',
-    youtubeId: '',
-    description: 'Watch a complete lesson get built live — including quiz, vocabulary, and read-aloud support.'
-  },
-  {
-    id: 'about-pricing',
-    title: 'Pricing & Free Access',
-    youtubeId: '',
-    description: 'How country-tiered pricing works and which countries get full free access.'
-  }
-];
-
-const AboutView = ({ onBack, onOpenContact }) => (
+const AboutView = ({ onBack, onOpenContact, onNavigate }) => (
   <section className="about-shell">
     <button type="button" className="lesson-nav-btn lms-guide-back" onClick={onBack}>
       <ChevronLeft size={16} /> Back to builder
@@ -1006,9 +1004,9 @@ const AboutView = ({ onBack, onOpenContact }) => (
 
     <div className="about-hero">
       <span className="onboarding-eyebrow">About Global LMS</span>
-      <h1>AI-Powered Curriculum for Every Classroom on Earth</h1>
+      <h1>AI-built warehouse lessons teachers can actually preview</h1>
       <p>
-        Global LMS generates standards-aligned lessons, units, and full courses for any country, grade, subject, and language — in seconds. Built by a teacher, for teachers.
+        Global LMS is a K-12 curriculum warehouse: packaged lessons, units, and courses by country, grade, and subject. Stripe checkout is $5 / $10 / $100 in standard regions, with a 30-day money-back guarantee. Built by a teacher, for teachers.
       </p>
     </div>
 
@@ -1016,9 +1014,9 @@ const AboutView = ({ onBack, onOpenContact }) => (
       <h2>How It Works</h2>
       <div className="about-steps">
         {[
-          { n: '1', title: 'Pick your context', body: 'Choose your country, grade level, subject, and language. The AI automatically aligns content to that region\'s curriculum standards.' },
-          { n: '2', title: 'Generate instantly', body: 'Google Gemini AI builds a full lesson — hook, main content, vocabulary, differentiation notes, and a multi-level quiz — in about 10 seconds.' },
-          { n: '3', title: 'Use it your way', body: 'Read it on-screen, print it, export to Google Classroom, Canvas, or any LMS, or download for offline use. Edit anything before you use it.' },
+          { n: '1', title: 'Pick your context', body: 'Choose country, grade, subject, and language. Packages follow that region’s standards format so you are not starting from a blank page.' },
+          { n: '2', title: 'Open a packaged lesson', body: 'Warehouse lessons arrive as a 45-minute teacher script, student text, worksheet, quiz, and answer key — not a live chatbot conversation.' },
+          { n: '3', title: 'Use it your way', body: 'Preview on-screen, print, export to Google Classroom, Canvas, or any LMS, or download offline. You remain the editor of record.' },
         ].map(s => (
           <div key={s.n} className="about-step">
             <div className="about-step-num">{s.n}</div>
@@ -1032,24 +1030,14 @@ const AboutView = ({ onBack, onOpenContact }) => (
     </div>
 
     <div className="about-section">
-      <h2>See It In Action</h2>
+      <h2>See it in action</h2>
       <div className="about-videos">
-        {DEMO_VIDEOS.map(v => (
-          <div key={v.id} className="about-video-card">
-            {v.youtubeId ? (
-              <iframe
-                className="about-video-frame"
-                src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}?rel=0&modestbranding=1`}
-                title={v.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <div className="about-video-placeholder">
-                <Play size={32} />
-                <span>Video coming soon</span>
-              </div>
-            )}
+        {PRODUCT_TOUR.map(v => (
+          <div key={v.id} className="about-video-card about-tour-card">
+            <button type="button" className="about-video-placeholder about-tour-preview" onClick={() => onNavigate?.(viewFromPath(v.href) === 'onboarding' && v.href === '/' ? 'onboarding' : viewFromPath(v.href))}>
+              <Play size={32} />
+              <span>{v.action}</span>
+            </button>
             <div className="about-video-meta">
               <strong>{v.title}</strong>
               <p>{v.description}</p>
@@ -1062,10 +1050,10 @@ const AboutView = ({ onBack, onOpenContact }) => (
     <div className="about-section about-mission">
       <h2>The Mission</h2>
       <p>
-        Teachers in conflict zones — Ukraine, Haiti, Yemen, Palestine, Pakistan, Sudan, and others — get <strong>completely free access</strong>, no credit card required. Everyone else pays on a country-tiered scale so the cost is proportional to local purchasing power. A lesson that costs $5 in the US costs $2 in Mexico or Brazil.
+        Teachers in high-need and conflict-affected regions — including Ukraine, Haiti, Yemen, Palestine, Pakistan, Sudan, and others — get <strong>free access</strong>, no credit card. Everyone else pays a country-tiered scale. A lesson that costs $5 in the US costs $2 in Mexico or Brazil.
       </p>
       <p>
-        This is a one-person project built by a teacher with a physical disability who wanted AI tools that actually work for real classroom prep — not demo toys.
+        This is a one-person project built by a teacher with a physical disability who wanted curriculum that is ready for tomorrow’s class — not a demo toy.
       </p>
     </div>
 
@@ -1073,10 +1061,10 @@ const AboutView = ({ onBack, onOpenContact }) => (
       <h2>Transparency</h2>
       <div className="about-transparency">
         {[
-          { icon: '🤖', title: 'AI-generated content', body: 'All lessons are created by Google Gemini AI. They are not hand-curated. Always review content before using it with students.' },
-          { icon: '📋', title: 'Standards-aligned', body: 'Content is generated against the curriculum standards for the selected country and grade. Alignment should be verified for high-stakes use.' },
-          { icon: '🔒', title: 'Privacy', body: 'We do not sell your data. Email is used only for purchase receipts and account access. See our privacy policy for details.' },
-          { icon: '💳', title: 'Payments', body: 'All payments are processed by Stripe. We never see or store your card details. 30-day money-back guarantee on all purchases.' },
+          { icon: '📦', title: 'AI-built, then packaged', body: 'Lessons are generated into a stable warehouse format (script, text, quiz, key). They are not live unconstrained chat. Teachers should still review before high-stakes or official use. That is the same promise as Safety: packaged for classrooms, not “secretly hand-vetted line by line.”' },
+          { icon: '📋', title: 'Standards-aligned format', body: 'Content is structured against the curriculum format for the selected country and grade. Verify alignment for high-stakes use.' },
+          { icon: '🔒', title: 'Privacy', body: 'We do not sell your data. Email is used for receipts, account save, and support. This is a K-12 curriculum product (COPPA/FERPA-minded), not a medical records system.' },
+          { icon: '💳', title: 'Payments', body: `All payments are processed by Stripe. We never store card numbers. ${STANDARD_PRICING.guarantee} on all purchases.` },
         ].map(t => (
           <div key={t.title} className="about-transparency-item">
             <span className="about-transparency-icon">{t.icon}</span>
@@ -1171,7 +1159,7 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
     grade: 'Grade 5', 
     course: 'General Education', 
     email: '',
-    role: 'Student',
+    role: 'Teacher',
     need: 'Lesson',
     workspaceType: 'Individual teacher',
     workspaceName: ''
@@ -1296,7 +1284,7 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
           Already-loaded <span className="text-gradient">standards-aligned</span> curriculum
         </h1>
         <p className="onboarding-subtitle">
-          Pick a grade and subject. Get a ready lesson with activities, quiz, whiteboard, downloads, and LMS export.
+          Pick a grade and subject. Preview a real lesson — story, script, quiz, and answer key — then buy with Stripe. Lesson ${STANDARD_PRICING.lesson} · Unit ${STANDARD_PRICING.unit} · Course ${STANDARD_PRICING.course}. {STANDARD_PRICING.guarantee}.
         </p>
         {user?.email && isRealEmail(user.email) && (
           <div className="free-lessons-welcome" role="status">
@@ -1313,10 +1301,19 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
           <span><strong>197</strong> countries</span>
           <span><strong>95</strong> courses</span>
           <span><strong>39,552</strong> packages</span>
-          <span><strong>Any</strong> LMS</span>
-          <span><strong>Offline</strong> ready</span>
-          <span><strong>Gradebook</strong> built in</span>
-          <span><strong>Comms</strong> ready</span>
+          <span><strong>${STANDARD_PRICING.lesson}</strong> / lesson</span>
+          <span><strong>${STANDARD_PRICING.unit}</strong> / unit</span>
+          <span><strong>${STANDARD_PRICING.course}</strong> / course</span>
+          <span><strong>Stripe</strong> checkout</span>
+          <span><strong>30-day</strong> money-back</span>
+        </div>
+        <div className="social-proof-row" aria-label="Classroom proof">
+          {SOCIAL_PROOF.map((item) => (
+            <blockquote key={item.name} className="social-proof-card">
+              <p>“{item.quote}”</p>
+              <footer><strong>{item.name}</strong> · {item.role}</footer>
+            </blockquote>
+          ))}
         </div>
         <div className="instant-demo-panel" aria-label="Instant curriculum demos">
           <span className="instant-demo-label">Try a ready-built example</span>
@@ -1461,7 +1458,7 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
           <div className="paid-access-panel">
             <div>
               <strong>Buy ready-made Global LMS access</strong>
-              <span>Use Stripe Checkout for a lesson, unit, or full course license. Sign in first so the purchase can be tied to your email.</span>
+              <span>Stripe Checkout for a lesson (${STANDARD_PRICING.lesson}), unit (${STANDARD_PRICING.unit}), or full course (${STANDARD_PRICING.course}). Guests can check out without creating a Student account — Stripe collects email for the receipt.</span>
             </div>
             <div className="paid-access-actions">
               <button type="button" onClick={() => onPurchase?.('Global LMS Lesson Access', '$5')}>Buy Lesson $5</button>
@@ -1514,15 +1511,15 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
                 <div className="role-selector">
                   <button 
                     type="button"
-                    className={`role-btn ${data.role === 'Student' ? 'is-active' : ''}`}
-                    onClick={() => setData({...data, role: 'Student'})}>
-                    Student
+                    className={`role-btn ${data.role === 'Teacher' ? 'is-active' : ''}`}
+                    onClick={() => setData({...data, role: 'Teacher'})}>
+                    Teacher / buyer
                   </button>
                   <button 
                     type="button"
-                    className={`role-btn ${data.role === 'Teacher' ? 'is-active' : ''}`}
-                    onClick={() => setData({...data, role: 'Teacher'})}>
-                    Teacher
+                    className={`role-btn ${data.role === 'Student' ? 'is-active' : ''}`}
+                    onClick={() => setData({...data, role: 'Student'})}>
+                    Student
                   </button>
                 </div>
               </div>
@@ -1678,9 +1675,9 @@ const SecurityView = () => (
           <div className="w-12 h-12 bg-amber-500/10 text-amber-600 rounded-xl flex items-center justify-center">
             <Clock size={28} />
           </div>
-          <h3 className="text-2xl font-black uppercase">The Warehouse Engine</h3>
+          <h3 className="text-2xl font-black uppercase">The Packaged Warehouse</h3>
           <p className="text-dim leading-relaxed text-lg">
-            Our unique "Warehouse" approach pre-generates lessons in a secure, audited environment. This ensures that every piece of content served to a child is standards-aligned, accurate, and free from the unpredictability of live-generation AI tools.
+            Warehouse lessons are pre-generated into a classroom package — teacher plan, student text, quiz, and key — so students are not chatting with an unconstrained live model. That is the same promise as About: AI-built, then packaged. Teachers remain the editor of record and should review before high-stakes use.
           </p>
         </div>
 
@@ -1744,9 +1741,9 @@ const SafetyView = () => (
           <div className="w-12 h-12 bg-indigo-500/10 text-indigo-600 rounded-xl flex items-center justify-center">
             <Globe size={28} />
           </div>
-          <h3 className="text-2xl font-black uppercase">The Vetted Warehouse</h3>
+          <h3 className="text-2xl font-black uppercase">The Packaged Warehouse</h3>
           <p className="text-dim leading-relaxed text-lg">
-            Unlike "live" AI tools that can be unpredictable, our Warehouse content is pre-generated and vetted. Students only see educational material that has been structured for accuracy and safety.
+            Unlike a live AI chatbot, warehouse content is packaged before a student opens it. Students see structured educational material — not an open prompt box. We do not claim every line was hand-vetted in secret; we claim the format is stable, previewable, and teacher-editable. That matches the About page.
           </p>
         </div>
       </div>
@@ -1764,7 +1761,7 @@ const SafetyView = () => (
 const AuthView = ({ onSignIn }) => {
   const [authData, setAuthData] = useState({
     email: '',
-    role: 'Student',
+    role: 'Teacher',
     name: '',
     workspaceType: 'Individual teacher',
     workspaceName: ''
@@ -1841,12 +1838,12 @@ const AuthView = ({ onSignIn }) => {
               disabled={ownerEmail}
               onChange={(e) => setAuthData({ ...authData, role: publicAccountRole(e.target.value) })}
             >
-              <option>Student</option>
               <option>Teacher</option>
+              <option>Student</option>
               {ownerEmail && <option>Admin</option>}
             </select>
             <small className="form-help">
-              {ownerEmail ? 'Owner email verified. Admin access is unlocked.' : 'Admin access is restricted to the two approved owner emails.'}
+              {ownerEmail ? 'Owner email verified. Admin access is unlocked.' : 'Teachers and curriculum buyers should keep Teacher selected. Student is only for learners using a class code later.'}
             </small>
           </div>
           <div className="form-group">
@@ -2424,13 +2421,76 @@ const OwnerMarketingGate = () => {
   );
 };
 
+const PricingView = ({ onPurchase, onOpenSample, onOpenMarketplace }) => (
+  <section className="pricing-shell about-shell">
+    <span className="onboarding-eyebrow">Shareable pricing</span>
+    <h1>Lesson ${STANDARD_PRICING.lesson} · Unit ${STANDARD_PRICING.unit} · Course ${STANDARD_PRICING.course}</h1>
+    <p>
+      One public price list for teachers, ads, and school buyers. Stripe Checkout. {STANDARD_PRICING.guarantee}. High-need countries stay free.
+    </p>
+    <div className="pricing-grid">
+      {[
+        { name: 'Lesson', price: STANDARD_PRICING.lesson, detail: 'One 45-minute warehouse lesson: teacher script, student text, worksheet, quiz, answer key, LMS export.', sku: 'Global LMS Lesson Access' },
+        { name: 'Unit', price: STANDARD_PRICING.unit, detail: 'A five-lesson sequence with the same classroom package on every day.', sku: 'Global LMS Unit Access' },
+        { name: 'Course', price: STANDARD_PRICING.course, detail: 'Full-course path with units, lessons, and a culminating task.', sku: 'Global LMS Full Course Access' }
+      ].map((tier) => (
+        <article key={tier.name} className="pricing-card">
+          <h2>{tier.name}</h2>
+          <p className="pricing-amount">${tier.price}</p>
+          <p>{tier.detail}</p>
+          <button type="button" className="initialize-btn" onClick={() => onPurchase?.(tier.sku, `$${tier.price}`)}>
+            Buy {tier.name} ${tier.price}
+          </button>
+        </article>
+      ))}
+    </div>
+    <div className="pricing-regions">
+      <h2>Regional scale</h2>
+      <ul>
+        <li>Standard regions: ${STANDARD_PRICING.lesson} / ${STANDARD_PRICING.unit} / ${STANDARD_PRICING.course}</li>
+        <li>Tier-1 regions (for example Mexico, Brazil, India): $2 / $8 / $50</li>
+        <li>Free-access regions (high-need / conflict-affected): $0</li>
+      </ul>
+      <p>AI Builder credits are a separate optional pack ($5 / $10) for generating a missing draft. Warehouse catalog purchases do not require a Student login.</p>
+    </div>
+    <div className="pricing-actions">
+      <button type="button" className="btn-buy" onClick={onOpenSample}>Preview the Grade 5 sample</button>
+      <button type="button" className="nav-mini-btn" onClick={onOpenMarketplace}>Browse catalog</button>
+    </div>
+    <div className="social-proof-row">
+      {SOCIAL_PROOF.map((item) => (
+        <blockquote key={item.name} className="social-proof-card">
+          <p>“{item.quote}”</p>
+          <footer><strong>{item.name}</strong> · {item.role}</footer>
+        </blockquote>
+      ))}
+    </div>
+  </section>
+);
+
+const GuestPaywall = ({ onPurchase, onSignIn, message }) => (
+  <div className="guest-paywall glass">
+    <h2>Keep going with a lesson, unit, or course</h2>
+    <p>{message || 'Preview is open. Paid access unlocks the rest of the warehouse. You can check out as a teacher without creating a Student account.'}</p>
+    <div className="paid-access-actions">
+      <button type="button" onClick={() => onPurchase?.('Global LMS Lesson Access', '$5')}>Buy Lesson $5</button>
+      <button type="button" onClick={() => onPurchase?.('Global LMS Unit Access', '$10')}>Buy Unit $10</button>
+      <button type="button" onClick={() => onPurchase?.('Global LMS Full Course Access', '$100')}>Buy Course $100</button>
+    </div>
+    <p className="guarantee-badge"><Shield size={15} /> 30-day money-back · Stripe Checkout</p>
+    <button type="button" className="lms-inline-link" onClick={onSignIn}>Optional: save progress with email</button>
+  </div>
+);
+
 const marketplacePriceFor = (type) => type === 'Course' ? 100 : type === 'Unit' ? 10 : 5;
 
-const CreatorMarketplaceView = ({ user }) => {
-  const [items, setItems] = useState([]);
+const CreatorMarketplaceView = ({ user, onPreview, onPurchase }) => {
+  const [items, setItems] = useState(() => mergeMarketplaceCatalog([]));
   const [status, setStatus] = useState('Loading creator marketplace...');
   const [paymentConfig, setPaymentConfig] = useState({ configured: false, mode: 'checking' });
   const [mode, setMode] = useState('paid-marketplace');
+  const [needsEmailFor, setNeedsEmailFor] = useState(null);
+  const [guestEmail, setGuestEmail] = useState(user?.email || '');
   const [form, setForm] = useState({
     title: '',
     type: 'Lesson',
@@ -2451,10 +2511,11 @@ const CreatorMarketplaceView = ({ user }) => {
     try {
       const res = await fetch(`${API_BASE}/api/marketplace`);
       const data = await res.json();
-      setItems(data.items || []);
-      setStatus('Marketplace ready');
+      setItems(mergeMarketplaceCatalog(data.items || []));
+      setStatus('Catalog listings ready. Preview without signing in; Stripe collects email at checkout.');
     } catch {
-      setStatus('Marketplace is temporarily offline');
+      setItems(mergeMarketplaceCatalog([]));
+      setStatus('Showing the warehouse catalog. Live creator feed is temporarily offline.');
     }
   };
 
@@ -2498,10 +2559,12 @@ const CreatorMarketplaceView = ({ user }) => {
     }
   };
 
-  const buyItem = async (item) => {
+  const buyItem = async (item, checkoutEmail = user?.email) => {
     if (item.price <= 0) return;
-    if (!isRealEmail(user?.email)) {
-      setStatus('Sign in with a real email before buying marketplace resources.');
+    const email = isRealEmail(checkoutEmail) ? checkoutEmail : '';
+    if (!email) {
+      setStatus('Enter an email on the buy form (or in Stripe) — no Student account required.');
+      setNeedsEmailFor(item);
       return;
     }
     if (!paymentConfig.configured) {
@@ -2513,11 +2576,13 @@ const CreatorMarketplaceView = ({ user }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: user.email,
+          email,
+          cancelPath: '/marketplace',
+          successPath: '/marketplace?success=true',
           items: [{
             name: item.title,
             price: `$${item.price}`,
-            image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800',
+            image: item.image || `${window.location.origin}/sample-reading.svg`,
             marketplaceItemId: item.id,
             creatorEmail: item.creatorEmail,
             creatorShare: item.creatorShare,
@@ -2543,8 +2608,8 @@ const CreatorMarketplaceView = ({ user }) => {
     <section className="creator-marketplace">
       <div className="marketplace-hero">
         <span className="onboarding-eyebrow">Creator Marketplace</span>
-        <h1>Sell lessons, units, and courses</h1>
-        <p>Creators can set their own price and keep 80% of sales. Certified teachers can mark resources as certified for the subject or grade; non-certified resources stay clearly labeled for buyers.</p>
+        <h1>Ready-to-teach lessons, units, and courses</h1>
+        <p>Warehouse catalog first. Guest preview is open. Buy with Stripe — no Student account required. Certified-teacher badges stay visible when a creator is verified.</p>
         <p className="marketplace-status">
           {paymentConfig.configured
             ? `Stripe Checkout is ${paymentConfig.mode === 'live' ? 'live' : 'configured for this environment'}.`
@@ -2661,7 +2726,29 @@ const CreatorMarketplaceView = ({ user }) => {
         </form>
 
         <div className="marketplace-list">
-          <h2>Paid creator resources</h2>
+          <h2>Warehouse catalog</h2>
+          {needsEmailFor && (
+            <form
+              className="guest-checkout-form"
+              onSubmit={(event) => {
+                event.preventDefault();
+                buyItem(needsEmailFor, guestEmail);
+              }}
+            >
+              <label htmlFor="market-guest-email">Email for Stripe receipt</label>
+              <input
+                id="market-guest-email"
+                className="form-control"
+                type="email"
+                required
+                placeholder="teacher@school.org"
+                value={guestEmail}
+                onChange={(e) => setGuestEmail(e.target.value)}
+              />
+              <button type="submit" className="btn-buy">Continue to Stripe for ${needsEmailFor.price}</button>
+              <button type="button" className="nav-mini-btn" onClick={() => setNeedsEmailFor(null)}>Cancel</button>
+            </form>
+          )}
           {items.map((item) => (
             <article className="marketplace-item" key={item.id}>
               <div>
@@ -2671,13 +2758,19 @@ const CreatorMarketplaceView = ({ user }) => {
                 </span>
                 <h3>{item.title}</h3>
                 <p>{item.summary || item.content}</p>
-                <small>{item.creatorName} | {item.grade} | {item.country} | {item.course}</small>
+                <small>{item.creatorName} | {item.grade} | {item.country} | {item.course} | ${item.price}</small>
                 {item.remixOf && <small>Remix of: {item.remixOf}</small>}
               </div>
               <div className="marketplace-buy-row">
                 <span>{item.price > 0 ? `$${item.price}` : 'Volunteer'}</span>
                 <em>{item.price > 0 ? `Creator earns $${item.creatorShare}` : 'Not paid'}</em>
-                <button type="button" disabled={item.price <= 0 || !paymentConfig.configured} onClick={() => buyItem(item)}>
+                <button
+                  type="button"
+                  onClick={() => onPreview?.(item)}
+                >
+                  Preview
+                </button>
+                <button type="button" disabled={item.price <= 0 || !paymentConfig.configured} onClick={() => buyItem(item, guestEmail || user?.email)}>
                   {item.price > 0 ? (paymentConfig.configured ? 'Buy' : 'Setup Needed') : 'Free Library Work'}
                 </button>
               </div>
@@ -4191,10 +4284,14 @@ const isWeakQuizQuestion = (item = {}) => {
 };
 
 const getHighValueKnowledgeCheck = (lesson, topic) => {
+  const specific = topicSpecificQuiz(lesson, topic);
   const existing = Array.isArray(lesson?.quiz) ? lesson.quiz.filter((item) => !isWeakQuizQuestion(item)) : [];
-  const generated = buildDepthOfKnowledgeQuiz(lesson, topic);
+  if (specific?.length >= 8 && (lesson?.isPublicSample || existing.length < 8)) {
+    return specific.slice(0, 10);
+  }
+  const generated = specific || buildDepthOfKnowledgeQuiz(lesson, topic);
   const merged = [...existing, ...generated].slice(0, 10);
-  return merged.length >= 10 ? merged : generated;
+  return merged.length >= 8 ? merged : generated;
 };
 
 const stripLessonMarkdown = (value = '') => String(value || '')
@@ -4235,6 +4332,31 @@ const buildStudentReadingSections = (lesson, topic) => {
   const course = lesson?.course || '';
   const grade = lesson?.grade || 'this grade';
   const region = lesson?.export_metadata?.region || lesson?.state || lesson?.country || 'your community';
+
+  if (/story|figurative|character|plot|harbor light|literary/.test(lowerTitle) || /reading literature/i.test(course)) {
+    return [
+      {
+        heading: 'Character, Setting, and Plot Work Together',
+        body: 'In “The Harbor Light,” Mira is not brave because the author labels her brave. She is responsible because of what she does: she checks oil, trims the wick, waits until the beam hits the channel marker, and writes the log. The stormy harbor is the setting that makes those actions urgent. Plot is the sequence: routine checklist, wick sputtering, her choice to restore the lamp, the boat coming in.'
+      },
+      {
+        heading: 'Metaphor vs Simile vs Personification',
+        body: 'A metaphor says one thing is another: “The lighthouse was a stubborn spine against the dark.” A simile uses like or as: “The rain hit the windows like thrown pebbles.” Personification gives a human action to something nonhuman: “The wind clawed at the door.” Grade 5 readers should name the device and explain the job it does — usually showing danger, toughness, or mood.'
+      },
+      {
+        heading: 'How to Use Text Evidence',
+        body: 'A strong answer quotes or closely paraphrases the story. “Mira is responsible” is a claim. “She trimmed the wick, added oil, and waited until the light landed clean on the outer marker” is evidence. Without the second sentence, the claim is only an opinion.'
+      },
+      {
+        heading: 'A Common Misconception',
+        body: 'Figurative language is not extra decoration you can skip. If you drop “stubborn spine,” the tower is merely tall. The metaphor shows it holding position, which matches Mira holding the job when Grandfather cannot.'
+      },
+      {
+        heading: 'Transfer the Skill',
+        body: `Try the same analysis on a local story from ${region}: name the turning point, quote one metaphor or simile, and explain how setting raises the stakes. That is the skill this $5 lesson is selling — not a quiz that repeats the title.`
+      }
+    ];
+  }
 
   if (/decimal|place value/.test(lowerTitle) && /decimal/.test(lowerTitle)) {
     return [
@@ -4771,13 +4893,28 @@ const ClassActivities = ({ lesson, topic, onOpenWhiteboard, onAwardPoints, onTra
   );
 };
 
+const diagramCaption = (src = '', title = '') => {
+  const file = String(src).toLowerCase();
+  if (file.includes('plot')) return 'Plot beats from the text';
+  if (file.includes('figurative')) return 'Figurative language in this story';
+  if (file.includes('reading')) return 'Character, setting, and lighthouse context';
+  if (file.includes('inquiry')) return 'Classroom cart inquiry setup';
+  if (file.includes('forces')) return 'Balanced vs unbalanced forces';
+  if (file.includes('physics')) return 'Motion evidence diagram';
+  if (file.includes('budget') || file.includes('needs') || file.includes('finance')) return 'Money decision diagram';
+  if (file.includes('robot')) return 'Sense–decide–move diagram';
+  if (file.includes('coding') || file.includes('loop') || file.includes('level')) return 'Game loop / level diagram';
+  return `Classroom diagram for ${title || 'this lesson'}`;
+};
+
 const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   const title = lesson?.title || topic || '';
   const grade = lesson?.grade || '';
   const course = lesson?.course || '';
   const country = lesson?.country || '';
   const language = lesson?.language || 'English';
-  const prebakedVideoId = lesson?.media?.videoId || extractYouTubeVideoId(lesson?.media?.video);
+  const isPublicSample = Boolean(lesson?.isPublicSample);
+  const prebakedVideoId = isPublicSample ? '' : (lesson?.media?.videoId || extractYouTubeVideoId(lesson?.media?.video));
   const studentSections = buildStudentReadingSections(lesson, topic);
   const segments = [
     {
@@ -4790,8 +4927,8 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
 
   // YouTube embed state
   const [videoId, setVideoId] = useState(null);
-  const [videoState, setVideoState] = useState('loading'); // 'loading' | 'ready' | 'error' | 'unavailable'
-  const [tab, setTab] = useState('watch'); // 'watch' | 'videos' | 'narrate'
+  const [videoState, setVideoState] = useState(isPublicSample ? 'unavailable' : 'loading');
+  const [tab, setTab] = useState(isPublicSample ? 'narrate' : 'watch');
 
   // TTS state
   const [playing, setPlaying] = useState(false);
@@ -4808,6 +4945,11 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   // ── Fetch YouTube video ──────────────────────────────────────
   useEffect(() => {
     if (!title) return;
+    if (isPublicSample) {
+      setVideoState('unavailable');
+      setTab('narrate');
+      return;
+    }
     if (prebakedVideoId) {
       setVideoId(prebakedVideoId);
       setVideoState('ready');
@@ -4846,7 +4988,7 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
         }
       })
       .catch(() => { setVideoState('unavailable'); setTab('narrate'); });
-  }, [title, grade, course, country, language, prebakedVideoId]);
+  }, [title, grade, course, country, language, prebakedVideoId, isPublicSample]);
 
   // ── TTS helpers ──────────────────────────────────────────────
   useEffect(() => {
@@ -4914,7 +5056,8 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   const cur = segments[segIdx] || segments[0];
   const imgSrc = (lessonImages && lessonImages.length > 0)
     ? lessonImages[segIdx % lessonImages.length]
-    : 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80';
+    : buildTopicImageUrl(title, course, segIdx);
+  const diagramMode = /\.svg(\?|$)/i.test(String(imgSrc || ''));
   const totalWords = segments.reduce((sum, s) => sum + s.body.split(/\s+/).length, 0);
   const totalSecs = Math.round(totalWords / 2.4);
   const durationLabel = `~${Math.floor(totalSecs / 60)}:${String(totalSecs % 60).padStart(2, '0')}`;
@@ -4953,7 +5096,11 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
           )}
           {videoState === 'unavailable' && (
             <div className="lvp-embed-placeholder">
-              <p>No pre-baked video is available yet. Use the <strong>Listen</strong> tab for the in-course narrated lesson.</p>
+              {lessonImages?.length ? (
+                <img src={lessonImages[0]} alt={diagramCaption(lessonImages[0], title)} style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#e8f1ff' }} />
+              ) : (
+                <p>Use the <strong>Listen</strong> tab for the in-course narrated lesson and classroom diagrams.</p>
+              )}
             </div>
           )}
         </div>
@@ -4962,9 +5109,9 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
       {/* ── Listen tab ── */}
       {tab === 'narrate' && (
         <>
-          <div className="lvp-screen">
-            <img src={imgSrc} alt="" className="lvp-bg-img"
-              onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80'; }} />
+          <div className={`lvp-screen${diagramMode ? ' is-diagram' : ''}`}>
+            <img src={imgSrc} alt={diagramCaption(imgSrc, title)} className="lvp-bg-img"
+              onError={(e) => { e.target.src = buildTopicImageUrl(title, course, 0); }} />
             <div className="lvp-dim" />
             <div className="lvp-captions">
               <span className="lvp-eyebrow">{cur.eyebrow} · {segIdx + 1} of {segments.length}</span>
@@ -5002,7 +5149,7 @@ const LessonVideoPlayer = ({ lesson, topic, lessonImages }) => {
   );
 };
 
-const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onTrack }) => {
+const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onTrack, onPurchase }) => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [writtenAnswers, setWrittenAnswers] = useState({});
   const [workLoaded, setWorkLoaded] = useState(false);
@@ -5209,10 +5356,13 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
       {!lesson ? (
         <div className="glass text-center py-20">
           {error ? (
-            <div className="text-red-500">
-              <h2 className="text-2xl font-black mb-4">Generation Error</h2>
+            <div>
+              <h2 className="text-2xl font-black mb-4">Continue with a preview or purchase</h2>
               <p className="font-bold mb-4">{error}</p>
-              <button className="btn-primary" onClick={onBack}>Try Again</button>
+              {onPurchase && (
+                <GuestPaywall onPurchase={onPurchase} onSignIn={onBack} message={error} />
+              )}
+              <button className="btn-primary" onClick={onBack}>Back</button>
             </div>
           ) : (
             <>
@@ -5266,6 +5416,21 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
 
           <StudentLessonArticle lesson={lesson} topic={topic} />
 
+          {showMedia && lessonImages.length > 0 && (
+            <div className="lesson-diagram-gallery">
+              <h2>Classroom diagrams</h2>
+              <p>Purpose-built visuals for this lesson — character, setting, plot, or lab setup — not stock filler.</p>
+              <div className="lesson-diagram-grid">
+                {lessonImages.map((src) => (
+                  <figure key={src}>
+                    <img src={src} alt={diagramCaption(src, lesson.title)} />
+                    <figcaption>{diagramCaption(src, lesson.title)}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
+
           <LessonVideoPlayer lesson={lesson} topic={topic} lessonImages={lessonImages} />
 
           <details className="teacher-script-panel teacher-script-collapsible">
@@ -5318,7 +5483,7 @@ const API_BASE = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE |
   const { protocol, hostname, port } = window.location;
   if (protocol !== 'http:' && protocol !== 'https:') return 'http://localhost:5188';
   if (port === '5173' || port === '4173' || port === '3000') return `${protocol}//${hostname}:5188`;
-  if (hostname === 'www.global-lms.org' || hostname === 'global-lms.org' || hostname.endsWith('.vercel.app')) return CLOUD_RUN_API_BASE;
+  if (hostname === 'www.global-lms.org' || hostname === 'global-lms.org' || hostname === 'globallms.org' || hostname === 'www.globallms.org' || hostname.endsWith('.vercel.app')) return CLOUD_RUN_API_BASE;
   return window.location.origin;
 })();
 const isRealEmail = (email = '') => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && !email.endsWith('@global-lms.local');
@@ -5364,6 +5529,8 @@ export default function App() {
   const [user, setUser] = useState(getStoredUser);
   const [view, setView] = useState(() => {
     if (isOwnerMarketingSite) return 'marketing';
+    const fromPath = viewFromPath(window.location.pathname);
+    if (fromPath !== 'onboarding') return fromPath;
     const storedUser = getStoredUser();
     return storedUser && isOwnerAdmin(storedUser) ? 'usage' : 'onboarding';
   });
@@ -5377,11 +5544,28 @@ export default function App() {
   const [aiBuildStatus, setAiBuildStatus] = useState('');
   const [aiDraftPackage, setAiDraftPackage] = useState(null);
   const [visitorId] = useState(getVisitorId);
+  const [guestCheckout, setGuestCheckout] = useState(null);
+  const [guestEmail, setGuestEmail] = useState('');
   const sharedPlanRef = useRef(readSharedPlanFromUrl());
+  const skipPushRef = useRef(true);
 
   const saveUser = (nextUser) => {
     setUser(nextUser);
     localStorage.setItem('globalLmsUser', JSON.stringify(nextUser));
+  };
+
+  const navigate = (nextView, { replace = false } = {}) => {
+    const path = pathForView(nextView);
+    const method = replace ? 'replaceState' : 'pushState';
+    if (window.location.pathname !== path) {
+      window.history[method]({ view: nextView }, '', path);
+    }
+    document.title = pageTitleFor(nextView);
+    const description = document.querySelector('meta[name="description"]');
+    if (description && nextView === 'pricing') {
+      description.setAttribute('content', 'Global LMS pricing: $5 per lesson, $10 per unit, $100 per course. Stripe Checkout. 30-day money-back. K-12 warehouse curriculum.');
+    }
+    setView(nextView);
   };
 
   const postJson = async (path, body) => {
@@ -5413,20 +5597,67 @@ export default function App() {
 
   useEffect(() => {
     trackUsage('page_view', { path: window.location.pathname });
+    document.title = pageTitleFor(view);
+    document.documentElement.dataset.build = BUILD_STAMP;
   }, []);
 
   useEffect(() => {
-    const openMarketplace = () => setView('marketplace');
+    const onPop = () => {
+      skipPushRef.current = true;
+      const next = isOwnerMarketingSite ? 'marketing' : viewFromPath(window.location.pathname);
+      setView(next);
+      document.title = pageTitleFor(next);
+    };
+    window.addEventListener('popstate', onPop);
+    if (window.location.pathname === '/' && view !== 'onboarding' && !isOwnerMarketingSite) {
+      window.history.replaceState({ view }, '', pathForView(view));
+    }
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  useEffect(() => {
+    const openMarketplace = () => navigate('marketplace');
     window.addEventListener('global-lms-open-marketplace', openMarketplace);
     return () => window.removeEventListener('global-lms-open-marketplace', openMarketplace);
   }, []);
+
+  const openReadingSample = () => {
+    const sample = READING_SAMPLE_LESSON;
+    const plan = findSampleCurriculum('Lesson', 'Reading Literature');
+    setStudentData({
+      country: sample.country,
+      state: sample.state,
+      language: sample.language,
+      grade: sample.grade,
+      course: sample.course,
+      need: 'Lesson',
+      role: 'Teacher'
+    });
+    setCurriculum(plan);
+    setCurrentTopic({ name: sample.topic });
+    setLesson(sample);
+    navigate('sample');
+  };
+
+  useEffect(() => {
+    if (view === 'sample' && !lesson?.isPublicSample) {
+      openReadingSample();
+    }
+    if (view === 'path' && !curriculum) {
+      const plan = findSampleCurriculum('Lesson', 'Reading Literature');
+      setCurriculum(plan);
+      setStudentData((current) => current || {
+        country: 'USA', grade: 'Grade 5', course: 'Reading Literature', need: 'Lesson', role: 'Teacher', language: 'English'
+      });
+    }
+  }, [view]);
 
   const handleOnboarding = async (data) => {
     const sharedTopic = data.topic || '';
     const identity = {
       email: data.email || user?.email || 'guest@global-lms.local',
-      name: user?.name || data.name || 'Global Learner',
-      role: data.role,
+      name: user?.name || data.name || 'Teacher',
+      role: data.role || 'Teacher',
       workspaceType: data.workspaceType || user?.workspaceType || 'Individual teacher',
       workspaceName: data.workspaceName || user?.workspaceName || '',
       points: user?.points || 0,
@@ -5440,34 +5671,54 @@ export default function App() {
       grade: data.grade,
       course: data.course,
       need: data.need,
-      role: data.role,
+      role: data.role || 'Teacher',
       workspaceType: data.workspaceType || 'Individual teacher',
       workspaceName: data.workspaceName || ''
     };
     setStudentData(curriculumRequest);
-    setCurriculum(null);
     setLesson(null);
     setCurrentTopic(null);
     saveUser(identity);
-    setPlanSaveStatus('');
-    if (isRealEmail(identity.email)) {
-      try {
-        await postJson('/api/users/save-plan', {
-          visitorId,
-          email: identity.email,
-          name: identity.name,
-          role: identity.role,
-          plan: curriculumRequest,
-          path: window.location.pathname
-        });
-        setPlanSaveStatus('Plan saved to your account.');
-      } catch (err) {
-        setPlanSaveStatus('Plan opened, but account save failed.');
-      }
-    } else {
-      setPlanSaveStatus('Add an email in Advanced or Sign In to save this plan.');
+    setPlanSaveStatus('Preview is open without an account.');
+    const sampleLesson = findSampleLesson(sharedTopic, data.course);
+    const sampleCurriculum = findSampleCurriculum(data.need, data.course) || (sampleLesson ? findSampleCurriculum('Lesson', sampleLesson.course) : null);
+    if (sampleLesson) {
+      setLesson(sampleLesson);
+      setCurrentTopic({ name: sampleLesson.topic });
+      setCurriculum(sampleCurriculum || {
+        country: sampleLesson.country,
+        state: sampleLesson.state,
+        grade: sampleLesson.grade,
+        language: sampleLesson.language,
+        course: sampleLesson.course,
+        need: 'Lesson',
+        isFree: false,
+        isPublicSample: true,
+        pricing: { lesson: 5, unit: 10, course: 100 },
+        standardsBody: (sampleLesson.standards || []).map((item) => item.code).join(', '),
+        subjects: [{ name: sampleLesson.course, topics: [sampleLesson.title] }],
+        units: [{ title: sampleLesson.title, sequence: 1, lessons: [{ title: sampleLesson.title, sequence: 1, description: sampleLesson.hook }] }]
+      });
+      navigate(sampleLesson.id === 'sample-harbor-light' ? 'sample' : 'lesson');
+      return;
     }
-    setView('path');
+    if (sampleCurriculum) {
+      setCurriculum(sampleCurriculum);
+      if (sampleLesson) {
+        setLesson(sampleLesson);
+        setCurrentTopic({ name: sampleLesson.topic });
+        navigate(data.need === 'Lesson' ? 'sample' : 'path');
+        return;
+      }
+      if (data.need === 'Unit' && sampleCurriculum.units?.[0]) {
+        setSelectedUnit({ unit: sampleCurriculum.units[0], unitIndex: 0 });
+        navigate('unit');
+        return;
+      }
+      navigate('path');
+      return;
+    }
+    navigate('path');
     try {
       const res = await fetch(`${API_BASE}/api/curriculum`, {
         method: 'POST',
@@ -5495,8 +5746,8 @@ export default function App() {
 
   const handleBuildAiDraft = async (data) => {
     if (!isRealEmail(user?.email)) {
-      setAiBuildStatus('Sign in with a real email before using AI Builder credits.');
-      setView('auth');
+      setAiBuildStatus('AI Builder needs an email so credits can be stored. That is not a Student login wall for catalog previews.');
+      navigate('auth');
       return;
     }
     const request = {
@@ -5521,7 +5772,7 @@ export default function App() {
         ? ` Estimated AI cost: $${result.usage.estimatedCost.estimatedCost.toFixed(4)}.`
         : '';
       setAiBuildStatus(`${result.usage.remaining} free credits left this month.${costLabel}`);
-      setView('ai-builder-draft');
+      navigate('ai-builder-draft');
     } catch (err) {
       setAiBuildStatus(err.message || 'AI draft could not be built.');
     }
@@ -5529,8 +5780,8 @@ export default function App() {
 
   const handleBuyAiCredits = async (packId) => {
     if (!isRealEmail(user?.email)) {
-      setAiBuildStatus('Sign in before buying AI Builder credits.');
-      setView('auth');
+      setAiBuildStatus('Enter an email to buy AI Builder credits. Catalog lessons do not require this.');
+      navigate('auth');
       return;
     }
     try {
@@ -5591,14 +5842,14 @@ export default function App() {
       workspaceName: normalizedUser.workspaceName,
       email: normalizedUser.email
     });
-    setView(isOwnerAdmin(normalizedUser) ? 'usage' : (curriculum ? 'path' : 'onboarding'));
+    navigate(isOwnerAdmin(normalizedUser) ? 'usage' : (curriculum ? 'path' : 'onboarding'));
   };
 
   const handleSignOut = () => {
     setUser(null);
     localStorage.removeItem('globalLmsUser');
-    setPlanSaveStatus('Signed out. Sign in again to save plans.');
-    setView('auth');
+    setPlanSaveStatus('Signed out.');
+    navigate('onboarding');
   };
 
   const handleSelectTopic = async (topic, isPremium = false, planOverride = studentData, curriculumOverride = curriculum) => {
@@ -5606,9 +5857,16 @@ export default function App() {
       handlePurchase(topic);
       return;
     }
+    const sample = findSampleLesson(topic, planOverride?.course || curriculumOverride?.course);
+    if (sample) {
+      setCurrentTopic({ name: sample.topic });
+      setLesson(sample);
+      navigate('sample');
+      return;
+    }
     setCurrentTopic({ name: topic });
     setLesson(null);
-    setView('lesson');
+    navigate('lesson');
     try {
       const res = await fetch(`${API_BASE}/api/lesson`, {
         method: 'POST',
@@ -5617,12 +5875,13 @@ export default function App() {
           ...planOverride,
           topic,
           email: user?.email,
-          visitorId
+          visitorId,
+          preview: true
         })
       });
       const result = await res.json();
       if (!res.ok) {
-        const error = new Error(result.detail || result.message || result.error || "Unknown server error");
+        const error = new Error(result.detail || result.message || result.error || 'This preview is ready as a sample or purchase.');
         error.status = res.status;
         throw error;
       }
@@ -5637,9 +5896,9 @@ export default function App() {
       setLesson(result);
     } catch (err) {
       console.error(err);
-      if (err.status === 401) {
-        setPlanSaveStatus(err.message || `Sign in to get ${FREE_LESSON_LIMIT} more free lessons. No credit card is needed to start.`);
-        setView('auth');
+      if (err.status === 401 || err.status === 402) {
+        setPlanSaveStatus(err.message || 'Buy a lesson, unit, or course to keep opening warehouse items. No Student account required.');
+        setCurrentTopic({ name: topic, error: err.message || 'Paid access or another preview is available without signing in as a Student.' });
         return;
       }
       setCurrentTopic({ name: topic, error: err.message });
@@ -5648,7 +5907,7 @@ export default function App() {
 
   const handleSelectUnit = (unit, unitIndex = 0) => {
     setSelectedUnit({ unit, unitIndex });
-    setView('unit');
+    navigate('unit');
   };
 
   useEffect(() => {
@@ -5657,52 +5916,119 @@ export default function App() {
     sharedPlanRef.current = null;
     handleOnboarding({
       ...sharedPlan,
-      role: user?.role || sharedPlan.role || 'Student',
+      role: user?.role || sharedPlan.role || 'Teacher',
       email: user?.email || ''
     });
   }, []);
 
-  const handlePurchase = async (topicName, price = '$9.99') => {
-    try {
-      if (!user?.email || !isRealEmail(user.email)) {
-        alert('Please sign in with a real email before buying paid access.');
-        setView('auth');
-        return;
-      }
-      const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: user.email,
-          items: [{ name: topicName, price, image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800" }]
-        })
-      });
-      const session = await res.json();
-      if (!res.ok) throw new Error(session.error || 'Unable to start checkout');
-      if (session.url) {
-        window.location.href = session.url;
-        return;
-      }
-      const stripe = await stripePromise;
-      if (!stripe) throw new Error('Stripe publishable key is not configured.');
-      await stripe.redirectToCheckout({ sessionId: session.id });
-    } catch (err) {
-      alert(err.message || "Payment checkout is unavailable right now.");
+  const startCheckout = async (topicName, price, email) => {
+    const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        successPath: '/pricing?success=true',
+        cancelPath: '/pricing?canceled=true',
+        items: [{ name: topicName, price, image: `${window.location.origin}/sample-reading.svg` }]
+      })
+    });
+    const session = await res.json();
+    if (!res.ok) throw new Error(session.detail || session.error || 'Unable to start checkout');
+    if (session.url) {
+      window.location.href = session.url;
+      return;
     }
+    const stripe = await stripePromise;
+    if (!stripe) throw new Error('Stripe publishable key is not configured.');
+    await stripe.redirectToCheckout({ sessionId: session.id });
+  };
+
+  const handlePurchase = async (topicName, price = '$5') => {
+    try {
+      const email = isRealEmail(user?.email) ? user.email : (isRealEmail(guestEmail) ? guestEmail : '');
+      if (!email) {
+        setGuestCheckout({ name: topicName, price });
+        return;
+      }
+      await startCheckout(topicName, price, email);
+    } catch (err) {
+      setPlanSaveStatus(err.message || 'Payment checkout is unavailable right now.');
+    }
+  };
+
+  const handleMarketplacePreview = (item) => {
+    if (item.previewTopic) {
+      handleSelectTopic(item.previewTopic, false, {
+        country: item.country,
+        grade: item.grade,
+        course: item.course,
+        need: 'Lesson',
+        role: 'Teacher',
+        language: 'English'
+      });
+      return;
+    }
+    if (item.previewNeed) {
+      handleOnboarding({
+        country: item.country || 'USA',
+        grade: item.grade || 'Grade 5',
+        course: item.previewCourse || item.course,
+        need: item.previewNeed,
+        role: 'Teacher',
+        language: 'English'
+      });
+      return;
+    }
+    handleSelectTopic(item.title, false, {
+      country: item.country,
+      grade: item.grade,
+      course: item.course,
+      need: item.type || 'Lesson',
+      role: 'Teacher',
+      language: 'English'
+    });
   };
 
   return (
     <div>
-      {!isOwnerMarketingSite && <Navbar onNavigate={setView} user={user} onOpenContact={() => setIsContactOpen(true)} onSignOut={handleSignOut} />}
+      {!isOwnerMarketingSite && <Navbar onNavigate={navigate} user={user} onOpenContact={() => setIsContactOpen(true)} onSignOut={handleSignOut} />}
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} userEmail={user?.email} />
-      {!isOwnerMarketingSite && <HelpBot onNavigate={setView} />}
+      {!isOwnerMarketingSite && <HelpBot onNavigate={navigate} />}
+      {guestCheckout && (
+        <div className="guest-checkout-overlay">
+          <form
+            className="guest-checkout-card"
+            onSubmit={async (event) => {
+              event.preventDefault();
+              try {
+                await startCheckout(guestCheckout.name, guestCheckout.price, guestEmail);
+              } catch (err) {
+                setPlanSaveStatus(err.message || 'Checkout unavailable.');
+              }
+            }}
+          >
+            <h2>Buy {guestCheckout.name}</h2>
+            <p>Stripe will charge {guestCheckout.price}. Enter an email for the receipt. Teacher/buyer checkout — no Student account.</p>
+            <input
+              className="form-control"
+              type="email"
+              required
+              placeholder="teacher@school.org"
+              value={guestEmail}
+              onChange={(e) => setGuestEmail(e.target.value)}
+            />
+            <button type="submit" className="initialize-btn">Continue to Stripe</button>
+            <button type="button" className="nav-mini-btn" onClick={() => setGuestCheckout(null)}>Cancel</button>
+          </form>
+        </div>
+      )}
       <main className={`app-main view-${isOwnerMarketingSite ? 'owner' : view}`}>
         <AnimatePresence mode="wait">
           {view === 'onboarding' && (
             <motion.div key="on" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <OnboardingView
                 onComplete={handleOnboarding}
-                onOpenLmsGuide={() => setView('lms-guide')}
+                onOpenLmsGuide={() => navigate('lms-guide')}
                 onBuildAiDraft={handleBuildAiDraft}
                 onBuyAiCredits={handleBuyAiCredits}
                 onPurchase={handlePurchase}
@@ -5712,14 +6038,23 @@ export default function App() {
               />
             </motion.div>
           )}
+          {view === 'pricing' && (
+            <motion.div key="pricing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <PricingView
+                onPurchase={handlePurchase}
+                onOpenSample={openReadingSample}
+                onOpenMarketplace={() => navigate('marketplace')}
+              />
+            </motion.div>
+          )}
           {view === 'about' && (
             <motion.div key="about" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <AboutView onBack={() => setView('onboarding')} onOpenContact={() => setIsContactOpen(true)} />
+              <AboutView onBack={() => navigate('onboarding')} onOpenContact={() => setIsContactOpen(true)} onNavigate={navigate} />
             </motion.div>
           )}
           {view === 'lms-guide' && (
             <motion.div key="lms-guide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <LmsCompatibilityView onBack={() => setView('onboarding')} />
+              <LmsCompatibilityView onBack={() => navigate('onboarding')} />
             </motion.div>
           )}
           {view === 'whiteboard' && (
@@ -5740,18 +6075,18 @@ export default function App() {
                 curriculum={curriculum}
                 studentData={studentData}
                 onSelectTopic={handleSelectTopic}
-                onBack={() => setView('path')}
+                onBack={() => navigate('path')}
               />
             </motion.div>
           )}
           {view === 'marketplace' && (
             <motion.div key="marketplace" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <CreatorMarketplaceView user={user} />
+              <CreatorMarketplaceView user={user} onPreview={handleMarketplacePreview} onPurchase={handlePurchase} />
             </motion.div>
           )}
           {view === 'sis' && (
             <motion.div key="sis" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <StudentInformationSystemView onBuildPlan={() => setView('onboarding')} onOpenDashboard={() => setView('teacher-dash')} />
+              <StudentInformationSystemView onBuildPlan={() => navigate('onboarding')} onOpenDashboard={() => navigate('teacher-dash')} />
             </motion.div>
           )}
           {view === 'marketing' && (
@@ -5771,12 +6106,26 @@ export default function App() {
           )}
           {view === 'usage' && (
             <motion.div key="usage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <UsageView user={user} onNavigate={setView} />
+              <UsageView user={user} onNavigate={navigate} />
             </motion.div>
           )}
           {view === 'auth' && (
             <motion.div key="auth" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <AuthView onSignIn={handleSignIn} />
+            </motion.div>
+          )}
+          {view === 'sample' && (
+            <motion.div key="sample" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <LessonView
+                topic={currentTopic?.name || READING_SAMPLE_LESSON.topic}
+                lesson={lesson || READING_SAMPLE_LESSON}
+                shareUrl={`${typeof window !== 'undefined' ? window.location.origin : ''}/sample`}
+                onBack={() => navigate('onboarding')}
+                error={currentTopic?.error}
+                onPurchase={handlePurchase}
+                onAwardPoints={(pts) => saveUser({ ...(user || { email: 'guest@global-lms.local', role: 'Teacher' }), points: ((user && user.points) || 0) + pts })}
+                onTrack={trackUsage}
+              />
             </motion.div>
           )}
           {view === 'lesson' && (
@@ -5785,9 +6134,10 @@ export default function App() {
                 topic={currentTopic?.name} 
                 lesson={lesson} 
                 shareUrl={buildShareUrl(studentData, curriculum, currentTopic?.name)}
-                onBack={() => setView('path')} 
-                error={currentTopic?.error} 
-                onAwardPoints={(pts) => saveUser({ ...(user || { email: 'guest@global-lms.local', role: 'Student' }), points: ((user && user.points) || 0) + pts })}
+                onBack={() => navigate('path')} 
+                error={currentTopic?.error}
+                onPurchase={handlePurchase}
+                onAwardPoints={(pts) => saveUser({ ...(user || { email: 'guest@global-lms.local', role: 'Teacher' }), points: ((user && user.points) || 0) + pts })}
                 onTrack={trackUsage}
               />
             </motion.div>
@@ -5796,9 +6146,9 @@ export default function App() {
             <motion.div key="ai-builder-draft" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <AiDraftView
                 packageData={aiDraftPackage}
-                onBack={() => setView('onboarding')}
+                onBack={() => navigate('onboarding')}
                 onSelectTopic={handleSelectTopic}
-                onAwardPoints={(pts) => saveUser({ ...(user || { email: 'guest@global-lms.local', role: 'Student' }), points: ((user && user.points) || 0) + pts })}
+                onAwardPoints={(pts) => saveUser({ ...(user || { email: 'guest@global-lms.local', role: 'Teacher' }), points: ((user && user.points) || 0) + pts })}
               />
             </motion.div>
           )}

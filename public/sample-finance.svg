@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Budget jars">
+  <rect width="1200" height="600" fill="#f0fdf4"/>
+  <rect x="120" y="180" width="220" height="280" rx="20" fill="#fff" stroke="#166534" stroke-width="6"/>
+  <rect x="490" y="180" width="220" height="280" rx="20" fill="#fff" stroke="#166534" stroke-width="6"/>
+  <rect x="860" y="180" width="220" height="280" rx="20" fill="#fff" stroke="#166534" stroke-width="6"/>
+  <text x="230" y="330" text-anchor="middle" font-size="28" font-family="Arial" fill="#14532d">Needs</text>
+  <text x="600" y="330" text-anchor="middle" font-size="28" font-family="Arial" fill="#14532d">Wants</text>
+  <text x="970" y="330" text-anchor="middle" font-size="28" font-family="Arial" fill="#14532d">Save</text>
+  <text x="600" y="80" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700" fill="#14532d">Grade 6 · A $40 week</text>
+</svg>

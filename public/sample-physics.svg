@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Dynamics cart on a track">
+  <rect width="1200" height="600" fill="#ecfeff"/>
+  <line x1="80" y1="380" x2="1120" y2="380" stroke="#0f172a" stroke-width="10"/>
+  <rect x="430" y="300" width="220" height="70" rx="8" fill="#1d4ed8"/>
+  <circle cx="470" cy="380" r="24" fill="#111827"/>
+  <circle cx="610" cy="380" r="24" fill="#111827"/>
+  <line x1="320" y1="334" x2="430" y2="334" stroke="#dc2626" stroke-width="8" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#dc2626"/></marker></defs>
+  <text x="600" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">Grade 9 · Unbalanced forces inquiry</text>
+  <text x="600" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#155e75">After the push ends, friction  not used-up force  slows the cart.</text>
+</svg>
