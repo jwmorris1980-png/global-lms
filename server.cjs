@@ -24,6 +24,8 @@ const ALLOWED_ORIGINS = new Set([
     PUBLIC_APP_URL,
     'https://global-lms.org',
     'https://www.global-lms.org',
+    'https://globallms.org',
+    'https://www.globallms.org',
     'http://localhost:5188',
     'http://127.0.0.1:5188',
     'http://[::1]:5188',
@@ -143,8 +145,8 @@ const cleanEmail = (value = '') => {
 };
 const OWNER_EMAILS = new Set(['jwmorris1980@gmail.com', 'support@global-lms.org'].map(cleanEmail));
 const isOwnerAdminEmail = (email = '') => OWNER_EMAILS.has(cleanEmail(email));
-const publicAccountRole = (role = 'Student') => cleanString(role, 40) === 'Teacher' ? 'Teacher' : 'Student';
-const roleForEmail = (email = '', requestedRole = 'Student') => (
+const publicAccountRole = (role = 'Teacher') => cleanString(role, 40) === 'Student' ? 'Student' : 'Teacher';
+const roleForEmail = (email = '', requestedRole = 'Teacher') => (
     isOwnerAdminEmail(email) ? 'Admin' : publicAccountRole(requestedRole)
 );
 const amountCentsFromPrice = (value, fallbackCents = 500) => {
@@ -438,7 +440,7 @@ app.get(['/health', '/api/health'], (req, res) => {
 
 app.get('/api/version', (req, res) => {
     res.json({
-        version: 'ai-builder-2026-05-11',
+        version: 'trust-conversion-2026-09-21',
         aiBuilder: true,
         creditPacks: Object.keys(AI_CREDIT_PACKS)
     });
@@ -2294,7 +2296,10 @@ app.post('/api/lesson', async (req, res) => {
     try {
         const exactRequest = { country, state, grade, topic, language, need, course: course || 'General Education' };
         const localLesson = loadOrCreateLocalLesson(exactRequest);
-        const access = await reserveLessonAccess({
+        const isPreview = req.body.preview === true || req.body.preview === 'true' || /harbor light|story elements|figurative language|unbalanced forces|classroom cart/i.test(String(topic || ''));
+        const access = isPreview
+            ? { allowed: true, preview: true, guestAccess: true }
+            : await reserveLessonAccess({
             email: req.body.email,
             country,
             topic,
@@ -2421,50 +2426,188 @@ const sanitizePrice = (value, fallback = 5) => {
 };
 const defaultPriceForType = (type) => type === 'Course' ? 100 : type === 'Unit' ? 10 : 5;
 
-const sampleMarketplaceItems = [
+const isJunkMarketplaceItem = (item = {}) => {
+    const title = cleanString(item.title, 160);
+    const body = cleanString(item.summary || item.content, 700);
+    if (!title) return true;
+    if (/^(untitled|test|testing|asdf|foo|bar)(\s|$)/i.test(title)) return true;
+    if (/untitled/i.test(title) && body.length < 80) return true;
+    if (body.length < 40) return true;
+    if (item.status === 'pending_review' && body.length < 120) return true;
+    return false;
+};
+
+const catalogMarketplaceItems = [
     {
-        id: 'sample-phonics-fluency-lesson',
-        title: 'Phonics Fluency Mini-Lesson',
+        id: 'catalog-harbor-light-lesson',
+        title: 'Story Elements & Figurative Language: The Harbor Light',
         type: 'Lesson',
-        creatorName: 'Global LMS Studio',
-        creatorEmail: 'studio@global-lms.local',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
         price: 5,
         creatorShare: 4,
         platformFee: 1,
-        grade: 'Grade 2',
+        grade: 'Grade 5',
         country: 'USA',
         course: 'Reading Literature',
-        summary: 'A paid creator marketplace sample with teacher plan, worksheet, fluency check, and answer key.',
-        content: 'Students practice phonics fluency with a short explicit lesson, guided reading practice, and a quick mastery check.',
-        standards: 'Foundational reading standards aligned to grade-level decoding, fluency, and comprehension expectations.',
+        summary: 'A complete 45-minute ELA lesson with an original narrative, RL.5.3–5.5 alignment, teacher script, worksheet, 10-item quiz, and answer key. Preview the full sample free.',
+        content: 'Grade 5 literary analysis of “The Harbor Light”: character, setting, plot, metaphor, simile, personification, evidence paragraph, and answer key.',
+        standards: 'CCSS RL.5.3, RL.5.4, RL.5.5',
         remixOf: '',
         certificationStatus: 'Certified teacher for this subject/grade',
         contributionMode: 'paid-marketplace',
-        license: 'Creator marketplace license. Buyers may use in class. Remix/resale requires meaningful improvement and attribution.',
+        license: 'Classroom license. 30-day money-back.',
         status: 'published'
     },
     {
-        id: 'sample-ecosystems-unit',
-        title: 'Local Ecosystems Investigation Unit',
-        type: 'Unit',
-        creatorName: 'Global LMS Studio',
-        creatorEmail: 'studio@global-lms.local',
-        price: 10,
-        creatorShare: 8,
-        platformFee: 2,
-        grade: 'Grade 5',
+        id: 'catalog-cart-inquiry-lesson',
+        title: 'Unbalanced Forces Inquiry: The Classroom Cart',
+        type: 'Lesson',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 5,
+        creatorShare: 4,
+        platformFee: 1,
+        grade: 'Grade 9',
         country: 'USA',
-        course: 'Science',
-        summary: 'A five-lesson paid unit that helps students investigate ecosystems, food webs, and human impact.',
-        content: 'Includes five lessons, a field observation activity, vocabulary practice, quiz, answer key, and culminating task.',
-        standards: 'NGSS-style life science and ecosystem performance expectations.',
+        course: 'Physics',
+        summary: 'Phenomenon-based HS-PS2 inquiry with data tables, force diagrams, CER, and a quiz that analyzes claims — not the lesson title.',
+        content: 'Students collect cart data, compare friction conditions, and reject the misconception that moving objects run out of force.',
+        standards: 'HS-PS2-1, NGSS Science & Engineering Practices',
         remixOf: '',
         certificationStatus: 'Certified teacher for this subject/grade',
         contributionMode: 'paid-marketplace',
-        license: 'Creator marketplace license. Buyers may use in class. Remix/resale requires meaningful improvement and attribution.',
+        license: 'Classroom license. 30-day money-back.',
+        status: 'published'
+    },
+    {
+        id: 'catalog-money-unit',
+        title: 'Grade 6 Financial Literacy: Money Decisions You Can Defend',
+        type: 'Unit',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 10,
+        creatorShare: 8,
+        platformFee: 2,
+        grade: 'Grade 6',
+        country: 'USA',
+        course: 'Financial Literacy',
+        summary: 'Five lessons on needs vs wants, pay stubs, spending logs, saving goals, and unit price.',
+        content: 'Needs, Wants, and a $40 Week; Income and pay stubs; Seven-day spending log; Saving goals; Corner-store unit price.',
+        standards: 'Jump$tart / state personal finance',
+        remixOf: '',
+        certificationStatus: 'Certified teacher for this subject/grade',
+        contributionMode: 'paid-marketplace',
+        license: 'Classroom license. 30-day money-back.',
+        status: 'published'
+    },
+    {
+        id: 'catalog-robotics-unit',
+        title: 'Grade 7 Robotics: Sense, Decide, Move',
+        type: 'Unit',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 10,
+        creatorShare: 8,
+        platformFee: 2,
+        grade: 'Grade 7',
+        country: 'USA',
+        course: 'Robotics',
+        summary: 'Five engineering lessons on sensors, thresholds, a safe-stop program, iteration, and a system explanation showcase.',
+        content: 'Inputs/process/outputs; line thresholds; program a safe stop; iterate after a crash; showcase the system.',
+        standards: 'CSTA / NGSS engineering design',
+        remixOf: '',
+        certificationStatus: 'Certified teacher for this subject/grade',
+        contributionMode: 'paid-marketplace',
+        license: 'Classroom license. 30-day money-back.',
+        status: 'published'
+    },
+    {
+        id: 'catalog-game-dev-course',
+        title: 'Grade 9 Game Development Course',
+        type: 'Course',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 100,
+        creatorShare: 80,
+        platformFee: 20,
+        grade: 'Grade 9',
+        country: 'USA',
+        course: 'Game Development',
+        summary: 'Four units: player experience, programming mechanics, playtesting, and responsible game communities.',
+        content: '12 classroom-ready lessons with a capstone pitch and safety plan.',
+        standards: 'CSTA 2-AP / 3A-AP',
+        remixOf: '',
+        certificationStatus: 'Certified teacher for this subject/grade',
+        contributionMode: 'paid-marketplace',
+        license: 'Classroom license. 30-day money-back.',
+        status: 'published'
+    },
+    {
+        id: 'catalog-algebra-linear',
+        title: 'Algebra I: Linear Relationships in a School Fundraiser',
+        type: 'Lesson',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 5,
+        creatorShare: 4,
+        platformFee: 1,
+        grade: 'Grade 8',
+        country: 'USA',
+        course: 'Algebra I',
+        summary: 'Students model ticket sales with slope-intercept form and compare two fundraising plans with evidence.',
+        content: 'Drama club fundraiser: write y = mx + b, interpret intercepts, and catch slope/intercept mix-ups.',
+        standards: 'CCSS 8.F.B.4 / HSA-CED.A.2',
+        remixOf: '',
+        certificationStatus: 'Certified teacher for this subject/grade',
+        contributionMode: 'paid-marketplace',
+        license: 'Classroom license. 30-day money-back.',
+        status: 'published'
+    },
+    {
+        id: 'catalog-biology-cells',
+        title: 'Biology: Cell Membrane as a Gate, Not a Wall',
+        type: 'Lesson',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 5,
+        creatorShare: 4,
+        platformFee: 1,
+        grade: 'Grade 9',
+        country: 'USA',
+        course: 'Biology',
+        summary: 'Osmosis demo, model, and CER. Quiz items evaluate “the cell wanted water” as a claim.',
+        content: 'Predict, observe, diagram the membrane, write a CER using concentration language.',
+        standards: 'HS-LS1-2',
+        remixOf: '',
+        certificationStatus: 'Certified teacher for this subject/grade',
+        contributionMode: 'paid-marketplace',
+        license: 'Classroom license. 30-day money-back.',
+        status: 'published'
+    },
+    {
+        id: 'catalog-civics-rights',
+        title: 'Civics: Rights, Responsibilities, and a School Policy Case',
+        type: 'Unit',
+        creatorName: 'Global LMS Warehouse',
+        creatorEmail: 'studio@global-lms.org',
+        price: 10,
+        creatorShare: 8,
+        platformFee: 2,
+        grade: 'Grade 8',
+        country: 'USA',
+        course: 'Civics and Government',
+        summary: 'Five lessons from the Bill of Rights to a mock hearing on a campus phone policy.',
+        content: 'Enumerated rights; limits; majority vs minority protections; media literacy; mock hearing.',
+        standards: 'C3 D2.Civ.3.6-8 / D2.Civ.8.6-8',
+        remixOf: '',
+        certificationStatus: 'Certified teacher for this subject/grade',
+        contributionMode: 'paid-marketplace',
+        license: 'Classroom license. 30-day money-back.',
         status: 'published'
     }
 ];
+const sampleMarketplaceItems = catalogMarketplaceItems;
 
 app.get('/api/marketplace', async (req, res) => {
     try {
@@ -2472,16 +2615,24 @@ app.get('/api/marketplace', async (req, res) => {
         const items = snapshot.docs
             .map((doc) => ({ id: doc.id, ...doc.data() }))
             .filter((item) => MARKETPLACE_STATUS.includes(item.status))
+            .filter((item) => !isJunkMarketplaceItem(item))
             .sort((a, b) => {
                 const left = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : 0;
                 const right = b.createdAt?.toDate ? b.createdAt.toDate().getTime() : 0;
                 return right - left;
             })
             .slice(0, 60);
-        res.json({ items: items.length ? items : sampleMarketplaceItems });
+        const seen = new Set(catalogMarketplaceItems.map((item) => item.title.toLowerCase()));
+        const extras = items.filter((item) => {
+            const title = String(item.title || '').toLowerCase();
+            if (seen.has(title)) return false;
+            seen.add(title);
+            return true;
+        });
+        res.json({ items: [...catalogMarketplaceItems, ...extras] });
     } catch (err) {
         console.error('[Marketplace List Error]:', err);
-        res.json({ items: sampleMarketplaceItems });
+        res.json({ items: catalogMarketplaceItems });
     }
 });
 
@@ -2546,7 +2697,7 @@ app.post('/api/marketplace', async (req, res) => {
 app.post('/api/create-checkout-session', async (req, res) => {
     try {
         if (!stripe) return res.status(503).json({ error: 'Payments are not configured yet.', detail: 'Add STRIPE_SECRET_KEY on the server, then redeploy.' });
-        const { email, items } = req.body;
+        const { email, items, successPath, cancelPath } = req.body;
         const safeEmail = cleanEmail(email);
         const safeItems = Array.isArray(items) ? items.slice(0, 10).map((item) => ({
             name: cleanString(item.name, 180) || 'Global LMS resource',
@@ -2558,11 +2709,16 @@ app.post('/api/create-checkout-session', async (req, res) => {
             creatorShare: cleanString(item.creatorShare, 20),
             platformFee: cleanString(item.platformFee, 20)
         })) : [];
-        if (!safeEmail || !safeItems.length) return res.status(400).json({ error: 'A valid email and checkout item are required.' });
+        if (!safeItems.length) return res.status(400).json({ error: 'A checkout item is required.' });
         const metadataItem = safeItems[0] || {};
         const safeOrigin = ALLOWED_ORIGINS.has(req.headers.origin) ? req.headers.origin : PUBLIC_APP_URL;
+        const rawSuccess = cleanString(successPath, 180) || '/pricing';
+        const rawCancel = cleanString(cancelPath, 180) || '/pricing';
+        const withFlag = (pathName, flag) => `${safeOrigin}${pathName}${pathName.includes('?') ? '' : flag}`;
+        const successUrl = withFlag(rawSuccess, '?success=true');
+        const cancelUrl = withFlag(rawCancel, '?canceled=true');
         const session = await stripe.checkout.sessions.create({
-            customer_email: safeEmail,
+            ...(safeEmail ? { customer_email: safeEmail } : {}),
             allow_promotion_codes: true,
             line_items: safeItems.map(item => ({
                 price_data: {
@@ -2584,8 +2740,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
                 platformFee: metadataItem.platformFee || '',
                 revenueSplit: metadataItem.creatorEmail ? 'creator_80_platform_20' : 'platform'
             },
-            success_url: `${safeOrigin}/?success=true`,
-            cancel_url: `${safeOrigin}/?canceled=true`,
+            success_url: successUrl,
+            cancel_url: cancelUrl,
         });
         res.json({ id: session.id, url: session.url });
     } catch (err) {
@@ -2619,6 +2775,15 @@ app.get('/api/admin/messages', requireAdmin, async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: "Failed to fetch messages" });
     }
+});
+
+app.use((req, res, next) => {
+    if (req.method !== 'GET') return next();
+    if (req.path.startsWith('/api') || req.path === '/health' || req.path.startsWith('/mcp') || req.path.startsWith('/sse')) return next();
+    if (path.extname(req.path) && fs.existsSync(path.join(distPath, req.path))) return next();
+    const indexFile = path.join(distPath, 'index.html');
+    if (!fs.existsSync(indexFile)) return next();
+    res.sendFile(indexFile);
 });
 
 // --- Global Error Handler ---

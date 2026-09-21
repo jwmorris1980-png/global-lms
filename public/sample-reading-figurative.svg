@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Figurative language cards">
+  <rect width="1200" height="600" fill="#eef2ff"/>
+  <g font-family="Georgia, serif" fill="#111827">
+    <rect x="60" y="120" width="340" height="340" rx="24" fill="#fff" stroke="#4f46e5" stroke-width="5"/>
+    <text x="230" y="200" text-anchor="middle" font-size="28" font-weight="700" fill="#3730a3">Metaphor</text>
+    <text x="230" y="280" text-anchor="middle" font-size="22">stubborn spine</text>
+    <rect x="430" y="120" width="340" height="340" rx="24" fill="#fff" stroke="#0f766e" stroke-width="5"/>
+    <text x="600" y="200" text-anchor="middle" font-size="28" font-weight="700" fill="#0f766e">Simile</text>
+    <text x="600" y="280" text-anchor="middle" font-size="22">rain like pebbles</text>
+    <rect x="800" y="120" width="340" height="340" rx="24" fill="#fff" stroke="#9a3412" stroke-width="5"/>
+    <text x="970" y="200" text-anchor="middle" font-size="28" font-weight="700" fill="#9a3412">Personification</text>
+    <text x="970" y="280" text-anchor="middle" font-size="22">wind clawed</text>
+  </g>
+</svg>

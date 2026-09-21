@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Plot mountain diagram">
+  <rect width="1200" height="600" fill="#fff7ed"/>
+  <polyline points="80,500 280,420 520,160 780,300 1120,500" fill="none" stroke="#c2410c" stroke-width="14" stroke-linejoin="round"/>
+  <circle cx="280" cy="420" r="14" fill="#1d4ed8"/>
+  <circle cx="520" cy="160" r="16" fill="#b45309"/>
+  <circle cx="780" cy="300" r="14" fill="#1d4ed8"/>
+  <text x="80" y="560" font-family="Arial, sans-serif" font-size="24" fill="#7c2d12">Beginning: routine check</text>
+  <text x="430" y="120" font-family="Arial, sans-serif" font-size="24" fill="#7c2d12">Turning point: Mira oils the wick</text>
+  <text x="760" y="560" font-family="Arial, sans-serif" font-size="24" fill="#7c2d12">End: boat returns, logbook closed</text>
+</svg>

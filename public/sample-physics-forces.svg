@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Force arrows on a cart">
+  <rect width="1200" height="600" fill="#f1f5f9"/>
+  <rect x="480" y="250" width="240" height="90" fill="#334155"/>
+  <text x="600" y="200" text-anchor="middle" font-size="28" font-family="Arial" fill="#0f172a">Coasting cart (hand off)</text>
+  <text x="600" y="430" text-anchor="middle" font-size="24" font-family="Arial" fill="#b91c1c">Friction opposite velocity. No forward go force.</text>
+</svg>
