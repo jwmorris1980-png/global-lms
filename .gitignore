@@ -40,3 +40,6 @@ root-check.png
 warehouse/curriculums/
 warehouse/lessons/
 warehouse/packages/
+
+# Emails captured after the free lesson (Firestore is the live store; this file is the local fallback)
+data/interest-emails.json

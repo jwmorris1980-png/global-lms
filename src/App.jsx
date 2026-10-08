@@ -10,7 +10,6 @@ import {
   READING_SAMPLE_LESSON,
   imageSetForTopic,
   topicSpecificQuiz,
-  SOCIAL_PROOF,
   PRODUCT_TOUR,
   STANDARD_PRICING,
   viewFromPath,
@@ -704,19 +703,21 @@ const SocialShareButtons = () => {
   );
 };
 
-const NewsletterSignup = ({ defaultEmail = '', onTrack }) => {
-  const [email, setEmail] = useState(defaultEmail || '');
-  const [name, setName] = useState('');
+const NextLessonPrompt = ({ lessonTitle = '' }) => {
+  const [email, setEmail] = useState('');
   const [status, setStatus] = useState('');
+  const [hidden, setHidden] = useState(() => (
+    localStorage.getItem('globalLmsNextLessonDismissed') === '1'
+    || localStorage.getItem('globalLmsNextLessonSaved') === '1'
+  ));
 
-  useEffect(() => {
-    setEmail(defaultEmail || '');
-  }, [defaultEmail]);
+  if (hidden) return null;
 
-  const handleSubscribe = async () => {
+  const saveEmail = async (event) => {
+    event.preventDefault();
     const clean = String(email || '').trim().toLowerCase();
-    if (!clean || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean)) {
-      setStatus('Enter a valid email.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean)) {
+      setStatus('Enter a valid email, or skip this.');
       return;
     }
     setStatus('Saving...');
@@ -726,46 +727,49 @@ const NewsletterSignup = ({ defaultEmail = '', onTrack }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: clean,
-          name: name.trim(),
-          source: 'homepage-newsletter'
+          source: 'free-lesson-complete',
+          name: ''
         })
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Could not save subscription.');
-      onTrack?.('newsletter_signup', { email: clean });
-      setStatus('You are on the list.');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Could not save that email.');
+      localStorage.setItem('globalLmsNextLessonSaved', '1');
+      setStatus('Saved. That is only for the next lesson.');
+      window.setTimeout(() => setHidden(true), 1200);
     } catch (err) {
-      setStatus(err.message || 'Could not save subscription.');
+      setStatus(err.message || 'Could not save that email.');
     }
   };
 
   return (
-    <div className="newsletter-card">
-      <div className="newsletter-copy">
-        <strong>Monthly updates</strong>
-        <span>Get product news, lesson drops, and classroom notes by email.</span>
-      </div>
-      <div className="newsletter-fields">
+    <form className="next-lesson-prompt" onSubmit={saveEmail}>
+      <strong>Want the next lesson? Enter your email</strong>
+      <p>You already finished {lessonTitle || 'the free lesson'}. The email stays in Global LMS. No account, and you can skip this.</p>
+      <div className="next-lesson-fields">
         <input
-          className="newsletter-input"
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          className="newsletter-input"
+          className="form-control"
           type="email"
-          placeholder="Email"
+          inputMode="email"
+          autoComplete="email"
+          placeholder="you@school.org"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
+          aria-label="Email for the next lesson"
         />
-        <button type="button" className="lesson-nav-btn" onClick={handleSubscribe}>
-          Join Newsletter
+        <button type="submit" className="btn-buy">Send</button>
+        <button
+          type="button"
+          className="nav-mini-btn"
+          onClick={() => {
+            localStorage.setItem('globalLmsNextLessonDismissed', '1');
+            setHidden(true);
+          }}
+        >
+          No thanks
         </button>
       </div>
-      <small>{status || 'No spam. Just updates you can use.'}</small>
-    </div>
+      {status && <small>{status}</small>}
+    </form>
   );
 };
 
@@ -1003,10 +1007,10 @@ const AboutView = ({ onBack, onOpenContact, onNavigate }) => (
     </button>
 
     <div className="about-hero">
-      <span className="onboarding-eyebrow">About Global LMS</span>
-      <h1>AI-built warehouse lessons teachers can actually preview</h1>
+      <span className="onboarding-eyebrow">About</span>
+      <h1>Built by a working classroom teacher</h1>
       <p>
-        Global LMS is a K-12 curriculum warehouse: packaged lessons, units, and courses by country, grade, and subject. Stripe checkout is $5 / $10 / $100 in standard regions, with a 30-day money-back guarantee. Built by a teacher, for teachers.
+        Global LMS is a side project by John, who teaches full time. The courses are short and meant to be used in class. You can open one lesson with no account. A lesson is $5, a unit is $10, and a course is $100.
       </p>
     </div>
 
@@ -1048,12 +1052,9 @@ const AboutView = ({ onBack, onOpenContact, onNavigate }) => (
     </div>
 
     <div className="about-section about-mission">
-      <h2>The Mission</h2>
+      <h2>Why it exists</h2>
       <p>
-        Teachers in high-need and conflict-affected regions — including Ukraine, Haiti, Yemen, Palestine, Pakistan, Sudan, and others — get <strong>free access</strong>, no credit card. Everyone else pays a country-tiered scale. A lesson that costs $5 in the US costs $2 in Mexico or Brazil.
-      </p>
-      <p>
-        This is a one-person project built by a teacher with a physical disability who wanted curriculum that is ready for tomorrow’s class — not a demo toy.
+        John built this after school hours because planning a lesson from scratch takes time he does not have. The free lesson is the whole thing: reading, quiz, and teacher plan. Pay only if you want another one.
       </p>
     </div>
 
@@ -1148,7 +1149,7 @@ const LmsCompatibilityView = ({ onBack }) => {
   );
 };
 
-const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCredits, onPurchase, aiBuildStatus, user, onTrack }) => {
+const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCredits, onPurchase, onOpenFreeLesson, onOpenPricing, onOpenAbout, aiBuildStatus, user, onTrack }) => {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [aiIdea, setAiIdea] = useState('');
@@ -1272,19 +1273,31 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
   return (
     <section className="onboarding-shell">
       <div className="onboarding-header">
-        <div className="creator-hero-callout">
-          <strong>Teachers can sell here too</strong>
-          <span>List lessons, units, or courses, set your own price, and show a certified-teacher badge when verified.</span>
-          <button type="button" onClick={() => window.dispatchEvent(new CustomEvent('global-lms-open-marketplace'))}>
-            Sell resources
-          </button>
-        </div>
-        <span className="onboarding-eyebrow">Every K-12 lesson, anywhere on the planet</span>
-        <h1 className="onboarding-title">
-          Already-loaded <span className="text-gradient">standards-aligned</span> curriculum
-        </h1>
+        <span className="onboarding-eyebrow">For teachers and families</span>
+        <h1 className="onboarding-title">Short, affordable courses made by teachers.</h1>
         <p className="onboarding-subtitle">
-          Pick a grade and subject. Preview a real lesson — story, script, quiz, and answer key — then buy with Stripe. Lesson ${STANDARD_PRICING.lesson} · Unit ${STANDARD_PRICING.unit} · Course ${STANDARD_PRICING.course}. {STANDARD_PRICING.guarantee}.
+          Open one real Grade 5 reading lesson — the story, the quiz, and the teacher plan — with no account. If you want more, a lesson is ${STANDARD_PRICING.lesson}, a unit is ${STANDARD_PRICING.unit}, and a course is ${STANDARD_PRICING.course}.
+        </p>
+        <button type="button" className="initialize-btn home-primary-cta" onClick={onOpenFreeLesson}>
+          Open the free lesson
+        </button>
+        <div className="home-offer" aria-label="Prices">
+          {[
+            { name: 'Lesson', price: STANDARD_PRICING.lesson, sku: 'Global LMS Lesson Access' },
+            { name: 'Unit', price: STANDARD_PRICING.unit, sku: 'Global LMS Unit Access' },
+            { name: 'Course', price: STANDARD_PRICING.course, sku: 'Global LMS Full Course Access' }
+          ].map((tier) => (
+            <article key={tier.name}>
+              <span>{tier.name}</span>
+              <strong>${tier.price}</strong>
+              <button type="button" onClick={() => onPurchase?.(tier.sku, `$${tier.price}`)}>Buy ${tier.price}</button>
+            </article>
+          ))}
+        </div>
+        <button type="button" className="lms-inline-link" onClick={onOpenPricing}>See the pricing page</button>
+        <p className="home-founder">
+          Built by John, a full-time classroom teacher.{' '}
+          <button type="button" onClick={onOpenAbout}>About</button>
         </p>
         {user?.email && isRealEmail(user.email) && (
           <div className="free-lessons-welcome" role="status">
@@ -1297,24 +1310,6 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
         <button type="button" className="lms-inline-link" onClick={onOpenLmsGuide}>
           See LMS compatibility
         </button>
-        <div className="proof-strip">
-          <span><strong>197</strong> countries</span>
-          <span><strong>95</strong> courses</span>
-          <span><strong>39,552</strong> packages</span>
-          <span><strong>${STANDARD_PRICING.lesson}</strong> / lesson</span>
-          <span><strong>${STANDARD_PRICING.unit}</strong> / unit</span>
-          <span><strong>${STANDARD_PRICING.course}</strong> / course</span>
-          <span><strong>Stripe</strong> checkout</span>
-          <span><strong>30-day</strong> money-back</span>
-        </div>
-        <div className="social-proof-row" aria-label="Classroom proof">
-          {SOCIAL_PROOF.map((item) => (
-            <blockquote key={item.name} className="social-proof-card">
-              <p>“{item.quote}”</p>
-              <footer><strong>{item.name}</strong> · {item.role}</footer>
-            </blockquote>
-          ))}
-        </div>
         <div className="instant-demo-panel" aria-label="Instant curriculum demos">
           <span className="instant-demo-label">Try a ready-built example</span>
           <div className="instant-demo-row">
@@ -1628,12 +1623,11 @@ const OnboardingView = ({ onComplete, onOpenLmsGuide, onBuildAiDraft, onBuyAiCre
               Buy {pack.credits} credits {pack.label}
             </button>
           ))}
-          {!isRealEmail(user?.email) && <span>Sign in first</span>}
+          {!isRealEmail(user?.email) && <span>AI credits ask for an email. The free lesson does not.</span>}
         </div>
       </div>
 
       <div className="onboarding-share-footer">
-        <NewsletterSignup defaultEmail={user?.email || ''} onTrack={onTrack} />
         <SocialShareButtons />
       </div>
 
@@ -2454,17 +2448,10 @@ const PricingView = ({ onPurchase, onOpenSample, onOpenMarketplace }) => (
       <p>AI Builder credits are a separate optional pack ($5 / $10) for generating a missing draft. Warehouse catalog purchases do not require a Student login.</p>
     </div>
     <div className="pricing-actions">
-      <button type="button" className="btn-buy" onClick={onOpenSample}>Preview the Grade 5 sample</button>
-      <button type="button" className="nav-mini-btn" onClick={onOpenMarketplace}>Browse catalog</button>
+      <button type="button" className="btn-buy" onClick={onOpenSample}>Open the free lesson</button>
+      <button type="button" className="nav-mini-btn" onClick={onOpenMarketplace}>Browse courses</button>
     </div>
-    <div className="social-proof-row">
-      {SOCIAL_PROOF.map((item) => (
-        <blockquote key={item.name} className="social-proof-card">
-          <p>“{item.quote}”</p>
-          <footer><strong>{item.name}</strong> · {item.role}</footer>
-        </blockquote>
-      ))}
-    </div>
+    <p>Prices are public. An account is only asked when you buy, and only so Stripe can send a receipt.</p>
   </section>
 );
 
@@ -2748,6 +2735,9 @@ const CreatorMarketplaceView = ({ user, onPreview, onPurchase }) => {
               <button type="submit" className="btn-buy">Continue to Stripe for ${needsEmailFor.price}</button>
               <button type="button" className="nav-mini-btn" onClick={() => setNeedsEmailFor(null)}>Cancel</button>
             </form>
+          )}
+          {items.length === 0 && (
+            <p className="marketplace-status">No public courses yet. Test, placeholder, and empty listings stay hidden.</p>
           )}
           {items.map((item) => (
             <article className="marketplace-item" key={item.id}>
@@ -5311,6 +5301,11 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
        ))}
     </div>
   ) : null;
+  const choiceQuestions = knowledgeCheckQuestions.filter((question) => question.type === 'choice');
+  const answeredChoices = knowledgeCheckQuestions.filter((question, index) => (
+    question.type === 'choice' && selectedAnswers[index] !== undefined
+  )).length;
+  const freeLessonFinished = Boolean(lesson?.isPublicSample) && choiceQuestions.length > 0 && answeredChoices >= choiceQuestions.length;
 
   return (
     <div className="container lesson-container">
@@ -5406,6 +5401,9 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
             </div>
             <h1 className="text-4xl font-black mb-2 tracking-tight">{lesson.title}</h1>
             <p className="text-white/80 italic text-lg">{lesson.hook}</p>
+            {lesson.isPublicSample && (
+              <p className="guest-lesson-note">Free guest lesson. No account needed. Finish the quiz if you want the next one by email.</p>
+            )}
             <div className="lesson-portability-strip">
               <span>Editable after purchase</span>
               <span>Google Classroom ready</span>
@@ -5464,6 +5462,7 @@ const LessonView = ({ topic, lesson, shareUrl, onBack, error, onAwardPoints, onT
           />
 
           {knowledgeCheck}
+          {freeLessonFinished && <NextLessonPrompt lessonTitle={lesson.title} />}
         </div>
         {showWhiteboard && (
           <aside className="lesson-whiteboard-panel" aria-label="Lesson whiteboard">
@@ -5678,7 +5677,7 @@ export default function App() {
     setStudentData(curriculumRequest);
     setLesson(null);
     setCurrentTopic(null);
-    saveUser(identity);
+    if (isRealEmail(identity.email)) saveUser(identity);
     setPlanSaveStatus('Preview is open without an account.');
     const sampleLesson = findSampleLesson(sharedTopic, data.course);
     const sampleCurriculum = findSampleCurriculum(data.need, data.course) || (sampleLesson ? findSampleCurriculum('Lesson', sampleLesson.course) : null);
@@ -6008,7 +6007,7 @@ export default function App() {
             }}
           >
             <h2>Buy {guestCheckout.name}</h2>
-            <p>Stripe will charge {guestCheckout.price}. Enter an email for the receipt. Teacher/buyer checkout — no Student account.</p>
+            <p>Stripe will charge {guestCheckout.price}. This is the only step that needs an email, and it is for the receipt. You do not need an account first.</p>
             <input
               className="form-control"
               type="email"
@@ -6032,6 +6031,9 @@ export default function App() {
                 onBuildAiDraft={handleBuildAiDraft}
                 onBuyAiCredits={handleBuyAiCredits}
                 onPurchase={handlePurchase}
+                onOpenFreeLesson={openReadingSample}
+                onOpenPricing={() => navigate('pricing')}
+                onOpenAbout={() => navigate('about')}
                 aiBuildStatus={aiBuildStatus}
                 user={user}
                 onTrack={trackUsage}

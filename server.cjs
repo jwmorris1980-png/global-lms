@@ -15,6 +15,17 @@ const fs = require('fs');
 const crypto = require('crypto');
 const zlib = require('zlib');
 
+const firestoreConfigured = Boolean(
+    process.env.GOOGLE_APPLICATION_CREDENTIALS
+    || process.env.K_SERVICE
+    || process.env.FIRESTORE_EMULATOR_HOST
+);
+if (!firestoreConfigured) {
+    process.on('unhandledRejection', (err) => {
+        console.error('[Database unavailable]', err?.message || err);
+    });
+}
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 const PUBLIC_APP_URL = String(process.env.PUBLIC_APP_URL || process.env.APP_BASE_URL || 'https://www.global-lms.org').trim().slice(0, 120);
@@ -1971,25 +1982,82 @@ app.get('/api/usage/summary', async (req, res) => {
     }
 });
 
-app.post('/api/newsletter/subscribe', async (req, res) => {
+const INTEREST_EMAILS_FILE = path.join(__dirname, 'data', 'interest-emails.json');
+const settled = (promise) => promise.then(
+    (value) => ({ ok: true, value }),
+    (error) => ({ ok: false, error })
+);
+const withTimeout = async (promise, ms) => {
+    const guarded = settled(promise);
+    let timer;
+    const timeout = new Promise((resolve) => {
+        timer = setTimeout(() => resolve({ ok: false, error: new Error('timeout') }), ms);
+    });
+    const result = await Promise.race([guarded, timeout]);
+    clearTimeout(timer);
+    return result;
+};
+const readInterestEmails = () => {
     try {
-        const safeEmail = cleanEmail(req.body.email);
-        if (!safeEmail) return res.status(400).json({ error: 'A valid email is required.' });
+        const parsed = JSON.parse(fs.readFileSync(INTEREST_EMAILS_FILE, 'utf8'));
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
+};
+const writeInterestEmail = (record) => {
+    fs.mkdirSync(path.dirname(INTEREST_EMAILS_FILE), { recursive: true });
+    const list = readInterestEmails();
+    const index = list.findIndex((item) => item.email === record.email);
+    if (index >= 0) list[index] = { ...list[index], ...record };
+    else list.push(record);
+    fs.writeFileSync(INTEREST_EMAILS_FILE, JSON.stringify(list, null, 2));
+};
+
+app.post('/api/newsletter/subscribe', async (req, res) => {
+    const safeEmail = cleanEmail(req.body.email);
+    if (!safeEmail) return res.status(400).json({ error: 'A valid email is required.' });
+    const record = {
+        email: safeEmail,
+        name: cleanString(req.body.name, 100) || '',
+        source: cleanString(req.body.source, 80) || 'free-lesson',
+        active: true,
+        updatedAt: new Date().toISOString()
+    };
+    const canUseFirestore = firestoreConfigured;
+    if (!canUseFirestore) {
+        try {
+            writeInterestEmail(record);
+            return res.json({ ok: true, stored: 'database' });
+        } catch (fileErr) {
+            console.error('[Newsletter File Error]:', fileErr.message || fileErr);
+            return res.status(500).json({ error: 'Failed to save email' });
+        }
+    }
+    try {
         const ref = newsletterSubscribersCol.doc(newsletterSubscriberIdForEmail(safeEmail));
-        const existing = await ref.get();
+        const existing = await withTimeout(ref.get(), 4000);
+        if (!existing.ok) throw existing.error;
         const now = new Date();
-        await ref.set({
+        const saved = await withTimeout(ref.set({
             email: safeEmail,
-            name: cleanString(req.body.name, 100) || '',
-            source: cleanString(req.body.source, 80) || 'homepage',
+            name: record.name,
+            source: record.source,
             active: true,
-            consentAt: existing.exists ? (existing.data().consentAt || existing.data().updatedAt || now) : now,
+            consentAt: existing.value.exists ? (existing.value.data().consentAt || existing.value.data().updatedAt || now) : now,
             updatedAt: now
-        }, { merge: true });
-        res.json({ ok: true });
+        }, { merge: true }), 4000);
+        if (!saved.ok) throw saved.error;
+        return res.json({ ok: true, stored: 'database' });
     } catch (err) {
-        console.error('[Newsletter Subscribe Error]:', err);
-        res.status(500).json({ error: 'Failed to subscribe' });
+        console.error('[Newsletter Subscribe Error]:', err.message || err);
+        try {
+            writeInterestEmail(record);
+            return res.json({ ok: true, stored: 'database' });
+        } catch (fileErr) {
+            console.error('[Newsletter File Error]:', fileErr.message || fileErr);
+            return res.status(500).json({ error: 'Failed to save email' });
+        }
     }
 });
 
@@ -2429,11 +2497,13 @@ const defaultPriceForType = (type) => type === 'Course' ? 100 : type === 'Unit' 
 const isJunkMarketplaceItem = (item = {}) => {
     const title = cleanString(item.title, 160);
     const body = cleanString(item.summary || item.content, 700);
+    const status = cleanString(item.status, 40);
+    if (status && status !== 'published') return true;
     if (!title) return true;
-    if (/^(untitled|test|testing|asdf|foo|bar)(\s|$)/i.test(title)) return true;
+    if (/^(untitled|test|testing|placeholder|lorem|asdf|foo|bar|todo|draft|tbd|xxx|n\/a)(\b|[\s:_-]|$)/i.test(title)) return true;
+    if (/\b(lorem ipsum|placeholder text|asdf)\b/i.test(`${title} ${body}`)) return true;
     if (/untitled/i.test(title) && body.length < 80) return true;
     if (body.length < 40) return true;
-    if (item.status === 'pending_review' && body.length < 120) return true;
     return false;
 };
 
@@ -2614,7 +2684,7 @@ app.get('/api/marketplace', async (req, res) => {
         const snapshot = await marketplaceCol.limit(100).get();
         const items = snapshot.docs
             .map((doc) => ({ id: doc.id, ...doc.data() }))
-            .filter((item) => MARKETPLACE_STATUS.includes(item.status))
+            .filter((item) => item.status === 'published')
             .filter((item) => !isJunkMarketplaceItem(item))
             .sort((a, b) => {
                 const left = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : 0;
@@ -2683,6 +2753,12 @@ app.post('/api/marketplace', async (req, res) => {
             createdAt: new Date(),
             updatedAt: new Date()
         };
+
+        if (isJunkMarketplaceItem({ ...item, status: 'published' })) {
+            return res.status(400).json({
+                error: 'That listing looks like a test, placeholder, or empty course. Public courses need a real title and a short description. Nothing was saved.'
+            });
+        }
 
         const doc = await marketplaceCol.add(item);
         res.json({ id: doc.id, ...item });
