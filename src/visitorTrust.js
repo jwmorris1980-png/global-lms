@@ -30,7 +30,7 @@ export const VIEW_PATHS = {
 };
 
 export const PAGE_TITLES = {
-  onboarding: 'Global LMS | K-12 warehouse lessons, units, and courses',
+  onboarding: 'Global LMS | Short, affordable courses made by teachers',
   pricing: 'Pricing | Global LMS — $5 lesson, $10 unit, $100 course',
   marketplace: 'Marketplace | Ready-to-teach K-12 catalog',
   about: 'About | Global LMS warehouse curriculum',
@@ -101,11 +101,13 @@ export const imageSetForTopic = (title = '', course = '') => {
 export const isJunkMarketplaceItem = (item = {}) => {
   const title = String(item.title || '').trim();
   const body = String(item.summary || item.content || '').replace(/\s+/g, ' ').trim();
+  const status = String(item.status || '').trim();
+  if (status && status !== 'published') return true;
   if (!title) return true;
-  if (/^(untitled|test|testing|asdf|foo|bar)(\s|$)/i.test(title)) return true;
+  if (/^(untitled|test|testing|placeholder|lorem|asdf|foo|bar|todo|draft|tbd|xxx|n\/a)(\b|[\s:_-]|$)/i.test(title)) return true;
+  if (/\b(lorem ipsum|placeholder text|asdf)\b/i.test(`${title} ${body}`)) return true;
   if (/untitled/i.test(title) && body.length < 80) return true;
   if (body.length < 40) return true;
-  if (item.status === 'pending_review' && body.length < 120) return true;
   return false;
 };
 
@@ -852,10 +854,10 @@ export const SOCIAL_PROOF = [
 export const PRODUCT_TOUR = [
   {
     id: 'tour-pick',
-    title: '1. Pick grade and subject',
-    description: 'Choose Grade 5 Reading, Grade 9 Physics, or another catalog course. No account needed to look.',
-    action: 'Open the builder',
-    href: '/'
+    title: '1. Open the free lesson',
+    description: 'Read The Harbor Light and take the quiz. No account and no email.',
+    action: 'Open the free lesson',
+    href: '/sample'
   },
   {
     id: 'tour-sample',

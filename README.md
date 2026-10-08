@@ -59,6 +59,10 @@ Then run the secure Cloud Run setup helper. Enter the Stripe secret key and webh
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-stripe-cloud-run.ps1
 ```
 
+## HTTPS for globallms.org
+
+`https://globallms.org` is a Hostinger parked domain with no certificate. The app is served at `https://www.global-lms.org` on Vercel. The repository cannot change that DNS. Exact free steps (Hostinger nameservers or records, Vercel domain, no paid certificate) are in [docs/https-globallms.md](docs/https-globallms.md).
+
 ## Uptime Checks
 
 The live backend exposes health checks at:
